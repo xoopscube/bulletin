@@ -1,4 +1,5 @@
 <?php
+
 // Not have perm
 if (!$gperm->group_perm(1)) {
 	die(_NOPERM);
@@ -368,13 +369,13 @@ if( $op == 'preview' ){
 	$op = 'form';
 }
 if( $op === 'form' || $op === 'preview' ){
-	
+
 // 	//notice when no can_post access
 // 	$topics = $gperm->makeOnTopics("can_post");
 // 	if (empty($topics)){
 // 		die(_NOPERM);
 // 	}
-	
+
 // 	// for editing
 // 	if (! $topicid && $op === 'form' && $storyid ){
 // 		$topicid = $story->getVar('topicid');
@@ -383,7 +384,7 @@ if( $op === 'form' || $op === 'preview' ){
 // 			$topicid = 0;
 // 		}
 // 	}
-	
+
 // 	if ($topicid==0){
 // 		$topicid = $topics[0];
 // 	}
@@ -391,7 +392,7 @@ if( $op === 'form' || $op === 'preview' ){
 	if (! $gperm->proceed4topic("can_post",$topicid)){
 		die(_NOPERM . '(Post)');
 	}
-	
+
 	//TODO edit access
 	if ( !empty( $storyid ) ){// for edit
 		$proceed = $gperm->proceed4topic("can_edit",$topicid);
@@ -516,4 +517,3 @@ if( $op == 'delete' ){
 		require_once XOOPS_ROOT_PATH.'/footer.php';
 	}
 }
-?>

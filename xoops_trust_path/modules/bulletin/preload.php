@@ -56,7 +56,3 @@ class BulletinPreloadBase extends XCube_ActionFilter
 }
 
 eval( 'class '.ucfirst( $mydirname ).'_BulletinPreload extends BulletinPreloadBase { var $mydirname = "'.$mydirname.'" ; }' ) ;
-
-
-
-?>

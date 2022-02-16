@@ -94,4 +94,3 @@ function b_bulletin_calendar_show($options) {
 	return $block;
 
 }
-?>

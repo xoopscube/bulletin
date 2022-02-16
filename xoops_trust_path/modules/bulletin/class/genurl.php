@@ -28,7 +28,7 @@ class genUrl{
 		$this->parameter[$key] = $value;
 		return $this->parameter;
 	}
-	
+
 	function setParameters($parameters = array()){
 
 		if( is_array( $parameters ) ){
@@ -60,7 +60,7 @@ class genUrl{
 	}
 
 	function makeURL($ques = '?', $eq = '=', $and ='&'){
-	
+
 		$ret = $this->makePath();
 		if( $parameter = $this->makeParameter($eq, $and) ){
 			$ret .= $ques.$parameter;
@@ -78,6 +78,3 @@ class genUrl{
 		return $this->makeURL('/','.','/');
 	}
 }
-
-
-?>

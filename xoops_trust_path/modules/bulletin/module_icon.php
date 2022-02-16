@@ -31,5 +31,3 @@ if( ! $use_custom_icon && function_exists( 'imagecreatefrompng' ) && function_ex
 	readfile( $icon_fullpath ) ;
 
 }
-
-?>

@@ -1,4 +1,5 @@
 <?php
+
 require_once dirname(dirname(__FILE__)).'/include/common_functions.php' ;
 require_once dirname(dirname(__FILE__)).'/include/gtickets.php' ;
 require_once dirname(dirname(__FILE__)).'/class/bulletinTopic.php' ;

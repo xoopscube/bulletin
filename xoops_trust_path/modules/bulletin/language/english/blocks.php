@@ -1,4 +1,6 @@
-<?php /* English Translation by Marcelo Yuji Himoro <http://yuji.ws> */
+<?php
+
+/* English Translation by Marcelo Yuji Himoro <http://yuji.ws> */
 // Blocks
 
 if( defined( "FOR_XOOPS_LANG_CHECKER" ) || ! defined( "_MB_BULLETIN_LOADED" ) ) {
@@ -37,4 +39,3 @@ define("_MB_BULLETIN_NUMCOMMENTS","%s comments");
 define("_MB_BULLETIN_MORE","See more news");
 
 }
-?>

@@ -90,5 +90,3 @@ function onUpdate( $mode , $link_id , $forum_id , $topic_id , $post_id = 0 )
 
 
 }
-
-?>

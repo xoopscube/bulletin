@@ -1,4 +1,6 @@
-<?php /* English Translation by Marcelo Yuji Himoro <http://yuji.ws> & Suin <http://xoops.suinyeze.com/>*/
+<?php
+
+/* English Translation by Marcelo Yuji Himoro <http://yuji.ws> & Suin <http://xoops.suinyeze.com/>*/
 // Module Info
 
 if( defined( 'FOR_XOOPS_LANG_CHECKER' ) ) $mydirname = 'bulletin' ;
@@ -132,4 +134,3 @@ define($constpref."_NOTIFY5_DESC", "Notify me when a new comment is posted.");
 define($constpref."_NOTIFY5_SUBJECT", "[{X_SITENAME}] {X_MODULE}: New comment posted");
 
 }
-?>

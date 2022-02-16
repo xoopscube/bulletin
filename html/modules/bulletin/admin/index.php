@@ -10,5 +10,3 @@ $mydirurl = XOOPS_URL.'/modules/'.$mydirname;
 require $mydirpath.'/mytrustdirname.php' ; // set $mytrustdirname
 
 require XOOPS_TRUST_PATH.'/modules/'.$mytrustdirname.'/admin.php' ;
-
-?>

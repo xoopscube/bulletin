@@ -4,14 +4,14 @@
 $langmanpath = XOOPS_TRUST_PATH.'/libs/altsys/class/D3LanguageManager.class.php' ;
 if( ! file_exists( $langmanpath ) ) die( 'install the latest altsys' ) ;
 require_once( $langmanpath ) ;
-$langman =& D3LanguageManager::getInstance() ;
+$langman = D3LanguageManager::getInstance() ;
 $langman->read( 'modinfo.php' , $mydirname , $mytrustdirname , false ) ;
 
 $constpref = '_MI_' . strtoupper( $mydirname ) ;
 
 $modversion['name']        = constant($constpref.'_NAME');
-$modversion['version']     = 3.03;
-$modversion['detailed_version'] = "3.03.0";
+$modversion['version']     = 3.04;
+$modversion['detailed_version'] = "3.04.0";
 $modversion['description'] = constant($constpref.'_DESC');
 $modversion['credits']     = 'suin';
 $modversion['help']        = '';

@@ -179,4 +179,3 @@ if (defined('LEGACY_MODULE_VERSION') && version_compare(LEGACY_MODULE_VERSION, '
 }
 
 require_once XOOPS_ROOT_PATH.'/footer.php';
-?>

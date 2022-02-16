@@ -1,4 +1,5 @@
 <?php
+
 class BulletinGP{
 	var $topicPermissions;
 	var $mydirname;
@@ -418,4 +419,3 @@ class BulletinGP{
 	}
 
 }
-?>

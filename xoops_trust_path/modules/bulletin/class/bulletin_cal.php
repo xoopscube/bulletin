@@ -110,7 +110,7 @@ class Bulletin_Cal
 				$ret[$l][$w]['link'] = '';
 			}
 
-			     if($w == 0){
+			if($w == 0){
 				$ret[$l][$w]['label'] = $i;
 			}elseif($w == 1){
 				$ret[$l][$w]['label'] = $i;
@@ -202,4 +202,3 @@ class Bulletin_Cal
 		return $ret;
 	}
 }
-?>

@@ -1,4 +1,5 @@
 <?php
+
 require XOOPS_ROOT_PATH.'/header.php';
 
 $storytopic = isset($_GET['storytopic']) ? intval($_GET['storytopic']) : 0 ;
@@ -231,4 +232,3 @@ $xoopsTpl->assign( 'mod_config' , $xoopsModuleConfig ) ;
 $xoopsOption['template_main'] = "{$mydirname}_index.html";
 
 require_once XOOPS_ROOT_PATH.'/footer.php';
-?>

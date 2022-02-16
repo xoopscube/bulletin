@@ -1,6 +1,9 @@
 <?php
+
 xoops_header(false);
+
 ?>
+
 <script type="text/javascript" src="<?php echo $mydirurl; ?>/index.php?page=javascript"></script>
 </head>
 <body>

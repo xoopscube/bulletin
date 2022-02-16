@@ -70,5 +70,3 @@ function b_bulletin_bigstory_edit($options) {
 	) ) ;
 	return $tpl->fetch( 'db:'.$mydirname.'_blockedit_bigstory.html' ) ;
 }
-
-?>

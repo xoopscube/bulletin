@@ -61,6 +61,3 @@ if (!$tpl->is_cached("db:{$mydirname}_rss.html")) {
 
 header ('Content-Type:text/xml; charset=utf-8');
 $tpl->display("db:{$mydirname}_rss.html");
-
-
-?>

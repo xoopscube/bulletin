@@ -1,14 +1,10 @@
 <?php
+
 if( ! defined( 'XOOPS_ROOT_PATH' ) ) exit ;
 
-eval( '
-
-function '.$mydirname.'_new( $limit=0, $offset=0 )
-{
+eval( 'function '.$mydirname.'_new( $limit=0, $offset=0 ) {
 	return bulletin_whatsnew_base( "'.$mydirname.'", $limit, $offset, "'.$category_option.'" ) ;
-}
-
-' );
+}' );
 
 if ( ! function_exists('bulletin_whatsnew_base') ) {
 	function bulletin_whatsnew_base( $mydirname, $limit=0, $offset=0, $category_option='' )
@@ -79,5 +75,3 @@ if ( ! function_exists('bulletin_whatsnew_base') ) {
 		return $ret;
 	}
 }
-
-?>

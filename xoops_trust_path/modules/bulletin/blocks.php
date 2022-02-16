@@ -23,4 +23,3 @@ if( $handler = @opendir( $block_path . '/' ) ) {
 		}
 	}
 }
-?>

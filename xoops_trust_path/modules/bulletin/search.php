@@ -1,11 +1,8 @@
 <?php
 
-eval( '
-function '.$mydirname.'_global_search( $keywords , $andor , $limit , $offset , $userid )
-{
+eval( 'function '.$mydirname.'_global_search( $keywords , $andor , $limit , $offset , $userid ){
 	return bulletin_search_base( "'.$mydirname.'" , $keywords , $andor , $limit , $offset , $userid ) ;
-}
-' ) ;
+}' ) ;
 
 if( ! function_exists( 'bulletin_search_base' ) ) {
 //ver3.0
@@ -63,4 +60,3 @@ function bulletin_search_base( $mydirname , $queryarray , $andor , $limit , $off
 }
 
 }
-?>

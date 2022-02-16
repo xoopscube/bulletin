@@ -18,12 +18,9 @@ if( file_exists( "$mydirpath/language/$language/mail_template/" ) ) {
 	$event_info['mail_template_dir'] = "$mytrustdirpath/language/english/mail_template/";
 }
 
-eval( '
-function '.$mydirname.'_notify_iteminfo( $category, $item_id )
-{
+eval( 'function '.$mydirname.'_notify_iteminfo( $category, $item_id ){
 	return bulletin_notify_base( $category, $item_id, "'.$mydirname.'" ) ;
-}
-' ) ;
+}' ) ;
 
 if( ! function_exists( 'bulletin_notify_base' ) ) {
 
@@ -32,7 +29,7 @@ function bulletin_notify_base($category, $item_id, $mydirname)
 {
 	global $xoopsModule, $xoopsModuleConfig, $xoopsConfig;
 
-	if (empty($xoopsModule) || $xoopsModule->getVar("dirname") != $mydirname) {	
+	if (empty($xoopsModule) || $xoopsModule->getVar("dirname") != $mydirname) {
 		$module_handler =& xoops_gethandler("module");
 		$module =& $module_handler->getByDirname($mydirname);
 		$config_handler =& xoops_gethandler("config");
@@ -62,4 +59,3 @@ function bulletin_notify_base($category, $item_id, $mydirname)
 }
 
 }
-?>

@@ -1,4 +1,5 @@
 <?php
+
 function b_bulletin_recent_comments_show($options) {
 
 	global $xoopsDB;
@@ -106,5 +107,3 @@ function b_bulletin_recent_comments_edit($options) {
 	) ) ;
 	return $tpl->fetch( 'db:'.$mydirname.'_blockedit_comment.html' ) ;
 	}
-
-?>

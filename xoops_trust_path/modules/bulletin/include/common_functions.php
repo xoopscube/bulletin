@@ -70,8 +70,3 @@ function bulletin_utf8_encode( $text )
 	}
 	return utf8_encode($text);
 }
-
-
-
-
-?>

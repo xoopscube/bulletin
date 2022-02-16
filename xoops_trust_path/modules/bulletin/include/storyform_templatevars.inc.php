@@ -137,5 +137,3 @@ jQuery(document).ready(function($){
 
 
 $xoopsTpl->assign('xoops_module_header', $mod_header . '<script type="text/javascript" src="'.$mydirurl.'/index.php?page=javascript"></script>' . $xoopsTpl->get_template_vars( "xoops_module_header" ));
-
-?>

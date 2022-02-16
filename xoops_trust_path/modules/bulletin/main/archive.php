@@ -131,4 +131,3 @@ $xoopsTpl->assign( 'xoops_breadcrumbs' , array(
 $xoopsTpl->assign( 'mod_config' , $xoopsModuleConfig ) ;
 
 require_once XOOPS_ROOT_PATH.'/footer.php';
-?>

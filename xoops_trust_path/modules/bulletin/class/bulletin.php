@@ -801,4 +801,3 @@ class Bulletin extends XoopsObject{
 	}
 
 }
-?>

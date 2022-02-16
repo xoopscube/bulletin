@@ -179,5 +179,3 @@ function b_bulletin_new_edit($options) {
 	) ) ;
 	return $tpl->fetch( 'db:'.$mydirname.'_blockedit_new.html' ) ;
 }
-
-?>

@@ -22,4 +22,3 @@ function b_bulletin_topics_show($options) {
 	return $block;
 
 }
-?>

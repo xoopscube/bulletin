@@ -15,8 +15,6 @@ function b_waiting_bulletin( $mydirname )
 			'lang_linkname' => _PI_WAITING_WAITINGS ,
 		) ;
 	}
-	
+
 	return $ret ;
 }
-
-?>

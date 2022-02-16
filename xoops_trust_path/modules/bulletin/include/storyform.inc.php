@@ -40,9 +40,9 @@ if( empty( $xoopsModuleConfig['use_fckeditor'] ) || ! $gperm->group_perm(4) ) {
 		<script type="text/javascript"><!--
 			function fckeditor_exec() {
 				var oFCKeditor = new FCKeditor( "bodytext" , "100%" , "500" , "Default" );
-				
+
 				oFCKeditor.BasePath = "'.XOOPS_URL.'/common/fckeditor/";
-				
+
 				oFCKeditor.ReplaceTextarea();
 			}
 		// --></script>
@@ -149,4 +149,3 @@ $form->addElement($button_tray);
 $form->display();
 
 $xoopsTpl->assign('xoops_module_header', '<script type="text/javascript" src="'.$mydirurl.'/index.php?page=javascript"></script>' . $xoopsTpl->get_template_vars( "xoops_module_header" ));
-?>

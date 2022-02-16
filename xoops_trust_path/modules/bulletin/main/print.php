@@ -41,5 +41,3 @@ $tpl->assign('this_comes_from', sprintf(_MD_THISCOMESFROM,htmlspecialchars($xoop
 $tpl->assign($assing_array);
 
 $tpl->display( "db:{$mydirname}_print.html" ) ;
-
-?>

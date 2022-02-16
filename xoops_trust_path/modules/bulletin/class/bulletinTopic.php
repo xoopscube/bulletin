@@ -107,10 +107,10 @@ class BulletinTopic extends XoopsTopic{
 		//$ret = str_replace('topic_id','topicid', $ret); // non-sense code?
 		return $ret;
 	}
-	
+
 	/**
 	 * Make HTML select box of topic list
-	 * 
+	 *
 	 * @param int    $preset_id
 	 * @param string $row
 	 * @return string
@@ -131,10 +131,10 @@ class BulletinTopic extends XoopsTopic{
 		$ret .= '</select>'."\n";
 		return $ret;
 	}
-	
+
 	/**
 	 * Make HTML option elements by tree
-	 * 
+	 *
 	 * @param array  $row
 	 * @param int    $preset_id
 	 * @param string $order
@@ -163,13 +163,13 @@ class BulletinTopic extends XoopsTopic{
 		}
 		return $ret;
 	}
-	
+
 	/*
 	 * 2012-2-1 Add by Yoshis
 	*/
 	function getTopicIdByPermissionCheck($topic_id=0, $op = 'edit') {
 		global $xoopsUser ;
-	
+
 		$groups = $xoopsUser->getGroups();
 		$tbl = $this->db->prefix( $this->mydirname."_topic_access" );
 		$ret = NULL;
@@ -194,7 +194,7 @@ class BulletinTopic extends XoopsTopic{
 		}
 		return $ret;
 	}
-	
+
 	//H.Onuma
 	function makeMyTopicList2($preset_id=0, $row=NULL){
 		global $xoopsUser ;
@@ -257,4 +257,3 @@ class BulletinTopic extends XoopsTopic{
 
 
 }
-?>

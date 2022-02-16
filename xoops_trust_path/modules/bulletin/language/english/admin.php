@@ -1,4 +1,6 @@
-<?php /* English Translation by Marcelo Yuji Himoro <http://yuji.ws> */
+<?php
+
+/* English Translation by Marcelo Yuji Himoro <http://yuji.ws> */
 
 //%%%%%%	Admin Module Name  Articles 	%%%%%
 define("_AM_DBUPDATED","Database updated successfully!");
@@ -80,6 +82,3 @@ define('_MD_A_BULLETIN_TH_GROUPNAME','groupname');
 define('_MD_A_BULLETIN_NOTICE_ADDUSERS','Input either uid or uname.');
 define('_MD_A_BULLETIN_ERR_CREATECATEGORYFIRST','Create a category first');
 define('_MD_A_BULLETIN_ERR_CREATEFORUMFIRST','Create a forum first');
-
-
-?>

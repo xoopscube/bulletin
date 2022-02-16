@@ -81,5 +81,3 @@ define('_MD_A_BULLETIN_TH_GROUPNAME','グループ名');
 define('_MD_A_BULLETIN_NOTICE_ADDUSERS','※ユーザを個別に新規追加する場合、ユーザID（数字）かユーザ名のいずれかを直接入力してください。<br />閲覧権限と投稿権限の両方を外せば、そのユーザはこのリストからも消えます。');
 define('_MD_A_BULLETIN_ERR_CREATECATEGORYFIRST','まずカテゴリーを作成してください');
 define('_MD_A_BULLETIN_ERR_CREATEFORUMFIRST','まずフォーラムを作成してください');
-
-?>

@@ -132,4 +132,3 @@ define($constpref.'_NOTIFY5_DESC', 'この記事にコメントがついた場�
 define($constpref.'_NOTIFY5_SUBJECT', '[{X_SITENAME}] {X_MODULE}: コメントの投稿がありました');
 
 }
-?>

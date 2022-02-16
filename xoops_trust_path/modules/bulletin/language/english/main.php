@@ -1,4 +1,6 @@
-<?php /* English Translation by Marcelo Yuji Himoro <http://yuji.ws> */
+<?php
+
+/* English Translation by Marcelo Yuji Himoro <http://yuji.ws> */
 
 //          index.php          //
 define("_MD_PRINTER","Printer friendly page");
@@ -88,5 +90,3 @@ define("_MD_ARCHIVES","Archive"); // ver 2.00 added
 // added 3.0
 define('_MD_BULLETIN_CATEGORY','Category');
 define('_MD_BULLETIN_MSG_UPDATED','Database Updated Successfully!');
-
-?>

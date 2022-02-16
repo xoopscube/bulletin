@@ -2,7 +2,6 @@
 
 eval( ' function xoops_module_uninstall_'.$mydirname.'( $module ) { return bulletin_onuninstall_base( $module , "'.$mydirname.'" ) ; } ' ) ;
 
-
 function bulletin_onuninstall_base( $module , $mydirname )
 {
 	// transations on module uninstall
@@ -71,5 +70,3 @@ function bulletin_message_append_onuninstall( &$module_obj , &$log )
 
 	// use mLog->addWarning() or mLog->addError() if necessary
 }
-
-?>

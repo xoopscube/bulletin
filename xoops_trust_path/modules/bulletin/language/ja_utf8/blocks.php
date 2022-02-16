@@ -37,4 +37,3 @@ define('_MB_BULLETIN_NUMCOMMENTS','%sコメント');
 define('_MB_BULLETIN_MORE','もっと記事を見る');
 
 }
-?>

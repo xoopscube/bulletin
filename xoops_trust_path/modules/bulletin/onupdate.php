@@ -2,7 +2,6 @@
 
 eval( ' function xoops_module_update_'.$mydirname.'( $module, $prev_version) { return bulletin_onupdate_base( $module, $prev_version , "'.$mydirname.'" ) ; } ' ) ;
 
-
 function bulletin_onupdate_base( $module, $prev_version , $mydirname )
 {
 	global $msgs, $xoopsDB, $xoopsUser, $xoopsConfig ;
@@ -343,4 +342,3 @@ function bulletin_message_append_onupdate( &$module_obj , &$log )
 	}
 }
 
-?>

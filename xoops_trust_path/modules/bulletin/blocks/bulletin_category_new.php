@@ -235,4 +235,3 @@ function b_bulletin_category_new_edit($options) {
 	) ) ;
 	return $tpl->fetch( 'db:'.$mydirname.'_blockedit_category_new.html' ) ;
 }
-?>

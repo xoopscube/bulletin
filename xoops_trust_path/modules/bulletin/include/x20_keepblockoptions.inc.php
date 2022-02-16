@@ -52,7 +52,7 @@ if ($record) {
 
 		}
 	} */
-	
+
 	$sql = "SELECT * FROM ".$db->prefix('newblocks')." WHERE mid=".$mid." AND block_type <>'D' AND func_num > $count";
 	$fresult = $db->query($sql);
 	while ($fblock = $db->fetchArray($fresult)) {
@@ -60,7 +60,7 @@ if ($record) {
 		$sql = "DELETE FROM ".$db->prefix('newblocks')." WHERE bid='".$fblock['bid']."'";
 		$iret = $db->query($sql);
 	}
-	
+
 	for ($i = 1 ; $i <= $count ; $i++) {
 		$sql = "SELECT name,options FROM ".$db->prefix('newblocks')." WHERE mid=".$mid." AND func_num=".$i." AND show_func=".$db->quoteString($modversion['blocks'][$i]['show_func'])." AND func_file=".$db->quoteString($modversion['blocks'][$i]['file']);
 		$fresult = $db->query($sql);
@@ -89,5 +89,3 @@ if( ! empty( $msgs ) && ! empty( $local_msgs ) && empty( $myblocksadmin_parsed_u
 	$msgs = array_merge( $msgs , $local_msgs ) ;
 	$myblocksadmin_parsed_updateblock = true ;
 }
-
-?>
