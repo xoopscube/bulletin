@@ -46,7 +46,7 @@ if( $use_relation = $gperm->group_perm(7) && $bulletin_use_relations ){
 $xoopsTpl->assign('use_relation', $use_relation);
 
 // options
-// event notifaction (if mode is edit, not display.)
+// event notification (if mode is edit, not display.)
 if ($use_notify = ($xoopsUser && $storyid == 0 && !$gperm->group_perm(2))) {
 	$xoopsTpl->assign('notifypub', $story->getVar('notifypub'));
 }
@@ -136,4 +136,7 @@ jQuery(document).ready(function($){
 </script>";
 
 
-$xoopsTpl->assign('xoops_module_header', $mod_header . '<script type="text/javascript" src="'.$mydirurl.'/index.php?page=javascript"></script>' . $xoopsTpl->get_template_vars( "xoops_module_header" ));
+$xoopsTpl->assign('xoops_module_header', $mod_header
+    . '<script type="text/javascript" src="'.$mydirurl.'/index.php?page=javascript"></script>'
+    . $xoopsTpl->get_template_vars( "xoops_module_header" )
+);

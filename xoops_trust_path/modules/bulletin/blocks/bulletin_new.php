@@ -22,7 +22,7 @@ function b_bulletin_new_show($options) {
 	if( preg_match( '/[^0-9a-zA-Z_-]/' , $mydirname ) ) die( 'Invalid mydirname' ) ;
 	$selected_order = empty( $options[1] ) || ! in_array( $options[1] , b_bulletin_new_allowed_order() ) ? 'published DESC' : $options[1] ;
 	$display_count = empty($options[2]) ? 0 :intval($options[2]);//Number display for each category
-	$Length_title = empty($options[3]) ? 255 :intval($options[3]);//Length of the title
+	$Length_title = empty($options[3]) ? 191 :intval($options[3]);//Length of the title
 	$show_body = empty($options[4]) ? 0 :intval($options[4]);//Number of articles showing body for each category
 	if (!isset($options[5])){
 		$options[5] = 0 ;//(0=show all for d3pipes)

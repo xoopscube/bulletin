@@ -1,7 +1,7 @@
 <?php
 
 //          index.php          //
-define('_MD_PRINTER','印刷用ページ');
+define('_MD_PRINTER','PDF に印刷');
 define('_MD_SENDSTORY','このニュースを友達に送る');
 define('_MD_READMORE','続きを読む');
 define('_MD_COMMENTS','0コメント');
@@ -56,7 +56,7 @@ define('_MD_ARTICLES','ニュース');
 define('_MD_VIEWS','ヒット');
 define('_MD_DATE','投稿日時');
 define('_MD_ACTIONS','操作');
-define('_MD_PRINTERFRIENDLY','印刷用ページ');
+define('_MD_PRINTERFRIENDLY','PDF に印刷');
 define('_MD_THEREAREINTOTAL','計 %s 件のニュース記事があります');
 define('_MD_INTARTICLE','%sで見つけた興味深いニュース');// %s is your site name
 define('_MD_INTARTFOUND','以下は%sで見つけた非常に興味深いニュース記事です：');// %s is your site name

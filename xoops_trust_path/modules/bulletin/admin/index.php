@@ -395,9 +395,9 @@ case 'convert':
 			$sql = sprintf("INSERT INTO %s (topic_id, topic_pid, topic_imgurl, topic_title, topic_created, topic_modified) VALUES (%u, %u, %s, %s, UNIX_TIMESTAMP(), UNIX_TIMESTAMP())", $xoopsDB->prefix("{$mydirname}_topics"), $topic['topic_id'], $topic['topic_pid'], $xoopsDB->quoteString($topic['topic_imgurl']), $xoopsDB->quoteString($topic['topic_title']));
 
 			if($xoopsDB->query($sql)){
-				echo '<br />Topic "'.htmlspecialchars($topic['topic_title']).'" was successfully converted.';
+				echo '<br>Topic "'.htmlspecialchars($topic['topic_title']).'" was successfully converted.';
 			}else{
-				echo '<br /><b>Topic "'.htmlspecialchars($topic['topic_title']).'" Erorr : '.$xoopsDB->error().'</b>';
+				echo '<br><b>Topic "'.htmlspecialchars($topic['topic_title']).'" Erorr : '.$xoopsDB->error().'</b>';
 			}
 
 		}
@@ -527,4 +527,3 @@ function RENDER_NEWS_TITLE(&$obj){
 	}
 	return $ret;
 }
-?>

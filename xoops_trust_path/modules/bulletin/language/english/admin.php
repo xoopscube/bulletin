@@ -1,6 +1,10 @@
 <?php
 
 /* English Translation by Marcelo Yuji Himoro <http://yuji.ws> */
+// Altsys admin menu and breadcrumbs
+define( '_MD_A_MYMENU_MYTPLSADMIN', 'Templates' );
+define( '_MD_A_MYMENU_MYBLOCKSADMIN', 'Blocks' );
+define( '_MD_A_MYMENU_MYPREFERENCES', 'Preferences' );
 
 //%%%%%%	Admin Module Name  Articles 	%%%%%
 define("_AM_DBUPDATED","Database updated successfully!");
@@ -9,7 +13,7 @@ define("_AM_AUTOARTICLES","Stories scheduling");
 define("_AM_STORYID","ID");
 define("_AM_TITLE","Subject");
 define("_AM_TOPIC","Category");
-define("_AM_POSTER","Poster");
+define("_AM_POSTER","By");
 define("_AM_PROGRAMMED","Scheduled time");
 define("_AM_ACTION","Action");
 define("_AM_POSTED","Posted date");
@@ -21,7 +25,7 @@ define("_AM_EXPIRED","Expired");
 
 define("_AM_ADDMTOPIC","Create a category");
 define("_AM_TOPICNAME","Category name");
-define("_AM_MAX40CHAR","(max. 255 characters)");
+define("_AM_MAX40CHAR","(max. 191 characters)");
 define("_AM_TOPICIMG","Category icon");
 define("_AM_IMGNAEXLOC","Image filename under %s");
 
@@ -35,7 +39,7 @@ define("_AM_ERRORTOPICNAME","Category name has not been filled.");
 
 // Added by SUIN
 
-define("_AM_DISP_CONTENUE","[Show all news]");
+define("_AM_DISP_CONTENUE","Show all");
 define("_AM_PUB_ARTICLES","Published news");
 define("_AM_WAITING_ARTICLES","Awaiting news");
 define("_AM_ARTICLE_ADMIN","News manager");
@@ -48,7 +52,7 @@ define("_AM_RIGHT_XCODE","Allow XOOPS Code");
 define("_AM_RIGHT_SMILEY","Allow smiley");
 define('_AM_RIGHT_RELATION','Allow related articles feature'); // ver 2.00 added
 define("_AM_NO_TOPICS","There are no categories.");
-define("_AM_DO_YOU_CONVERT","Get stories and categories data from news?");
+define("_AM_DO_YOU_CONVERT","Import and convert articles and categories data from module news?");
 define("_AM_EDIT_ARTICLE","Edit news");
 define("_AM_NO_ARTICLES","There are no stories.");
 define("_AM_CONFIG","%s configs");
@@ -69,8 +73,8 @@ define("_AM_TRANSLATER","English Translation by Marcelo Yuji Himoro (http://yuji
 // forum_access and category_access
 define('_MD_A_BULLETIN_LABEL_SELECTFORUM','Select a forum');
 define('_MD_A_BULLETIN_LABEL_SELECTCATEGORY','Select a category');
-define('_MD_A_BULLETIN_H2_GROUPPERMS','Permissions about each groups');
-define('_MD_A_BULLETIN_H2_USERPERMS','Permissions about each users');
+define('_MD_A_BULLETIN_H2_GROUPPERMS','Group Permissions');
+define('_MD_A_BULLETIN_H2_USERPERMS','User Permissions');
 define('_MD_A_BULLETIN_TH_CAN_READ','View');
 define('_MD_A_BULLETIN_TH_CAN_POST','Post');
 define('_MD_A_BULLETIN_TH_CAN_EDIT','Edit');

@@ -17,7 +17,8 @@ function bulletin_onupdate_base( $module, $prev_version , $mydirname )
 		if( ! is_array( $msgs ) ) $msgs = array() ;
 	}
 
-	$db =& Database::getInstance() ;
+	//$db =& Database::getInstance() ;
+    $db = &XoopsDatabaseFactory::getDatabaseConnection();
 	$mid = $module->getVar('mid') ;
 
 
@@ -30,7 +31,7 @@ function bulletin_onupdate_base( $module, $prev_version , $mydirname )
 		$sql = sprintf("SHOW TABLES LIKE '%s'", $xoopsDB->prefix("{$mydirname}_relation") );
 		list($result) = $xoopsDB->fetchRow($xoopsDB->query($sql));
 		if( empty($result) ){
-			$sql = "CREATE TABLE `".$xoopsDB->prefix("{$mydirname}_relation")."` (  `storyid` int(8) NOT NULL default '0',  `linkedid` int(8) NOT NULL default '0',  `dirname` varchar(25) NOT NULL default '') ENGINE=MyISAM;";
+			$sql = "CREATE TABLE `".$xoopsDB->prefix("{$mydirname}_relation")."` (  `storyid` int(8) NOT NULL default '0',  `linkedid` int(8) NOT NULL default '0',  `dirname` varchar(25) NOT NULL default '') ENGINE=InnoDB;";
 			if( $xoopsDB->query($sql) ){
 				$msgs[] = '&nbsp;&nbsp;Table <b>'.htmlspecialchars($xoopsDB->prefix("{$mydirname}_relation")).'</b> created.';
 			}else{
@@ -78,7 +79,7 @@ function bulletin_onupdate_base( $module, $prev_version , $mydirname )
 	// update table structure from 2.04
 	$check_rs = $db->query( "SELECT topic_created FROM ".$db->prefix($mydirname.'_topics') ) ;
 	if( empty( $check_rs ) ) {
-		$db->queryF( "ALTER TABLE ".$db->prefix($mydirname.'_topics')." ADD `topic_created` int(10) unsigned NOT NULL default 0, ADD `topic_modified` int(10) unsigned NOT NULL default 0, MODIFY `topic_imgurl` varchar(255) NOT NULL default '', MODIFY `topic_title` varchar(255) NOT NULL default ''" ) ;
+		$db->queryF( "ALTER TABLE ".$db->prefix($mydirname.'_topics')." ADD `topic_created` int(10) unsigned NOT NULL default 0, ADD `topic_modified` int(10) unsigned NOT NULL default 0, MODIFY `topic_imgurl` varchar(191) NOT NULL default '', MODIFY `topic_title` varchar(191) NOT NULL default ''" ) ;
 		$db->queryF( "ALTER TABLE ".$db->prefix($mydirname.'_stories')." MODIFY `uid` mediumint(8) unsigned NOT NULL default 0" ) ;
 		$db->queryF( "ALTER TABLE ".$db->prefix($mydirname.'_relation')." ADD KEY (`storyid`), ADD PRIMARY KEY (`storyid`,`linkedid`,`dirname`)" ) ;
 	}
@@ -100,7 +101,7 @@ function bulletin_onupdate_base( $module, $prev_version , $mydirname )
 		KEY (uid),
 		KEY (groupid),
 		KEY (can_post)
-		) ENGINE=MyISAM;
+		) ENGINE=InnoDB;
 		";
 		if( $db->query($sql) ){
 			$msgs[] = '&nbsp;&nbsp;Table <b>'.htmlspecialchars($db->prefix("{$mydirname}_topic_access")).'</b> created.';

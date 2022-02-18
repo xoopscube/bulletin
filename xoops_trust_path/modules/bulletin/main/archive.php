@@ -43,7 +43,7 @@ for($i=0;$i<$total;$i++){
 	$exist_arr[$this_year][$this_month] = $this_month;
 }
 
-// Assing Calendar
+// Assign Calendar
 $i = 0;
 $years  = array();
 foreach($year_arr as $caly => $calms){
@@ -92,11 +92,11 @@ if ($fromyear != 0 && $frommonth != 0) {
 		$story['date']       = formatTimestamp($article[$i]->getVar('published'), $bulletin_date_format, $useroffset);
 		$story['print_link'] = 'index.php?page=print&amp;storyid='.$article[$i]->getVar('storyid');
 
-		// If you are using Tell A Frined module
+		// If you are using Tell A Friend module
 		if($bulletin_use_tell_a_frined){
 			$story['mail_link'] = XOOPS_URL.'/modules/tellafriend/index.php?target_uri='.rawurlencode( "$mydirurl/index.php?page=article&amp;storyid=".$article[$i]->getVar('storyid') ).'&amp;subject='.rawurlencode(sprintf(_MD_INTARTFOUND,$xoopsConfig['sitename'])) ;
 		}else{
-	//		$story['mail_link'] = 'mailto:?subject='.sprintf(_MD_INTARTICLE, $xoopsConfig['sitename']).'&amp;body='.sprintf(_MD_INTARTFOUND, $xoopsConfig['sitename']).':  '.$mydirurl.'/index.php?page=article&amp;storyid='.$article[$i]->getVar('storyid');
+
 			$mail_subject = sprintf(_MD_INTARTICLE,$xoopsConfig['sitename']);
 			$mail_body = sprintf(_MD_INTARTFOUND, $xoopsConfig['sitename']).':  '.$mydirurl.'/index.php?page=article&amp;storyid='.$article[$i]->getVar('storyid');
 			if (defined('_MD_MAILTO_ENCODING')){
@@ -128,6 +128,7 @@ $xoopsTpl->assign( 'xoops_breadcrumbs' , array(
 	array( 'name' => $xoopsModule->getVar('name') , 'url' => XOOPS_URL.'/modules/'.$mydirname.'/' ) ,
 	array( 'name' => _MD_NEWSARCHIVES ) ,
 ) ) ; // GIJ
+
 $xoopsTpl->assign( 'mod_config' , $xoopsModuleConfig ) ;
 
 require_once XOOPS_ROOT_PATH.'/footer.php';

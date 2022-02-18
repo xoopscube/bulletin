@@ -61,7 +61,7 @@ if ( $andor != "exact" ) {
 include_once XOOPS_ROOT_PATH."/class/xoopsformloader.php";
 // create form
 $search_form = new XoopsThemeForm(_SR_SEARCH, "search", "index.php", 'get');
-$search_form->addElement(new XoopsFormText(_SR_KEYWORDS, "query", 30, 255, htmlspecialchars(stripslashes(implode(" ", $queries)), ENT_QUOTES)), true);
+$search_form->addElement(new XoopsFormText(_SR_KEYWORDS, "query", 30, 191, htmlspecialchars(stripslashes(implode(" ", $queries)), ENT_QUOTES)), true);
 $type_select = new XoopsFormSelect(_SR_TYPE, "andor", $andor);
 $type_select->addOptionArray(array("AND"=>_SR_ALL, "OR"=>_SR_ANY, "exact"=>_SR_EXACT));
 $search_form->addElement($type_select);

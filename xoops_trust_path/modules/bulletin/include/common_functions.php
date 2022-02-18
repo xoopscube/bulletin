@@ -7,7 +7,8 @@ function bulletin_get_submenu( $mydirname )
 
 	if( ! empty( $submenus_cache[$mydirname] ) ) return $submenus_cache[$mydirname] ;
 
-	$db =& Database::getInstance() ;
+	//$db =& Database::getInstance() ;
+    $db = &XoopsDatabaseFactory::getDatabaseConnection();
 	(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance();
 
 	$categories = array( 0 => array( 'pid' => -1 , 'name' => '' , 'url' => '' , 'sub' => array() ) ) ;
@@ -36,7 +37,7 @@ function bulletin_get_submenu( $mydirname )
 		) ;
 	}
 
-	// restruct categories
+	// restructure categories
 	$submenus_cache[$mydirname] = array_merge( $categories[0]['sub'] , bulletin_restruct_categories( $categories , 0 ) ) ;
 	return $submenus_cache[$mydirname] ;
 }

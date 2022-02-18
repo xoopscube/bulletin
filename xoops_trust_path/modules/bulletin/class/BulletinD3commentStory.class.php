@@ -9,7 +9,8 @@ class BulletinD3commentStory extends D3commentAbstract {
 
 function fetchSummary( $external_link_id )
 {
-	$db =& Database::getInstance() ;
+	//$db =& Database::getInstance() ;
+    $db = &XoopsDatabaseFactory::getDatabaseConnection();
 	(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextsanitizer::getInstance() ;
 
 	$module_handler =& xoops_gethandler( 'module' ) ;
@@ -31,7 +32,7 @@ function fetchSummary( $external_link_id )
 		if( function_exists( 'easiestml' ) ) {
 			$summary = easiestml( $summary ) ;
 		}
-		$summary4assign = htmlspecialchars( xoops_substr( $this->unhtmlspecialchars( strip_tags( $summary ) ) , 0 , 255 ) , ENT_QUOTES ) ;
+		$summary4assign = htmlspecialchars( xoops_substr( $this->unhtmlspecialchars( strip_tags( $summary ) ) , 0 , 191 ) , ENT_QUOTES ) ;
 
 	} else {
 
@@ -69,8 +70,8 @@ function getSubjectRaw( $params )
 //ver3.0 add
 function onUpdate( $mode , $link_id , $forum_id , $topic_id , $post_id = 0 )
 {
-	$db =& Database::getInstance() ;
-
+	//$db =& Database::getInstance() ;
+    $db = &XoopsDatabaseFactory::getDatabaseConnection();
 	$sql1  = 'SELECT COUNT(*) FROM ';
 	$sql1 .= $db->prefix( $this->d3forum_dirname.'_posts' ) .' p ';
 	$sql1 .= ' LEFT JOIN ';

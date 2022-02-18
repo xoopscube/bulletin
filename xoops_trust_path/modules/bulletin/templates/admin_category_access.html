@@ -1,33 +1,39 @@
-<h3><{$mod_name}></h3>
-
-<!-- category selection -->
-<form name="selectcategory" action="<{$mod_url}>/admin/index.php" method="get" style="margin: 20px 0px">
-	<input type="hidden" name="page" value="category_access" />
-	<label><{$smarty.const._MD_A_BULLETIN_LABEL_SELECTCATEGORY}></label>:
-	<{$topicselbox}>
-<{*
-	<label for="select_topic_id"><{$smarty.const._MD_A_BULLETIN_LABEL_SELECTCATEGORY}></label>:
-	<select name="topic_id" id="select_topic_id">
-		<{html_options options=$topic_options selected=$topic_id}>
-	</select>
-*}>
-	<input type="submit" value="<{$smarty.const._SUBMIT}>" />
-</form>
-
 <!-- category title -->
-<p>
-	<{$smarty.const._MD_BULLETIN_CATEGORY}>:<{$topic_title}>
-	[<a href="<{$mod_url}>/index.php?page=categorymanager&amp;topic_id=<{$topic_id}>"><{$smarty.const._EDIT}></a>]
-<{*
-	[<a href="<{$mod_url}>/index.php?page=makecategory&amp;topic_id=<{$topic_id}>"><{$smarty.const._MD_BULLETIN_LINK_MAKESUBCATEGORY}></a>]
-*}>
-</p>
+<h3><{$mod_name}> // <{$smarty.const._MD_BULLETIN_CATEGORY}> // <{$topic_title}></h3>
+
+<div layout="row center-justify" class="control-action">
+    <div>
+        <!-- category selection -->
+        <form name="selectcategory" action="<{$mod_url}>/admin/index.php" method="get">
+            <input type="hidden" name="page" value="category_access">
+            <label><{$smarty.const._MD_A_BULLETIN_LABEL_SELECTCATEGORY}></label>:
+            <{$topicselbox}>
+            <{*
+            <label for="select_topic_id"><{$smarty.const._MD_A_BULLETIN_LABEL_SELECTCATEGORY}></label>:
+            <select name="topic_id" id="select_topic_id">
+                <{html_options options=$topic_options selected=$topic_id}>
+            </select>
+            *}>
+            <input type="submit" value="<{$smarty.const._SUBMIT}>">
+        </form>
+    </div>
+    <div class="control-view">
+        <a class="ui-btn ui-btn-small" href="<{$mod_url}>/admin/index.php?topic_id=<{$topic_id}>&amp;op=modTopic&mode=admin"><{$smarty.const._EDIT}></a>
+        <a class="ui-btn ui-btn-small" href="<{$mod_url}>/admin/index.php?op=topicsmanager"><{$smarty.const._AM_ADDMTOPIC}></a>
+        <button class="help-admin ui-btn" type="button" data-id="4" data-module="<{$mydirname}>"
+                data-help-article="#help-bulletin-category" title="Get Started">
+            <span class="ui-icon ui-icon-help"></span>
+        </button>
+    </div>
+</div>
 
 <!-- group form -->
 <h2 class="head"><{$smarty.const._MD_A_BULLETIN_H2_GROUPPERMS}></h2>
-<form name="groupperms" action="<{$mod_url}>/admin/index.php?page=category_access&amp;topic_id=<{$topic_id}>" method="post" style="margin:20px 0px">
+
+<form name="groupperms" action="<{$mod_url}>/admin/index.php?page=category_access&amp;topic_id=<{$topic_id}>" method="post">
 	<{$gticket_hidden}>
 	<table class="outer">
+        <thead>
 		<tr>
 			<th>
 				<{$smarty.const._MD_A_BULLETIN_TH_GROUPNAME}>
@@ -53,17 +59,30 @@
 				<input type="checkbox" onclick="with(document.groupperms){for(i=0;i<length;i++){if(elements[i].type=='checkbox'&&elements[i].id.indexOf('gcol_5_')>=0){elements[i].checked=this.checked;}}}">
 			</th>
 		</tr>
+        </thead>
+        <tbody>
 		<{$group_trs}>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="7">
+            <input type="submit" name="group_update" value="<{$smarty.const._SUBMIT}>">
+            </td>
+        </tr>
+        </tfoot>
 	</table>
-	<input type="submit" name="group_update" value="<{$smarty.const._SUBMIT}>" />
+
 </form>
 
 
 <!-- user form -->
 <h2 class="head"><{$smarty.const._MD_A_BULLETIN_H2_USERPERMS}></h2>
-<form name="userperms" action="<{$mod_url}>/admin/index.php?page=category_access&amp;topic_id=<{$topic_id}>" method="post" style="margin:20px 0px">
+<div class="tips"><{$smarty.const._MD_A_BULLETIN_NOTICE_ADDUSERS}></div>
+
+<form name="userperms" action="<{$mod_url}>/admin/index.php?page=category_access&amp;topic_id=<{$topic_id}>" method="post">
 	<{$gticket_hidden}>
 	<table class="outer">
+        <thead>
 		<tr>
 			<th><{$smarty.const._MD_A_BULLETIN_TH_UID}></th>
 			<th><{$smarty.const._MD_A_BULLETIN_TH_UNAME}></th>
@@ -85,10 +104,18 @@
 				<input type="checkbox" onclick="with(document.userperms){for(i=0;i<length;i++){if(elements[i].type=='checkbox'&&(elements[i].id.indexOf('ucol_5_')>=0||elements[i].id.indexOf('ncol_5_')>=0)){elements[i].checked=this.checked;}}}">
 			</th>
 		</tr>
+        </thead>
+        <tbody>
 		<{$user_trs}>
 		<{$newuser_trs}>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="7">
+                <input type="submit" name="user_update" value="<{$smarty.const._SUBMIT}>" />
+            </td>
+        </tr>
+        </tfoot>
 	</table>
-	<input type="submit" name="user_update" value="<{$smarty.const._SUBMIT}>" />
-	<br />
-	<{$smarty.const._MD_A_BULLETIN_NOTICE_ADDUSERS}>
+
 </form>

@@ -3,13 +3,14 @@
 if( ! defined( 'XOOPS_ROOT_PATH' ) ) exit ;
 
 eval( 'function '.$mydirname.'_new( $limit=0, $offset=0 ) {
-	return bulletin_whatsnew_base( "'.$mydirname.'", $limit, $offset, "'.$category_option.'" ) ;
+return bulletin_whatsnew_base( "'.$mydirname.'", $limit, $offset, "'.$category_option.'" ) ;
 }' );
 
 if ( ! function_exists('bulletin_whatsnew_base') ) {
 	function bulletin_whatsnew_base( $mydirname, $limit=0, $offset=0, $category_option='' )
 	{
-		$db =& Database::getInstance() ;
+		//$db =& Database::getInstance() ;
+        $db = &XoopsDatabaseFactory::getDatabaseConnection();
 		$categories = empty($category_option) ? 0 : array_map( 'intval' , explode( ',' , $category_option ) ) ;//(0=show all)
 
 		(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance();

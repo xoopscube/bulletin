@@ -1,7 +1,7 @@
 <?php
 
 eval( 'function '.$mydirname.'_global_search( $keywords , $andor , $limit , $offset , $userid ){
-	return bulletin_search_base( "'.$mydirname.'" , $keywords , $andor , $limit , $offset , $userid ) ;
+return bulletin_search_base( "'.$mydirname.'" , $keywords , $andor , $limit , $offset , $userid ) ;
 }' ) ;
 
 if( ! function_exists( 'bulletin_search_base' ) ) {
@@ -11,7 +11,8 @@ include_once XOOPS_TRUST_PATH."/modules/bulletin/class/bulletingp.php";
 function bulletin_search_base( $mydirname , $queryarray , $andor , $limit , $offset , $userid ){
 	global $xoopsDB;
 
-	$showcontext = isset( $_GET['showcontext'] ) ? $_GET['showcontext'] : 0 ;
+	//$showcontext = isset( $_GET['showcontext'] ) ? $_GET['showcontext'] : 0 ;
+    $showcontext = $_GET['showcontext'] ?? 0;
 	if( $showcontext == 1 && function_exists('search_make_context')){
 		$sql = "SELECT storyid,uid,title,published,hometext,bodytext,html,smiley FROM ".$xoopsDB->prefix($mydirname."_stories")." WHERE published > 0 AND published <= ".time()." AND (expired = 0 OR expired >= ".time()." )";
 	}else{

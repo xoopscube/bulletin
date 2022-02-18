@@ -1,6 +1,11 @@
 <?php
 
 //%%%%%%	Admin Module Name  Articles 	%%%%%
+// Altsys admin menu and breadcrumbs
+define( '_MD_A_MYMENU_MYTPLSADMIN', 'Templates' );
+define( '_MD_A_MYMENU_MYBLOCKSADMIN', 'Blocks' );
+define( '_MD_A_MYMENU_MYPREFERENCES', 'Preferences' );
+
 define('_AM_DBUPDATED','データベースを更新しました');
 
 define('_AM_AUTOARTICLES','掲載予定の記事');
@@ -19,7 +24,7 @@ define('_AM_EXPIRED','掲載期限');
 
 define('_AM_ADDMTOPIC','カテゴリの作成');
 define('_AM_TOPICNAME','カテゴリ名');
-define('_AM_MAX40CHAR','（最大255文字（全角））');
+define('_AM_MAX40CHAR','（最大191文字（全角））');
 define('_AM_TOPICIMG','カテゴリアイコン');
 define('_AM_IMGNAEXLOC','%s 下にある画像ファイル名');
 
@@ -33,7 +38,7 @@ define('_AM_ERRORTOPICNAME', 'カテゴリ名が記入されていません。')
 
 // Added by SUIN
 
-define('_AM_DISP_CONTENUE','[全ての記事を表示]');
+define('_AM_DISP_CONTENUE','全ての記事を表示');
 define('_AM_PUB_ARTICLES','掲載中のニュース記事');
 define('_AM_WAITING_ARTICLES','承認待ちのニュース記事');
 define('_AM_ARTICLE_ADMIN','ニュース記事の管理');

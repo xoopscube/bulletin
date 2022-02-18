@@ -3,8 +3,8 @@
 /* English Translation by Marcelo Yuji Himoro <http://yuji.ws> */
 
 //          index.php          //
-define("_MD_PRINTER","Printer friendly page");
-define("_MD_SENDSTORY","Send this story to a friend");
+define("_MD_PRINTER","Print to PDF");
+define("_MD_SENDSTORY","Send to Friend");
 define("_MD_READMORE","Read more...");
 define("_MD_COMMENTS","0 comments");
 define("_MD_ONECOMMENT","1 comment");
@@ -44,7 +44,7 @@ define("_MD_SETEXPDATETIME_DESC","* If you do not check it, expired setting will
 define("_MD_APPROVE","Approve this story"); // ver 2.00 added
 define("_MD_DATE_FORMAT","%d %m %y %h : %i : %s"); // ver 2.00 added
 define("_MD_DBPUDATED","Database updated successfully!"); // ver 2.00 added
-define("_MD_POSTEDBY","Poster"); // ver 2.00 added
+define("_MD_POSTEDBY","By"); // ver 2.00 added
 define("_MD_RELATION","Related articles"); // ver 2.00 added
 define("_MD_ADD_RELATION","Add related articles"); // ver 2.00 added
 define("_MD_CHECKED_AS_RELATION","Add as related articles"); // ver 2.00 added
@@ -54,10 +54,10 @@ define("_MD_EMPTYNODELETE", "Unable to delete."); // ver 2.00 added
 //          archive.php          //
 define("_MD_NEWSARCHIVES","News archive");
 define("_MD_ARTICLES","News");
-define("_MD_VIEWS","hits");
+define("_MD_VIEWS","Views");
 define("_MD_DATE","Date");
-define("_MD_ACTIONS","");
-define("_MD_PRINTERFRIENDLY","Printer friendly page");
+define("_MD_ACTIONS","Action");
+define("_MD_PRINTERFRIENDLY","Print to PDF");
 define("_MD_THEREAREINTOTAL","There are %s story(ies) in total.");
 define("_MD_INTARTICLE","I have found an interesting news at %s");// %s is your site name
 define("_MD_INTARTFOUND","Here is the really interesting news I found at %s:");

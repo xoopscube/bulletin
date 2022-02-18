@@ -5,9 +5,11 @@ require_once dirname(__FILE__).'/bulletingp.php' ;
 
 class BulletinTopic extends XoopsTopic{
 
-	function BulletinTopic( $mydirname , $topicid=0 )
+	function __construct($mydirname , $topicid=0 )
 	{
-		$this->db =& Database::getInstance();
+        parent::__construct(null);
+		//$this->db =& Database::getInstance();
+        $this->db  = XoopsDatabaseFactory::getDatabaseConnection();
 		$this->mydirname = $mydirname ;
 		$this->table = $this->db->prefix( "{$mydirname}_topics" );
 		(method_exists('MyTextSanitizer', 'sGetInstance') and $this->ts =& MyTextSanitizer::sGetInstance()) || $this->ts =& MyTextSanitizer::getInstance();
@@ -36,6 +38,7 @@ class BulletinTopic extends XoopsTopic{
 		}
 	}
 
+    // Breadcrumbs
 	function makePankuzu($topic_id=0, $ret = array())
 	{
 		$result = ( "SELECT `topic_pid`, `topic_title` FROM ".$this->table." WHERE `topic_id` = ".intval($topic_id) );
@@ -52,6 +55,7 @@ class BulletinTopic extends XoopsTopic{
 
 	}
 
+    // Breadcrumbs HTML
 	function makePankuzuForHTML($topic_id=0)
 	{
 		$pankuzu = $this->makePankuzu($topic_id);
@@ -254,6 +258,5 @@ class BulletinTopic extends XoopsTopic{
 			$this->db->query( "UPDATE ".$this->table." SET topic_modified=UNIX_TIMESTAMP() WHERE topic_id=".$this->topic_id ) ;
 		}
 	}
-
 
 }

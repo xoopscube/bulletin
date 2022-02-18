@@ -6,7 +6,7 @@ CREATE TABLE `stories`
 (
     `storyid`   int(8) unsigned       NOT NULL auto_increment,
     `uid`       mediumint(8) unsigned NOT NULL default 0,
-    `title`     varchar(255)          NOT NULL default '',
+    `title`     varchar(191)          NOT NULL default '',
     `created`   int(10) unsigned      NOT NULL default '0',
     `published` int(10) unsigned      NOT NULL default '0',
     `expired`   int(10) unsigned      NOT NULL default '0',
@@ -43,8 +43,8 @@ CREATE TABLE `topics`
 (
     `topic_id`       smallint(4) unsigned NOT NULL auto_increment,
     `topic_pid`      smallint(4) unsigned NOT NULL default '0',
-    `topic_imgurl`   varchar(255)         NOT NULL default '',
-    `topic_title`    varchar(255)         NOT NULL default '',
+    `topic_imgurl`   varchar(191)         NOT NULL default '',
+    `topic_title`    varchar(191)         NOT NULL default '',
     `topic_created`  int(10) unsigned     NOT NULL default 0,
     `topic_modified` int(10) unsigned     NOT NULL default 0,
     PRIMARY KEY (`topic_id`),

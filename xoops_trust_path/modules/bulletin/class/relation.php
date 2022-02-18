@@ -8,9 +8,10 @@ class relation {
 	var $linkedid = 0;
 	var $dirname = '';
 
-	function relation($mydirname='')
+	function __construct($mydirname='')
 	{
-		$this->db =& Database::getInstance();
+		//$this->db =& Database::getInstance();
+        $this->db = &XoopsDatabaseFactory::getDatabaseConnection();
 		(method_exists('MyTextSanitizer', 'sGetInstance') and $this->ts =& MyTextSanitizer::sGetInstance()) || $this->ts =& MyTextSanitizer::getInstance();
 		$this->mydirname = $mydirname;
 		$this->relation_table = $this->db->prefix("{$mydirname}_relation");

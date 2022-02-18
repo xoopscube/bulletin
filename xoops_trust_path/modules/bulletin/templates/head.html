@@ -1,4 +1,20 @@
-<{strip}>
+<{* Breadcrumbs [PANKUZU] *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+<{if $pankuzu}>
+<ul class="breadcrumb" aria-label="breadcrumb" style="border:1px solid red;">
+    <li title="<{$smarty.const._MB_LEGACY_HOME}> : <{$smarty.const._YOURHOME}>">
+        <a href="<{$xoops_url}>/"><img class="svg home" src="<{$xoops_url}>/images/icons/home.svg" width="1em" height="1em" alt="home"></a>
+    </li>
+    <{foreach item=p from=$pankuzu name=pankuzu}>
+        <{if $smarty.foreach.pankuzu.last}>
+        <li aria-current="page"><{$p.topic_title}></li>
+        <{else}>
+        <li><a href="<{$mydirurl}>/index.php?storytopic=<{$p.topic_id}>"><{$p.topic_title}></a></li>
+        <{/if}>
+    <{/foreach}>
+</ul>
+<{/if}>
+
 
 <div style="float:right">
  |&nbsp;<a href="<{$mydirurl}>/index.php?page=archive" title="<{$smarty.const._MD_ARCHIVES}>"><{$smarty.const._MD_ARCHIVES}></a>
@@ -14,4 +30,4 @@
   &nbsp;|
 </div>
 <div style="clear: both ; height:0px; visibility:hidden;"></div>
-<{/strip}>
+

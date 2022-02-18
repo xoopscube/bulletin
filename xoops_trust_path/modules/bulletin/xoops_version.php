@@ -10,14 +10,15 @@ $langman->read( 'modinfo.php' , $mydirname , $mytrustdirname , false ) ;
 $constpref = '_MI_' . strtoupper( $mydirname ) ;
 
 $modversion['name']        = constant($constpref.'_NAME');
-$modversion['version']     = 3.04;
-$modversion['detailed_version'] = "3.04.0";
+$modversion['version']     = 3.10;
+$modversion['detailed_version'] = "3.10.0";
 $modversion['description'] = constant($constpref.'_DESC');
-$modversion['credits']     = 'suin';
-$modversion['help']        = '';
+$modversion['credits']     = 'Suin';
+$modversion['help']        = 'help.html';
 $modversion['license']     = 'GPL see LICENSE';
 $modversion['official']    = 0;
-$modversion['image']       = file_exists( $mydirpath.'/module_icon.png' ) ? 'module_icon.png' : 'module_icon.php' ;
+//$modversion['image']       = file_exists( $mydirpath.'/module_icon.png' ) ? 'module_icon.png' : 'module_icon.php' ;
+$modversion['image']       = 'images/module_icon.svg';
 $modversion['dirname']     = $mydirname;
 $modversion['trust_dirname'] = $mytrustdirname ;
 
@@ -61,7 +62,7 @@ $modversion['blocks'][$i]['name']        = constant($constpref.'_BNAME4');
 $modversion['blocks'][$i]['description'] = constant($constpref.'_BDESC4');
 $modversion['blocks'][$i]['show_func']   = "b_bulletin_new_show";
 $modversion['blocks'][$i]['edit_func']   = "b_bulletin_new_edit";
-$modversion['blocks'][$i]['options']     = "$mydirname|published DESC|10|255|0|0";//ver3.0 changed
+$modversion['blocks'][$i]['options']     = "$mydirname|published DESC|10|191|0|0";//ver3.0 changed
 $modversion['blocks'][$i]['template']    = "{$mydirname}_block_new.html";
 $modversion['blocks'][$i]['can_clone']   = true ;
 $i++;
@@ -70,7 +71,7 @@ $modversion['blocks'][$i]['name']        = constant($constpref.'_BNAME5');
 $modversion['blocks'][$i]['description'] = constant($constpref.'_BDESC5');
 $modversion['blocks'][$i]['show_func']   = "b_bulletin_category_new_show";
 $modversion['blocks'][$i]['edit_func']   = "b_bulletin_category_new_edit";
-$modversion['blocks'][$i]['options']     = "$mydirname|published DESC|5|255|0|0|0";//ver3.0 changed
+$modversion['blocks'][$i]['options']     = "$mydirname|published DESC|5|191|0|0|0";//ver3.0 changed
 $modversion['blocks'][$i]['template']    = "{$mydirname}_block_category_new.html";
 $modversion['blocks'][$i]['can_clone']   = true ;
 $i++;
@@ -178,7 +179,7 @@ $modversion['config'][$i]['title']       = $constpref.'_CONFIG8';
 $modversion['config'][$i]['description'] = $constpref.'_CONFIG8_D';
 $modversion['config'][$i]['formtype']    = 'textbox';
 $modversion['config'][$i]['valuetype']   = 'text';
-$modversion['config'][$i]['default']     = XOOPS_URL.'/images/logo.gif';
+$modversion['config'][$i]['default']     = XOOPS_URL.'/images/logo.svg';
 $i++;
 $modversion['config'][$i]['name']        = 'titile_as_sitename';
 $modversion['config'][$i]['title']       = $constpref.'_CONFIG9';
@@ -391,5 +392,3 @@ $modversion['onUninstall'] = 'onuninstall.php' ;
 if( ! defined( 'XOOPS_CUBE_LEGACY' ) && substr( XOOPS_VERSION , 6 , 3 ) < 2.1 && ! empty( $_POST['fct'] ) && ! empty( $_POST['op'] ) && $_POST['fct'] == 'modulesadmin' && $_POST['op'] == 'update_ok' && $_POST['dirname'] == $modversion['dirname'] ) {
 	include dirname(__FILE__).'/include/x20_keepblockoptions.inc.php' ;
 }
-
-?>

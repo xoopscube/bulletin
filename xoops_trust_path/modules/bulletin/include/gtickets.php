@@ -103,7 +103,11 @@ class XoopsGTicket {
 	}
 
 	// check a ticket
-	function check( $post = true , $area = '' , $allow_repost = true )
+
+    /**
+     * @throws Exception
+     */
+    function check($post = true , $area = '' , $allow_repost = true )
 	{
 		global $xoopsModule ;
 
@@ -123,7 +127,7 @@ class XoopsGTicket {
 			$this->_errors[] = $this->messages['err_noticket'] ;
 		}
 
-		// gargage collection & find a right stub
+		// data collection & find a right stub
 		$stubs_tmp = $_SESSION['XOOPS_G_STUBS'] ;
 		$_SESSION['XOOPS_G_STUBS'] = array() ;
 		foreach( $stubs_tmp as $stub ) {

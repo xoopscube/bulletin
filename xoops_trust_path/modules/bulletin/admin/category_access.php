@@ -3,8 +3,8 @@
 require_once dirname(dirname(__FILE__)).'/include/common_functions.php' ;
 require_once dirname(dirname(__FILE__)).'/include/gtickets.php' ;
 require_once dirname(dirname(__FILE__)).'/class/bulletinTopic.php' ;
-$db =& Database::getInstance() ;
-
+//$db =& Database::getInstance() ;
+$db = &XoopsDatabaseFactory::getDatabaseConnection();
 /*
  * topic_access table clean up 2012-2-1 by Yoshis
 */
@@ -28,7 +28,7 @@ if( empty( $topic_id ) ) {
 	$sql = "SELECT MIN(topic_id) FROM ".$db->prefix($mydirname."_topics");
 	list( $topic_id ) = $db->fetchRow( $db->query( $sql ) );
 	if( empty( $topic_id ) ) {
-		redirect_header( XOOPS_URL."/modules/$mydirname/index.php?page=makecategory" , 5 , _MD_A_bulletin_ERR_CREATECATEGORYFIRST ) ;
+		redirect_header( XOOPS_URL."/modules/$mydirname/index.php?page=makecategory" , 5 , _MD_A_BULLETIN_ERR_CREATECATEGORYFIRST ) ;
 		exit ;
 	} else {
 		header( "Location: ".XOOPS_URL."/modules/$mydirname/admin/index.php?page=category_access&topic_id=$topic_id" ) ;
@@ -144,11 +144,11 @@ foreach( $groups as $group ) {
 	$group_trs .= "
 		<tr>
 			<td class='even'>".$group->getVar('name')."</td>
-			<td class='even'><input type='checkbox' name='can_reads[$gid]' id='gcol_1_{$gid}' value='1' $can_read_checked /></td>
-			<td class='even'><input type='checkbox' name='can_posts[$gid]' id='gcol_2_{$gid}' value='1' $can_post_checked /></td>
-			<td class='even'><input type='checkbox' name='can_edits[$gid]' id='gcol_3_{$gid}' value='1' $can_edit_checked /></td>
-			<td class='even'><input type='checkbox' name='can_deletes[$gid]' id='gcol_4_{$gid}' value='1' $can_delete_checked /></td>
-			<td class='even'><input type='checkbox' name='post_auto_approveds[$gid]' id='gcol_5_{$gid}' value='1' $post_auto_approved_checked /></td>
+			<td class='even'><input type='checkbox' name='can_reads[$gid]' id='gcol_1_{$gid}' value='1' $can_read_checked></td>
+			<td class='even'><input type='checkbox' name='can_posts[$gid]' id='gcol_2_{$gid}' value='1' $can_post_checked></td>
+			<td class='even'><input type='checkbox' name='can_edits[$gid]' id='gcol_3_{$gid}' value='1' $can_edit_checked></td>
+			<td class='even'><input type='checkbox' name='can_deletes[$gid]' id='gcol_4_{$gid}' value='1' $can_delete_checked></td>
+			<td class='even'><input type='checkbox' name='post_auto_approveds[$gid]' id='gcol_5_{$gid}' value='1' $post_auto_approved_checked></td>
 		</tr>\n" ;
 }
 
@@ -168,11 +168,11 @@ while( list( $uid , $uname , $can_post , $can_edit , $can_delete , $post_auto_ap
 		<tr>
 			<td class='even'>$uid</td>
 			<td class='even'>$uname4disp</td>
-			<td class='even'><input type='checkbox' name='can_reads[$uid]' id='ucol_1_{$uid}' value='1' checked='checked' /></td>
-			<td class='even'><input type='checkbox' name='can_posts[$uid]' id='ucol_2_{$uid}' value='1' $can_post_checked /></td>
-			<td class='even'><input type='checkbox' name='can_edits[$uid]' id='ucol_3_{$uid}' value='1' $can_edit_checked /></td>
-			<td class='even'><input type='checkbox' name='can_deletes[$uid]' id='ucol_4_{$uid}' value='1' $can_delete_checked /></td>
-			<td class='even'><input type='checkbox' name='post_auto_approveds[$uid]' id='ucol_5_{$uid}' value='1' $post_auto_approved_checked /></td>
+			<td class='even'><input type='checkbox' name='can_reads[$uid]' id='ucol_1_{$uid}' value='1' checked='checked'></td>
+			<td class='even'><input type='checkbox' name='can_posts[$uid]' id='ucol_2_{$uid}' value='1' $can_post_checked></td>
+			<td class='even'><input type='checkbox' name='can_edits[$uid]' id='ucol_3_{$uid}' value='1' $can_edit_checked></td>
+			<td class='even'><input type='checkbox' name='can_deletes[$uid]' id='ucol_4_{$uid}' value='1' $can_delete_checked></td>
+			<td class='even'><input type='checkbox' name='post_auto_approveds[$uid]' id='ucol_5_{$uid}' value='1' $post_auto_approved_checked></td>
 		</tr>\n" ;
 }
 
@@ -182,13 +182,13 @@ $newuser_trs = '' ;
 for( $i = 0 ; $i < 5 ; $i ++ ) {
 	$newuser_trs .= "
 		<tr>
-			<td class='head'><input type='text' size='4' name='new_uids[$i]' value='' /></th>
-			<td class='head'><input type='text' size='12' name='new_unames[$i]' value='' /></th>
-			<td class='head'><input type='checkbox' name='new_can_reads[$i]' id='ncol_1_{$i}' checked='checked' disabled='disabled' /></th>
-			<td class='head'><input type='checkbox' name='new_can_posts[$i]' id='ncol_2_{$i}' value='1' /></th>
-			<td class='head'><input type='checkbox' name='new_can_edits[$i]' id='ncol_3_{$i}' value='1' /></td>
-			<td class='head'><input type='checkbox' name='new_can_deletes[$i]' id='ncol_4_{$i}' value='1' /></td>
-			<td class='head'><input type='checkbox' name='new_post_auto_approveds[$i]' id='ncol_5_{$i}' value='1' /></td>
+			<td class='head'><input type='text' size='4' name='new_uids[$i]' value=''></th>
+			<td class='head'><input type='text' size='12' name='new_unames[$i]' value=''></th>
+			<td class='head'><input type='checkbox' name='new_can_reads[$i]' id='ncol_1_{$i}' checked='checked' disabled='disabled'></th>
+			<td class='head'><input type='checkbox' name='new_can_posts[$i]' id='ncol_2_{$i}' value='1'></th>
+			<td class='head'><input type='checkbox' name='new_can_edits[$i]' id='ncol_3_{$i}' value='1'></td>
+			<td class='head'><input type='checkbox' name='new_can_deletes[$i]' id='ncol_4_{$i}' value='1'></td>
+			<td class='head'><input type='checkbox' name='new_post_auto_approveds[$i]' id='ncol_5_{$i}' value='1'></td>
 		</tr>
 	\n" ;
 }
@@ -217,5 +217,5 @@ $tpl->assign( array(
 	'topicselbox' => $topicselbox ,
 ) ) ;
 $tpl->display( 'db:'.$mydirname.'_admin_category_access.html' ) ;
+
 xoops_cp_footer();
-?>

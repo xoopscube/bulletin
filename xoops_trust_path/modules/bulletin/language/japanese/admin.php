@@ -1,85 +1,90 @@
 <?php
 
 //%%%%%%	Admin Module Name  Articles 	%%%%%
-define('_AM_DBUPDATED','¥Ç¡¼¥¿¥Ù¡¼¥¹¤ò¹¹¿·¤·¤Þ¤·¤¿');
+// Altsys admin menu and breadcrumbs
+define( '_MD_A_MYMENU_MYTPLSADMIN', 'Templates' );
+define( '_MD_A_MYMENU_MYBLOCKSADMIN', 'Blocks' );
+define( '_MD_A_MYMENU_MYPREFERENCES', 'Preferences' );
 
-define('_AM_AUTOARTICLES','·ÇºÜÍ½Äê¤Îµ­»ö');
+define('_AM_DBUPDATED','ï¿½Ç¡ï¿½ï¿½ï¿½ï¿½Ù¡ï¿½ï¿½ï¿½ï¿½ò¹¹¿ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½');
+
+define('_AM_AUTOARTICLES','ï¿½Çºï¿½Í½ï¿½ï¿½Îµï¿½ï¿½ï¿½');
 define('_AM_STORYID','ID');
-define('_AM_TITLE','É½Âê');
-define('_AM_TOPIC','¥«¥Æ¥´¥ê');
-define('_AM_POSTER','Åê¹Æ¼Ô');
-define('_AM_PROGRAMMED','·ÇºÜÍ½ÄêÆü»þ');
-define('_AM_ACTION','´ÉÍý');
-define('_AM_POSTED','Åê¹ÆÆü»þ');
-define('_AM_PUBLISHED','·ÇºÜÆü»þ'); // Published Date
-define('_AM_EXPARTS','´ü¸ÂÀÚ¤ì¤Îµ­»ö');
-define('_AM_EXPIRED','·ÇºÜ´ü¸Â');
+define('_AM_TITLE','É½ï¿½ï¿½');
+define('_AM_TOPIC','ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½');
+define('_AM_POSTER','ï¿½ï¿½Æ¼ï¿½');
+define('_AM_PROGRAMMED','ï¿½Çºï¿½Í½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_AM_ACTION','ï¿½ï¿½ï¿½ï¿½');
+define('_AM_POSTED','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_AM_PUBLISHED','ï¿½Çºï¿½ï¿½ï¿½ï¿½ï¿½'); // Published Date
+define('_AM_EXPARTS','ï¿½ï¿½ï¿½ï¿½ï¿½Ú¤ï¿½Îµï¿½ï¿½ï¿½');
+define('_AM_EXPIRED','ï¿½ÇºÜ´ï¿½ï¿½ï¿½');
 
 //%%%%%%	Admin Module Name  Topics 	%%%%%
 
-define('_AM_ADDMTOPIC','¥«¥Æ¥´¥ê¤ÎºîÀ®');
-define('_AM_TOPICNAME','¥«¥Æ¥´¥êÌ¾');
-define('_AM_MAX40CHAR','¡ÊºÇÂç255Ê¸»ú¡ÊÁ´³Ñ¡Ë¡Ë');
-define('_AM_TOPICIMG','¥«¥Æ¥´¥ê¥¢¥¤¥³¥ó');
-define('_AM_IMGNAEXLOC','%s ²¼¤Ë¤¢¤ë²èÁü¥Õ¥¡¥¤¥ëÌ¾');
+define('_AM_ADDMTOPIC','ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½Îºï¿½ï¿½ï¿½');
+define('_AM_TOPICNAME','ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½Ì¾');
+define('_AM_MAX40CHAR','ï¿½Êºï¿½ï¿½ï¿½191Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡Ë¡ï¿½');
+define('_AM_TOPICIMG','ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ê¥¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_AM_IMGNAEXLOC','%s ï¿½ï¿½ï¿½Ë¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾');
 
-define('_AM_MODIFYTOPIC','¥«¥Æ¥´¥ê¤ÎÊÔ½¸');
-define('_AM_MODIFY','ÊÑ¹¹');
-define('_AM_PARENTTOPIC','¿Æ¥«¥Æ¥´¥ê');
-define('_AM_SAVECHANGE','ÊÑ¹¹¤òÊÝÂ¸');
-define('_AM_WAYSYWTDTTAL','¤³¤Î¥«¥Æ¥´¥ê¤ª¤è¤Ó¤³¤Î¥«¥Æ¥´¥êÆâ¤ÎÁ´¤Æ¤Î¥Ë¥å¡¼¥¹µ­»ö¤ª¤è¤Ó¥³¥á¥ó¥È¤òºï½ü¤·¤Æ¤â¤¤¤¤¤Ç¤¹¤«¡©');
+define('_AM_MODIFYTOPIC','ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½');
+define('_AM_MODIFY','ï¿½Ñ¹ï¿½');
+define('_AM_PARENTTOPIC','ï¿½Æ¥ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½');
+define('_AM_SAVECHANGE','ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½Â¸');
+define('_AM_WAYSYWTDTTAL','ï¿½ï¿½ï¿½Î¥ï¿½ï¿½Æ¥ï¿½ï¿½ê¤ªï¿½ï¿½Ó¤ï¿½ï¿½Î¥ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤Î¥Ë¥å¡¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¥ï¿½ï¿½ï¿½ï¿½È¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤â¤¤ï¿½ï¿½ï¿½Ç¤ï¿½ï¿½ï¿½ï¿½ï¿½');
 
-define('_AM_ERRORTOPICNAME', '¥«¥Æ¥´¥êÌ¾¤¬µ­Æþ¤µ¤ì¤Æ¤¤¤Þ¤»¤ó¡£');
+define('_AM_ERRORTOPICNAME', 'ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½');
 
 // Added by SUIN
 
-define('_AM_DISP_CONTENUE','[Á´¤Æ¤Îµ­»ö¤òÉ½¼¨]');
-define('_AM_PUB_ARTICLES','·ÇºÜÃæ¤Î¥Ë¥å¡¼¥¹µ­»ö');
-define('_AM_WAITING_ARTICLES','¾µÇ§ÂÔ¤Á¤Î¥Ë¥å¡¼¥¹µ­»ö');
-define('_AM_ARTICLE_ADMIN','¥Ë¥å¡¼¥¹µ­»ö¤Î´ÉÍý');
-define('_AM_NOSUBJECT','ÂêÌ¾¤Ê¤·');
-define('_AM_RIGHT_TO_POST','Åê¹Æ¤òµö²Ä');
-define('_AM_RIGHT_TO_APPROVE','¾µÇ§¤òµö²Ä');
-define('_AM_RIGHT_TO_CHOSE_DATE','·ÇºÜÆü»þÀßÄê');
-define('_AM_RIGHT_HTML','HTML¤Î»ÈÍÑ');
-define('_AM_RIGHT_XCODE','XOOPS¥³¡¼¥É¤Î»ÈÍÑ');
-define('_AM_RIGHT_SMILEY','´é¥¢¥¤¥³¥ó¤Î»ÈÍÑ');
-define('_AM_RIGHT_RELATION','´ØÏ¢µ­»öµ¡Ç½'); // ver 2.00 added
-define('_AM_NO_TOPICS','¥«¥Æ¥´¥ê¤¬¤¢¤ê¤Þ¤»¤ó¡£');
-define('_AM_DO_YOU_CONVERT','news¤«¤éµ­»ö¡¦¥«¥Æ¥´¥ê¤Î¾ðÊó¤ò¼è¤ê¹þ¤ß¤Þ¤¹¤«¡©');
-define('_AM_EDIT_ARTICLE','¥Ë¥å¡¼¥¹µ­»ö¤ÎÊÔ½¸');
-define('_AM_NO_ARTICLES','µ­»ö¤Ï¤¢¤ê¤Þ¤»¤ó¡£');
-define('_AM_CONFIG','%s´ÉÍý');
+define('_AM_DISP_CONTENUE','ï¿½ï¿½ï¿½Æ¤Îµï¿½ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½');
+define('_AM_PUB_ARTICLES','ï¿½Çºï¿½ï¿½ï¿½Î¥Ë¥å¡¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_AM_WAITING_ARTICLES','ï¿½ï¿½Ç§ï¿½Ô¤ï¿½ï¿½Î¥Ë¥å¡¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_AM_ARTICLE_ADMIN','ï¿½Ë¥å¡¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½');
+define('_AM_NOSUBJECT','ï¿½ï¿½Ì¾ï¿½Ê¤ï¿½');
+define('_AM_RIGHT_TO_POST','ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½');
+define('_AM_RIGHT_TO_APPROVE','ï¿½ï¿½Ç§ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_AM_RIGHT_TO_CHOSE_DATE','ï¿½Çºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_AM_RIGHT_HTML','HTMLï¿½Î»ï¿½ï¿½ï¿½');
+define('_AM_RIGHT_XCODE','XOOPSï¿½ï¿½ï¿½ï¿½ï¿½É¤Î»ï¿½ï¿½ï¿½');
+define('_AM_RIGHT_SMILEY','ï¿½é¥¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½');
+define('_AM_RIGHT_RELATION','ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç½'); // ver 2.00 added
+define('_AM_NO_TOPICS','ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ê¤¬ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½');
+define('_AM_DO_YOU_CONVERT','newsï¿½ï¿½ï¿½éµ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½Î¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¤Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_AM_EDIT_ARTICLE','ï¿½Ë¥å¡¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½');
+define('_AM_NO_ARTICLES','ï¿½ï¿½ï¿½ï¿½ï¿½Ï¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½');
+define('_AM_CONFIG','%sï¿½ï¿½ï¿½ï¿½');
 
 // v 1.01 added
-define('_AM_TOPICS_DELETE','¥«¥Æ¥´¥êºï½ü');
+define('_AM_TOPICS_DELETE','ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½');
 define('_AM_TOPICID','ID');
-define('_AM_DESTINATION_OF_STORIES','¥«¥Æ¥´¥ê¤ËÂ°¤¹¤ëµ­»ö¤ÎÁ÷¤êÀè');
-define('_AM_FOLLOW_TOPICS_IS_DELETED','°Ê²¼¤Î¥«¥Æ¥´¥ê¤Ïºï½ü¤µ¤ì¤Þ¤¹¡£');
+define('_AM_DESTINATION_OF_STORIES','ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½Â°ï¿½ï¿½ï¿½ëµ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_AM_FOLLOW_TOPICS_IS_DELETED','ï¿½Ê²ï¿½ï¿½Î¥ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½Ïºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½');
 
 
 define('_AM_CREDIT','Bulletin(xoops.suinyeze.com)');
-// °Ê²¼¤Î¹Ô¤ÏËÝÌõ¼Ô¤ÎÌ¾Á°¤äURL¤Ê¤É¤ËÊÑ¹¹¤Ç¤­¤Þ¤¹¡£°Ê²¼¤Ï´ÉÍý²èÌÌ¤ËÉ½¼¨¤µ¤ì¤Þ¤¹¡£
+// ï¿½Ê²ï¿½ï¿½Î¹Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½URLï¿½Ê¤É¤ï¿½ï¿½Ñ¹ï¿½ï¿½Ç¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½Ê²ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¤ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½
 // It is able to change a following line into the TRANSLATER's name and website. Follow appears at admin page.
 define('_AM_TRANSLATER','Japanese patch(xoops.suinyeze.com)');
 // example : define('_AM_TRANSLATER','English patch(www.english-tranlater.com)');
 
 // Added by Bluemoon inc.
 // forum_access and category_access
-define('_MD_A_BULLETIN_LABEL_SELECTFORUM','¥Õ¥©¡¼¥é¥à¤òÁªÂò');
-define('_MD_A_BULLETIN_LABEL_SELECTCATEGORY','¥«¥Æ¥´¥ê¡¼¤òÁªÂò');
-define('_MD_A_BULLETIN_H2_GROUPPERMS','¥°¥ë¡¼¥×Ëè¤Î¸¢¸Â');
-define('_MD_A_BULLETIN_H2_USERPERMS','¥æ¡¼¥¶¡¼Ëè¤Î¸¢¸Â');
-define('_MD_A_BULLETIN_TH_CAN_READ','±ÜÍ÷¸¢¸Â');
-define('_MD_A_BULLETIN_TH_CAN_POST','Åê¹Æ¸¢¸Â');
-define('_MD_A_BULLETIN_TH_CAN_EDIT','ÊÔ½¸¸¢¸Â');
-define('_MD_A_BULLETIN_TH_CAN_DELETE','ºï½ü¸¢¸Â');
-define('_MD_A_BULLETIN_TH_POST_AUTO_APPROVED','¾µÇ§ÉÔÍ×');
-define('_MD_A_BULLETIN_TH_UID','¥æ¡¼¥¶ID');
-define('_MD_A_BULLETIN_TH_UNAME','¥æ¡¼¥¶Ì¾');
-define('_MD_A_BULLETIN_TH_GROUPNAME','¥°¥ë¡¼¥×Ì¾');
-define('_MD_A_BULLETIN_NOTICE_ADDUSERS','¢¨¥æ¡¼¥¶¤ò¸ÄÊÌ¤Ë¿·µ¬ÄÉ²Ã¤¹¤ë¾ì¹ç¡¢¥æ¡¼¥¶ID¡Ê¿ô»ú¡Ë¤«¥æ¡¼¥¶Ì¾¤Î¤¤¤º¤ì¤«¤òÄ¾ÀÜÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤¡£<br />±ÜÍ÷¸¢¸Â¤ÈÅê¹Æ¸¢¸Â¤ÎÎ¾Êý¤ò³°¤»¤Ð¡¢¤½¤Î¥æ¡¼¥¶¤Ï¤³¤Î¥ê¥¹¥È¤«¤é¤â¾Ã¤¨¤Þ¤¹¡£');
-define('_MD_A_BULLETIN_ERR_CREATECATEGORYFIRST','¤Þ¤º¥«¥Æ¥´¥ê¡¼¤òºîÀ®¤·¤Æ¤¯¤À¤µ¤¤');
-define('_MD_A_BULLETIN_ERR_CREATEFORUMFIRST','¤Þ¤º¥Õ¥©¡¼¥é¥à¤òºîÀ®¤·¤Æ¤¯¤À¤µ¤¤');
+define('_MD_A_BULLETIN_LABEL_SELECTFORUM','ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_A_BULLETIN_LABEL_SELECTCATEGORY','ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ê¡¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_A_BULLETIN_H2_GROUPPERMS','ï¿½ï¿½ï¿½ë¡¼ï¿½ï¿½ï¿½ï¿½Î¸ï¿½ï¿½ï¿½');
+define('_MD_A_BULLETIN_H2_USERPERMS','ï¿½æ¡¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¸ï¿½ï¿½ï¿½');
+define('_MD_A_BULLETIN_TH_CAN_READ','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_A_BULLETIN_TH_CAN_POST','ï¿½ï¿½Æ¸ï¿½ï¿½ï¿½');
+define('_MD_A_BULLETIN_TH_CAN_EDIT','ï¿½Ô½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_A_BULLETIN_TH_CAN_DELETE','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_A_BULLETIN_TH_POST_AUTO_APPROVED','ï¿½ï¿½Ç§ï¿½ï¿½ï¿½ï¿½');
+define('_MD_A_BULLETIN_TH_UID','ï¿½æ¡¼ï¿½ï¿½ID');
+define('_MD_A_BULLETIN_TH_UNAME','ï¿½æ¡¼ï¿½ï¿½Ì¾');
+define('_MD_A_BULLETIN_TH_GROUPNAME','ï¿½ï¿½ï¿½ë¡¼ï¿½ï¿½Ì¾');
+define('_MD_A_BULLETIN_NOTICE_ADDUSERS','ï¿½ï¿½ï¿½æ¡¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¤Ë¿ï¿½ï¿½ï¿½ï¿½É²Ã¤ï¿½ï¿½ï¿½ï¿½ç¡¢ï¿½æ¡¼ï¿½ï¿½IDï¿½Ê¿ï¿½ï¿½ï¿½ï¿½Ë¤ï¿½ï¿½æ¡¼ï¿½ï¿½Ì¾ï¿½Î¤ï¿½ï¿½ï¿½ï¿½ì¤«ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½Ï¤ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<br />ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¤ï¿½ï¿½ï¿½Æ¸ï¿½ï¿½Â¤ï¿½Î¾ï¿½ï¿½ï¿½ò³°¤ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½Î¥æ¡¼ï¿½ï¿½ï¿½Ï¤ï¿½ï¿½Î¥ê¥¹ï¿½È¤ï¿½ï¿½ï¿½ï¿½Ã¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½');
+define('_MD_A_BULLETIN_ERR_CREATECATEGORYFIRST','ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ê¡¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_MD_A_BULLETIN_ERR_CREATEFORUMFIRST','ï¿½Þ¤ï¿½ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
 
 ?>
