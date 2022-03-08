@@ -1,6 +1,6 @@
 <?php
 
-/* English Translation by Marcelo Yuji Himoro <http://yuji.ws> & Suin <http://xoops.suinyeze.com/>*/
+/* English Translation by Marcelo Yuji Himoro & Suin <suiny.io> */
 // Module Info
 
 if( defined( 'FOR_XOOPS_LANG_CHECKER' ) ) $mydirname = 'bulletin' ;
@@ -12,10 +12,10 @@ if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( $constpref.'_LOADED' ) ) {
 define( $constpref.'_LOADED' , 1 ) ;
 
 // The name of this module
-define($constpref."_NAME","News");
+define($constpref."_NAME","Blog");
 
 // A brief description of this module
-define($constpref."_DESC","Creates a Slashdot-like news system, where users can post comments freely.");
+define($constpref."_DESC","Bulletin allows users to create, organize, and publish written and visual content online in a blog.");
 
 // Names of blocks for this module (Not all module has blocks)
 define($constpref."_BNAME1","News categories");
@@ -64,7 +64,7 @@ define($constpref."_CONFIG8","Print to PDF image URL");
 define($constpref."_CONFIG8_D","Set the URL for the logo image shown on print friendly page.");
 define($constpref."_CONFIG9","Change site name to story name");
 define($constpref."_CONFIG9_D","Replaces the site name for the story subject. It's said to be effective for SEO.");
-define($constpref."_CONFIG10","assign RSS URL on xoops_module_header");
+define($constpref."_CONFIG10","Assign RSS URL to xoops_module_header");
 define($constpref."_CONFIG10_D","");
 // 1.01 added
 define($constpref."_CONFIG11","Display 'Print' icon?");

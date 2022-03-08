@@ -1,23 +1,23 @@
 <{strip}>
 
 <{if $submissions}>
-<div layout="row center-justify" class="control-action">
-    <div>
-        <h3><{$smarty.const._AM_WAITING_ARTICLES}></h3>
+    <div layout="row center-justify" class="control-action">
+        <div>
+            <h3><{$smarty.const._AM_WAITING_ARTICLES}></h3>
+        </div>
+        <div class="control-view">
+            <a class="ui-btn ui-btn-small"
+               href="<{$mydirurl}>/admin/index.php?mode=admin&amp;op=listall&amp;statu=newsubmission"><{$smarty.const._AM_DISP_CONTENUE}></a>
+            <button class="help-admin ui-btn" type="button" data-id="4" data-module="<{$mydirname}>"
+                    data-help-article="#help-bulletin-start" title="Get Started">
+                <span class="ui-icon ui-icon-help"></span>
+            </button>
+        </div>
     </div>
-    <div class="control-view">
-        <a class="ui-btn ui-btn-small"
-           href="<{$mydirurl}>/admin/index.php?mode=admin&amp;op=listall&amp;statu=newsubmission"><{$smarty.const._AM_DISP_CONTENUE}></a>
-        <button class="help-admin ui-btn" type="button" data-id="4" data-module="<{$mydirname}>"
-                data-help-article="#help-bulletin-start" title="Get Started">
-            <span class="ui-icon ui-icon-help"></span>
-        </button>
-    </div>
-</div>
 
-<table class="outer" width="100%">
+<table class="outer">
     <thead>
-    <tr align="center">
+    <tr>
         <th width="40"><{$smarty.const._AM_STORYID}></th>
         <th><{$smarty.const._AM_TITLE}></th>
         <th width="100"><{$smarty.const._AM_TOPIC}></th>
@@ -29,52 +29,54 @@
     </thead>
     <tbody>
     <{foreach item=i from=$submissions}>
-    <tr align="center" class="<{cycle values=" odd,even
-    "}>">
-    <td><{$i.storyid}></td>
-    <td align="left"><{$i.title}></td>
-    <td><{$i.topic}></td>
-    <{if $i.uid}>
-    <td><a href="<{$xoops_url}>/userinfo.php?uid=<{$i.uid}>"><{$i.uname}></a></td>
-    <{else}>
-    <td><{$i.uname}></td>
-    <{/if}>
-    <td><{$i.created}></td>
-    <td><{$i.expired}></td>
-    <td>
-        <a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;storyid=<{$i.storyid}>">
-            <img class="svg edit" src="<{$xoops_url}>/images/icons/edit.svg"alt="<{$smarty.const._EDIT}>"> <{$smarty.const._EDIT}></a>
-        &nbsp;<a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;op=delete&amp;storyid=<{$i.storyid}>">
-        <img class="svg delete" src="<{$xoops_url}>/images/icons/delete.svg" alt="<{$smarty.const._DELETE}>"> <{$smarty.const._DELETE}></a>
-    </td>
+    <tr>
+        <td><{$i.storyid}></td>
+        <td align="left"><{$i.title}></td>
+        <td><{$i.topic}></td>
+        <{if $i.uid}>
+        <td><a href="<{$xoops_url}>/userinfo.php?uid=<{$i.uid}>"><{$i.uname}></a></td>
+        <{else}>
+        <td><{$i.uname}></td>
+        <{/if}>
+        <td><{$i.created}></td>
+        <td><{$i.expired}></td>
+        <td>
+            <a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;storyid=<{$i.storyid}>">
+                <img class="svg edit" src="<{$xoops_url}>/images/icons/edit.svg"alt="<{$smarty.const._EDIT}>">
+                <{$smarty.const._EDIT}></a>
+            &nbsp;<a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;op=delete&amp;storyid=<{$i.storyid}>">
+            <img class="svg delete" src="<{$xoops_url}>/images/icons/delete.svg" alt="<{$smarty.const._DELETE}>">
+            <{$smarty.const._DELETE}></a>
+        </td>
     </tr>
     <{/foreach}>
     </tbody>
 </table>
+
+<hr>
 <{/if}>
 
 
-
 <{if $autostories}>
-<hr>
 
-<div layout="row center-justify" class="control-action">
-    <div>
-        <h3><{$smarty.const._AM_AUTOARTICLES}></h3>
+    <div layout="row center-justify" class="control-action">
+        <div>
+            <h3><{$smarty.const._AM_AUTOARTICLES}></h3>
+        </div>
+        <div class="control-view">
+            <a class="ui-btn ui-btn-small"
+               href="<{$mydirurl}>/admin/index.php?mode=admin&amp;op=listall&amp;statu=autostory">
+                <{$smarty.const._AM_DISP_CONTENUE}></a>
+            <button class="help-admin ui-btn" type="button" data-id="4" data-module="<{$mydirname}>"
+                    data-help-article="#help-bulletin-auto" title="Get Started">
+                <span class="ui-icon ui-icon-help"></span>
+            </button>
+        </div>
     </div>
-    <div class="control-view">
-        <a class="ui-btn ui-btn-small"
-           href="<{$mydirurl}>/admin/index.php?mode=admin&amp;op=listall&amp;statu=autostory"><{$smarty.const._AM_DISP_CONTENUE}></a>
-        <button class="help-admin ui-btn" type="button" data-id="4" data-module="<{$mydirname}>"
-                data-help-article="#help-bulletin-auto" title="Get Started">
-            <span class="ui-icon ui-icon-help"></span>
-        </button>
-    </div>
-</div>
 
-<table class="outer" width="100%">
+<table class="outer">
     <thead>
-    <tr align="center">
+    <tr>
         <th width="40"><{$smarty.const._AM_STORYID}></th>
         <th><{$smarty.const._AM_TITLE}></th>
         <th width="100"><{$smarty.const._AM_TOPIC}></th>
@@ -86,23 +88,27 @@
     </thead>
     <tbody>
     <{foreach item=i from=$autostories}>
-    <tr align="center" class="<{cycle values=" odd,even"}>">
-    <td><{$i.storyid}></td>
-    <td align="left"><{$i.title}></td>
-    <td><{$i.topic}></td>
-    <{if $i.uid}>
-    <td><a href="<{$xoops_url}>/userinfo.php?uid=<{$i.uid}>"><{$i.uname}></a></td>
-    <{else}>
-    <td><{$i.uname}></td>
-    <{/if}>
-    <td><{$i.published}></td>
-    <td><{$i.expired}></td>
-    <td>
-        <a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;storyid=<{$i.storyid}>">
-            <img class="svg edit" src="<{$xoops_url}>/images/icons/edit.svg"alt="<{$smarty.const._EDIT}>"> <{$smarty.const._EDIT}></a>
-        &nbsp;<a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;op=delete&amp;storyid=<{$i.storyid}>">
-        <img class="svg delete" src="<{$xoops_url}>/images/icons/delete.svg" alt="<{$smarty.const._DELETE}>"> <{$smarty.const._DELETE}></a>
-    </td>
+    <tr>
+        <td><{$i.storyid}></td>
+        <td align="left"><{$i.title}></td>
+        <td><{$i.topic}></td>
+        <{if $i.uid}>
+        <td><a href="<{$xoops_url}>/userinfo.php?uid=<{$i.uid}>"><{$i.uname}></a></td>
+        <{else}>
+        <td><{$i.uname}></td>
+        <{/if}>
+        <td><{$i.published}></td>
+        <td><{$i.expired}></td>
+        <td>
+            <a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;storyid=<{$i.storyid}>">
+                <img class="svg edit" src="<{$xoops_url}>/images/icons/edit.svg"alt="<{$smarty.const._EDIT}>">
+                <{$smarty.const._EDIT}>
+            </a>
+            &nbsp;<a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;op=delete&amp;storyid=<{$i.storyid}>">
+                <img class="svg delete" src="<{$xoops_url}>/images/icons/delete.svg" alt="<{$smarty.const._DELETE}>">
+                <{$smarty.const._DELETE}>
+            </a>
+        </td>
     </tr>
     <{foreachelse}>
     <tr>
@@ -111,27 +117,31 @@
     <{/foreach}>
     </tbody>
 </table>
-<{/if}>
 
 <hr>
+<{/if}>
+
 
 <div layout="row center-justify" class="control-action">
     <div>
         <h3><{$smarty.const._AM_PUB_ARTICLES}></h3>
     </div>
     <div class="control-view">
+        <a class="ui-btn ui-btn-small" href="<{$mydirurl}>/index.php?page=submit" title="<{$smarty.const._MD_SUBMITNEWS}>">
+            <{$smarty.const._MD_SUBMITNEWS}></a>
         <a class="ui-btn ui-btn-small"
-           href="<{$mydirurl}>/admin/index.php?mode=admin&amp;op=listall&amp;statu=laststory"><{$smarty.const._AM_DISP_CONTENUE}></a>
+           href="<{$mydirurl}>/admin/index.php?mode=admin&amp;op=listall&amp;statu=laststory">
+            <{$smarty.const._AM_DISP_CONTENUE}></a>
         <button class="help-admin ui-btn" type="button" data-id="4" data-module="<{$mydirname}>"
-                data-help-article="#help-forum-start" title="Get Started">
+                data-help-article="#help-bulletin-articles" title="Articles">
             <span class="ui-icon ui-icon-help"></span>
         </button>
     </div>
 </div>
 
-<table class="outer" width="100%">
+<table class="outer">
     <thead>
-    <tr align="center">
+    <tr>
         <th width="40"><{$smarty.const._AM_STORYID}></th>
         <th><{$smarty.const._AM_TITLE}></th>
         <th width="100"><{$smarty.const._AM_TOPIC}></th>
@@ -143,23 +153,27 @@
     </thead>
     <tbody>
     <{foreach item=i from=$published}>
-    <tr align="center" class="<{cycle values=" odd,even"}>">
-    <td><{$i.storyid}></td>
-    <td align="left"><{$i.title}></td>
-    <td><{$i.topic}></td>
-    <{if $i.uid}>
-    <td><a href="<{$xoops_url}>/userinfo.php?uid=<{$i.uid}>"><{$i.uname}></a></td>
-    <{else}>
-    <td><{$i.uname}></td>
-    <{/if}>
-    <td><{$i.published}></td>
-    <td><{$i.expired}></td>
-    <td>
-        <a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;storyid=<{$i.storyid}>">
-            <img class="svg edit" src="<{$xoops_url}>/images/icons/edit.svg"alt="<{$smarty.const._EDIT}>"> <{$smarty.const._EDIT}></a>
-        &nbsp;<a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;op=delete&amp;storyid=<{$i.storyid}>">
-        <img class="svg delete" src="<{$xoops_url}>/images/icons/delete.svg" alt="<{$smarty.const._DELETE}>"> <{$smarty.const._DELETE}></a>
-    </td>
+    <tr>
+        <td><{$i.storyid}></td>
+        <td><{$i.title}></td>
+        <td><{$i.topic}></td>
+        <{if $i.uid}>
+        <td><a href="<{$xoops_url}>/userinfo.php?uid=<{$i.uid}>"><{$i.uname}></a></td>
+        <{else}>
+        <td><{$i.uname}></td>
+        <{/if}>
+        <td><{$i.published}></td>
+        <td><{$i.expired}></td>
+        <td>
+            <a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;storyid=<{$i.storyid}>">
+                <img class="svg edit" src="<{$xoops_url}>/images/icons/edit.svg"alt="<{$smarty.const._EDIT}>">
+                <{$smarty.const._EDIT}>
+            </a>
+            &nbsp;<a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;op=delete&amp;storyid=<{$i.storyid}>">
+                <img class="svg delete" src="<{$xoops_url}>/images/icons/delete.svg" alt="<{$smarty.const._DELETE}>">
+                <{$smarty.const._DELETE}>
+            </a>
+        </td>
     </tr>
     <{/foreach}>
     </tbody>
@@ -177,15 +191,15 @@
         <a class="ui-btn ui-btn-small"
            href="<{$mydirurl}>/admin/index.php?mode=admin&amp;op=listall&amp;statu=expstory"><{$smarty.const._AM_DISP_CONTENUE}></a>
         <button class="help-admin ui-btn" type="button" data-id="4" data-module="<{$mydirname}>"
-                data-help-article="#help-forum-start" title="Get Started">
+                data-help-article="#help-bulletin-expired" title="Experied">
             <span class="ui-icon ui-icon-help"></span>
         </button>
     </div>
 </div>
 
-<table class="outer" width="100%">
+<table class="outer">
     <thead>
-    <tr align="center">
+    <tr>
         <th width="40"><{$smarty.const._AM_STORYID}></th>
         <th><{$smarty.const._AM_TITLE}></th>
         <th width="100"><{$smarty.const._AM_TOPIC}></th>
@@ -197,23 +211,27 @@
     </thead>
     <tbody>
     <{foreach item=i from=$expired}>
-    <tr align="center" class="<{cycle values=" odd,even"}>">
-    <td><{$i.storyid}></td>
-    <td align="left"><{$i.title}></td>
-    <td><{$i.topic}></td>
-    <{if $i.uid}>
-    <td><a href="<{$xoops_url}>/userinfo.php?uid=<{$i.uid}>"><{$i.uname}></a></td>
-    <{else}>
-    <td><{$i.uname}></td>
-    <{/if}>
-    <td><{$i.published}></td>
-    <td><{$i.expired}></td>
-    <td><a
-        href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;storyid=<{$i.storyid}>">
-        <img class="svg delete" src="<{$xoops_url}>/images/icons/edit.svg" alt="<{$smarty.const._EDIT}>"> <{$smarty.const._EDIT}></a>
-        &nbsp;<a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;op=delete&amp;storyid=<{$i.storyid}>">
-            <img class="svg delete" src="<{$xoops_url}>/images/icons/delete.svg" alt="<{$smarty.const._DELETE}>"> <{$smarty.const._DELETE}></a>
-    </td>
+    <tr>
+        <td><{$i.storyid}></td>
+        <td><{$i.title}></td>
+        <td><{$i.topic}></td>
+        <{if $i.uid}>
+        <td><a href="<{$xoops_url}>/userinfo.php?uid=<{$i.uid}>"><{$i.uname}></a></td>
+        <{else}>
+        <td><{$i.uname}></td>
+        <{/if}>
+        <td><{$i.published}></td>
+        <td><{$i.expired}></td>
+        <td>
+            <a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;storyid=<{$i.storyid}>">
+                <img class="svg delete" src="<{$xoops_url}>/images/icons/edit.svg" alt="<{$smarty.const._EDIT}>">
+                <{$smarty.const._EDIT}>
+            </a>
+            &nbsp;<a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;op=delete&amp;storyid=<{$i.storyid}>">
+                <img class="svg delete" src="<{$xoops_url}>/images/icons/delete.svg" alt="<{$smarty.const._DELETE}>">
+                <{$smarty.const._DELETE}>
+            </a>
+        </td>
     </tr>
     <{/foreach}>
     </tbody>

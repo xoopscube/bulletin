@@ -20,9 +20,8 @@ function bulletin_get_submenu( $mydirname )
 	if (empty($can_read_topic_ids)){
 		return array() ;
 	}
+
 	// categories query
-//ver2.0 $sql = "SELECT topic_id,topic_pid,topic_title FROM ".$db->prefix($mydirname."_topics")." ORDER BY topic_title" ;
-//ver3.0
 	$sql = 'SELECT topic_id,topic_pid,topic_title';
 	$sql .= ' FROM '.$db->prefix($mydirname.'_topics');
 	$sql .= ' WHERE topic_id IN ('.implode(',',$can_read_topic_ids).')';

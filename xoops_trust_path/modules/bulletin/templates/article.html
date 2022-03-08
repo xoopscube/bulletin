@@ -1,55 +1,58 @@
 <div class="ui-dev-mode"><{$smarty.template}></div>
 
-<{* Breadcrumb - Archive & RSS *}>
+
+<{* ----- Breadcrumb - Archive & RSS ----- *}>
 <{include file="db:`$mydirname`_head.html"}>
 
 
-<{* Article Item *}>
+<{* ----- Article Item ----- *}>
 <{include file="db:`$mydirname`_item.html" story=$story}>
 
 
-<{* Pagination *}>
+<{* ----- Pagination ----- *}>
 <{if $pagenav}>
-<div style="text-align: left;">Page <{$pagenav}></div>
+<div class="pagination"><{$pagenav}></div>
 <{/if}>
 
 
-<{* RELATED ARTICLES *}>
+<hr>
+
+
+<{* ----- RELATED ARTICLES ----- *}>
 <{include file="db:`$mydirname`_relations.html"}>
 
 
-<{* RECENT NEWS IN THIS CATEGORY *}>
-<hr>
+<{* ----- CATEGORY RECENT NEWS ----- *}>
 <{include file="db:`$mydirname`_category.html"}>
 
 
-<{* COMMENTS *}>
+<hr>
+
+
+<{* ----- COMMENTS ----- *}>
 <{if $mod_config.comment_dirname != '' && $mod_config.comment_forum_id > 0}>
 
     <{d3comment class="BulletinD3commentStory" mydirname=$mydirname}>
 
     <{else}>
 
-    <!-- begin comments area -->
     <div style="text-align: center;">
         <{$commentsnav}>
         <{$lang_notice}>
     </div>
 
+    <{* ----- COMMENT LOOP ----- *}>
     <div>
-        <!-- start comments loop -->
         <{if $comment_mode == "flat"}>
-        <{include file="db:system_comments_flat.html"}>
+            <{include file="db:system_comments_flat.html"}>
         <{elseif $comment_mode == "thread"}>
-        <{include file="db:system_comments_thread.html"}>
+            <{include file="db:system_comments_thread.html"}>
         <{elseif $comment_mode == "nest"}>
-        <{include file="db:system_comments_nest.html"}>
+            <{include file="db:system_comments_nest.html"}>
         <{/if}>
-        <!-- end comments loop -->
     </div>
-    <!-- end comments area -->
 
 <{/if}>
 
-<{* NOTIFICATION *}>
+<{* ----- NOTIFICATION ----- *}>
 <{include file='db:system_notification_select.html'}>

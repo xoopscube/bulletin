@@ -23,17 +23,17 @@ define("_AM_EXPIRED","Expired");
 
 //%%%%%%	Admin Module Name  Topics 	%%%%%
 
-define("_AM_ADDMTOPIC","Create a category");
+define("_AM_ADDMTOPIC","New category");
 define("_AM_TOPICNAME","Category name");
 define("_AM_MAX40CHAR","(max. 191 characters)");
 define("_AM_TOPICIMG","Category icon");
 define("_AM_IMGNAEXLOC","Image filename under %s");
 
 define("_AM_MODIFYTOPIC","Edit category");
-define("_AM_MODIFY","Send");
+define("_AM_MODIFY","Modify");
 define("_AM_PARENTTOPIC","Parent category");
-define("_AM_SAVECHANGE","Save changes");
-define("_AM_WAYSYWTDTTAL","Are you sure you want to delete this category and all its news and comments?");
+define("_AM_SAVECHANGE","Save");
+define("_AM_WAYSYWTDTTAL","Are you sure you want to delete this category and all its articles and comments?");
 
 define("_AM_ERRORTOPICNAME","Category name has not been filled.");
 
@@ -42,7 +42,7 @@ define("_AM_ERRORTOPICNAME","Category name has not been filled.");
 define("_AM_DISP_CONTENUE","Show all");
 define("_AM_PUB_ARTICLES","Published news");
 define("_AM_WAITING_ARTICLES","Awaiting news");
-define("_AM_ARTICLE_ADMIN","News manager");
+define("_AM_ARTICLE_ADMIN","Article manager");
 define("_AM_NOSUBJECT","No subject");
 define("_AM_RIGHT_TO_POST","Allow post");
 define("_AM_RIGHT_TO_APPROVE","Allowed approve");
@@ -64,9 +64,9 @@ define("_AM_DESTINATION_OF_STORIES","Destination of stories belonging this categ
 define("_AM_FOLLOW_TOPICS_IS_DELETED","The following category will be deleted.");
 
 
-define("_AM_CREDIT","Bulletin(xoops.suinyeze.com)");
+define("_AM_CREDIT","Bulletin(suin.io)");
 // It is able to change a following line into the TRANSLATER's name and website. Follow appears at admin page.
-define("_AM_TRANSLATER","English Translation by Marcelo Yuji Himoro (http://yuji.ws) and Suin (http://xoops.suinyeze.com)");
+define("_AM_TRANSLATER","English Translation by Marcelo Yuji Himoro and Suin (https://suin.io)");
 // example : define("_AM_TRANSLATER","English patch(www.english-tranlater.com)");
 
 // Added by Bluemoon inc.

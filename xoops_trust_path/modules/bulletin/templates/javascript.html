@@ -25,11 +25,11 @@ function bulid(form, check)
 					storyid = MyFrom['storyidR[]'][i].value;
 					title = MyFrom['titleR[]'][i].value;
 					dirname = MyFrom['dirnameR[]'][i].value;
-					ret += '<input type="checkbox" name="storyidR[]" value="' + storyid + '" />';
-					ret += '<input type="hidden" name="titleR[]" value="' + title + '" />';
-					ret += '<input type="hidden" name="dirnameR[]" value="' + dirname + '" />';
-					ret += '<input type="hidden" name="storyidRH[]" value="' + storyid + '" />';
-					ret += ''+title+'<br />';
+					ret += '<input type="checkbox" name="storyidR[]" value="' + storyid + '">';
+					ret += '<input type="hidden" name="titleR[]" value="' + title + '">';
+					ret += '<input type="hidden" name="dirnameR[]" value="' + dirname + '">';
+					ret += '<input type="hidden" name="storyidRH[]" value="' + storyid + '">';
+					ret += ''+title+'<br>';
 				}
 			}
 		}else{
@@ -37,11 +37,11 @@ function bulid(form, check)
 				storyid = MyFrom['storyidR[]'].value;
 				title = MyFrom['titleR[]'].value;
 				dirname = MyFrom['dirnameR[]'].value;
-				ret += '<input type="checkbox" name="storyidR[]" value="' + storyid + '" />';
-				ret += '<input type="hidden" name="titleR[]" value="' + title + '" />';
-				ret += '<input type="hidden" name="dirnameR[]" value="' + dirname + '" />';
-				ret += '<input type="hidden" name="storyidRH[]" value="' + storyid + '" />';
-				ret += ''+title+'<br />';
+				ret += '<input type="checkbox" name="storyidR[]" value="' + storyid + '">';
+				ret += '<input type="hidden" name="titleR[]" value="' + title + '">';
+				ret += '<input type="hidden" name="dirnameR[]" value="' + dirname + '">';
+				ret += '<input type="hidden" name="storyidRH[]" value="' + storyid + '">';
+				ret += ''+title+'<br>';
 			}
 		}
 	}

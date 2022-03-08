@@ -84,10 +84,10 @@ if ($fromyear != 0 && $frommonth != 0) {
 
 	for ( $i = 0; $i < $scount; $i++ ) {
 		$story = array();
-	    	$story['id']         = $article[$i]->getVar('storyid');
-	    	$story['topic']      = $article[$i]->topic_title();
-	    	$story['topicid']    = $article[$i]->getVar('topicid');
-	    	$story['title']      = $article[$i]->getVar('title');
+        $story['id']         = $article[$i]->getVar('storyid');
+        $story['topic']      = $article[$i]->topic_title();
+        $story['topicid']    = $article[$i]->getVar('topicid');
+        $story['title']      = $article[$i]->getVar('title');
 		$story['counter']    = $article[$i]->getVar('counter');
 		$story['date']       = formatTimestamp($article[$i]->getVar('published'), $bulletin_date_format, $useroffset);
 		$story['print_link'] = 'index.php?page=print&amp;storyid='.$article[$i]->getVar('storyid');

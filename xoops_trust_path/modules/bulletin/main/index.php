@@ -228,6 +228,7 @@ if( $storytopic ) {
 }
 $xoopsTpl->assign( 'xoops_breadcrumbs' , $breadcrumbs ) ;
 $xoopsTpl->assign( 'mod_config' , $xoopsModuleConfig ) ;
+$xoopsTpl->assign( 'mydirname' , $mydirname );
 //Template
 $xoopsOption['template_main'] = "{$mydirname}_index.html";
 

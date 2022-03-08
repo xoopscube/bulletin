@@ -153,7 +153,7 @@ class Bulletin_Cal
 		$m = $this->month;
 		$y = $this->year;
 
-		$ret  = '<table class="outer" style="cellspacing=\'1\' ;border=\'0\';" >';
+		$ret  = '<table class="outer">';
 		$ret .= $this->getTitleBar();
 
 		foreach( $this->getCalendar() as $line => $weeks ){
@@ -186,7 +186,7 @@ class Bulletin_Cal
 			$n_month = date("Y-m", mktime(0,0,0,$m+1,1,$y));
 
 			$ret  = '<tr>';
-			$ret .= '<th colspan="7" style="align=\'center\'; nowrap=\'nowrap\'; text-align: center; ">';
+			$ret .= '<th colspan="7" style="align=\'center\'; nowrap=\'nowrap\'; text-align: center;">';
 			if( empty($this->startday) || $y*100+$m-1 >= intval(date('Ym',$this->startday))){
 				$ret .= '<a href="?'.$this->query.'='.$p_month.'">'.$this->lang_p_mon.'</a>';
 			}

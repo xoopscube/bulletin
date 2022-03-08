@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<table class="outer" width="100%">
+<table class="outer">
     <thead>
     <tr align="center">
         <th width="40"><{$smarty.const._AM_STORYID}></th>
@@ -38,7 +38,7 @@
     </thead>
     <tbody>
     <{foreach item=i from=$stories}>
-    <tr align="center" class="<{cycle values=" odd,even"}>">
+    <tr class="<{cycle values="odd,even"}>">
     <td><{$i.storyid}></td>
     <td align="left"><{$i.title}></td>
     <td><{$i.topic}></td>

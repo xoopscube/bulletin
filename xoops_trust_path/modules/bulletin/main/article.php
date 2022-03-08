@@ -174,9 +174,5 @@ if (defined('LEGACY_MODULE_VERSION') && version_compare(LEGACY_MODULE_VERSION, '
 	$headerScript = $xclRoot->mContext->getAttribute('headerScript');
 	$headerScript->addMeta('description', $description);
 }
-//elseif (isset($xoTheme) && is_object($xoTheme)) {
-//	// For XOOPS 2.3 or higher & Impress CMS.
-//	$xoTheme->addMeta('meta', 'description', $description);
-//}
 
 require_once XOOPS_ROOT_PATH.'/footer.php';

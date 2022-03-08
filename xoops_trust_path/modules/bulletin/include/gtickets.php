@@ -10,14 +10,14 @@ class XoopsGTicket {
 	var $_latest_token = '' ;
 	var $messages = array() ;
 
-	function XoopsGTicket()
+	function __construct()
 	{
 		global $xoopsConfig ;
 
 		// language file
 		if( defined( 'XOOPS_ROOT_PATH' ) && ! empty( $xoopsConfig['language'] ) && ! strstr( $xoopsConfig['language'] , '/' ) ) {
-			if( file_exists( dirname( dirname( __FILE__ ) ) . '/language/' . $xoopsConfig['language'] . '/gticket_messages.phtml' ) ) {
-				include dirname( dirname( __FILE__ ) ) . '/language/' . $xoopsConfig['language'] . '/gticket_messages.phtml' ;
+			if( file_exists( dirname(__FILE__, 2) . '/language/' . $xoopsConfig['language'] . '/gticket_messages.phtml' ) ) {
+				include dirname(__FILE__, 2) . '/language/' . $xoopsConfig['language'] . '/gticket_messages.phtml' ;
 			}
 		}
 
@@ -29,7 +29,7 @@ class XoopsGTicket {
 			'err_nopair' => 'No valid ticket-stub pair found' ,
 			'err_timeout' => 'Time out' ,
 			'err_areaorref' => 'Invalid area or referer' ,
-			'fmt_prompt4repost' => 'error(s) found:<br /><span style="background-color:red;font-weight:bold;color:white;">%s</span><br />Confirm it.<br />And do you want to post again?' ,
+			'fmt_prompt4repost' => 'error(s) found:<br><span style="background-color:red;font-weight:bold;color:white;">%s</span><br>Confirm it.<br>And do you want to post again?' ,
 			'btn_repost' => 'repost' ,
 		) ;
 	}

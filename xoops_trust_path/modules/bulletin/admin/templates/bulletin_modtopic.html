@@ -1,26 +1,47 @@
-<{strip}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
 
-<h2><{$smarty.const._AM_MODIFYTOPIC}></h2>
+
+<h2><{$smarty.const._AM_MODIFYTOPIC}> : <{$topic_title}></h2>
+
+
+<div layout="row center-justify" class="control-action">
+    <div>
+        &nbsp;
+    </div>
+    <div class="control-view">
+        <a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;storyid=<{$i.storyid}>">
+        <button class="help-admin ui-btn" type="button" data-id="4" data-module="<{$mydirname}>"
+                data-help-article="#help-bulletin-category" title="Get Started">
+            <span class="ui-icon ui-icon-help"></span>
+        </button>
+    </div>
+</div>
+
 
 <form method="post" action="index.php?mode=admin">
-    <table class="outer" width="100%">
+    <{$gticket_hidden}>
+    <input type="hidden" name="op" value="modTopicS">
+    <input type="hidden" name="topic_id" value="<{$topic_id}>">
+
+    <table class="outer">
         <tbody>
         <tr>
-            <td class="head" width="100"><{$smarty.const._AM_TOPICNAME}></td>
-            <td class="even">
+            <td><{$smarty.const._AM_TOPICNAME}></td>
+            <td>
                 <input type="text" name="topic_title" size="20" maxlength="40" value="<{$topic_title}>">
                 <{$smarty.const._AM_MAX40CHAR}>
             </td>
         </tr>
         <tr>
-            <td class="head" width="100"><{$smarty.const._AM_PARENTTOPIC}></td>
-            <td class="even"><{$topicselbox}></td>
+            <td><{$smarty.const._AM_PARENTTOPIC}></td>
+            <td><{$topicselbox}></td>
         </tr>
         <tr>
-            <td class="head" width="100"><{$smarty.const._AM_TOPICIMG}></td>
-            <td class="even">
+            <td><{$smarty.const._AM_TOPICIMG}></td>
+            <td>
                 <{if $topic_imgurl}>
-                <img src="<{$topic_imgdir}><{$topic_imgurl}>" alt=""/><br>
+                <img src="<{$topic_imgdir}><{$topic_imgurl}>" alt=""/>
+                <br>
                 <{/if}>
                 <select size="1" name="topic_imgurl" id="topic_imgurl"
                         onchange='showImgSelected("topicimage", "topic_imgurl", "<{$imagebase}>", "", "<{$imagedirname}>")'>
@@ -28,8 +49,9 @@
                     <{foreach item=i from=$images}>
                     <option value="<{$i.image}>" <{$i.option}>><{$i.image}></option>
                     <{/foreach}>
-                </select><br>
-                <img src="<{$xoops_url}>/images/blank.gif" name="topicimage" id="topicimage" alt="" vspace="4">
+                </select>
+                <br>
+                <img src="<{$xoops_url}>/images/blank.gif" id="topicimage" alt="">
                 <br>
                 <{$imagelocation}>
             </td>
@@ -38,13 +60,11 @@
         <tfoot>
         <tr>
             <td colspan="2">
-                <{$gticket_hidden}>
-                <input type="hidden" name="op" value="modTopicS">
-                <input type="hidden" name="topic_id" value="<{$topic_id}>">
-                <input type="button" value="<{$smarty.const._DELETE}>"
+                <input class="ui-button" type="submit" value="<{$smarty.const._CANCEL}>" onclick="javascript:history.go(-1)">
+                <input class="ui-button button-delete" type="submit" value="<{$smarty.const._DELETE}>"
                        onclick="location='index.php?mode=admin&amp;topic_pid=<{$topic_pid}>&amp;topic_id=<{$topic_id}>&amp;op=delTopic'">
                 &nbsp;<input class="ui-button" type="submit" value="<{$smarty.const._AM_SAVECHANGE}>">
-                &nbsp;<input class="ui-button" type="button" value="<{$smarty.const._CANCEL}>" onclick="javascript:history.go(-1)">
+                &nbsp;
             </td>
         </tr>
         </tfoot>
@@ -52,5 +72,3 @@
 </form>
 
 <{include file="$template_path/bulletin_footer.html"}>
-
-<{/strip}>

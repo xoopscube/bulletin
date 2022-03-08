@@ -1,8 +1,22 @@
-<{strip}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+
+<h2><{$smarty.const._AM_TOPIC}></h2>
+
 
 <div layout="row center-justify" class="control-action">
     <div>
-        <h3><{$smarty.const._AM_ADDMTOPIC}></h3>
+    <{if $topics_exists}>
+
+        <form method="get" action="index.php">
+        <{$smarty.const._AM_MODIFY}> <{$topicselbox2}>
+
+        <{$gticket_hidden}>
+        <input type="hidden" name="op" value="modTopic">
+        <input type="hidden" name="mode" value="admin">
+        <input class="ui-button" type="submit" value="<{$smarty.const._AM_MODIFYTOPIC}>">
+        </form>
+        <{/if}>
     </div>
     <div class="control-view">
         <button class="help-admin ui-btn" type="button" data-id="4" data-module="<{$mydirname}>"
@@ -13,23 +27,24 @@
 </div>
 
 
+<h3><{$smarty.const._AM_ADDMTOPIC}></h3>
 <form method="post" action="index.php?mode=admin">
-    <table class="outer" width="100%">
+    <table class="outer">
         <tbody>
         <tr>
-            <td class="head" width="100"><{$smarty.const._AM_TOPICNAME}></td>
-            <td class="even">
+            <td><{$smarty.const._AM_TOPICNAME}></td>
+            <td>
                 <input type="text" name="topic_title" size="20" maxlength="40">
                 <{$smarty.const._AM_MAX40CHAR}>
             </td>
         </tr>
         <tr>
-            <td class="head"><{$smarty.const._AM_PARENTTOPIC}></td>
-            <td class="even"><{$topicselbox}></td>
+            <td><{$smarty.const._AM_PARENTTOPIC}></td>
+            <td><{$topicselbox}></td>
         </tr>
         <tr>
-            <td class="head"><{$smarty.const._AM_TOPICIMG}></td>
-            <td class="even">
+            <td><{$smarty.const._AM_TOPICIMG}></td>
+            <td>
                 <select size="1" name="topic_imgurl" id="topic_imgurl"
                         onchange='showImgSelected("topicimage", "topic_imgurl", "<{$imagebase}>", "", "<{$imagedirname}>")'>
                     <option value="">------</option>
@@ -56,34 +71,4 @@
     </table>
 </form>
 
-<hr>
-
-<{if $topics_exists}>
-
-<h3><{$smarty.const._AM_MODIFYTOPIC}></h3>
-
-<form method="get" action="index.php">
-    <table class="outer" cellspacing="1" width="100%">
-        <tbody>
-        <tr>
-            <td class="head" width="100"><{$smarty.const._AM_TOPIC}></td>
-            <td class="even"><{$topicselbox2}></td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-            <td colspan="2">
-                <{$gticket_hidden}>
-                <input type="hidden" name="op" value="modTopic">
-                <input type="hidden" name="mode" value="admin">
-                <input class="ui-button" type="submit" value="<{$smarty.const._AM_MODIFY}>">
-            </td>
-        </tr>
-        </tfoot>
-    </table>
-</form>
-<{/if}>
-
 <{include file="$template_path/bulletin_footer.html"}>
-
-<{/strip}>

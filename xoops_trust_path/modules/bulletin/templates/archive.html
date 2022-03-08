@@ -1,8 +1,11 @@
-<{strip}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
 
 <{include file="db:`$mydirname`_head.html"}>
 
+
 <h2><{$smarty.const._MD_NEWSARCHIVES}></h2>
+
 
 <table class="outer">
 
@@ -25,7 +28,9 @@
 
 </table>
 
+
 <br>
+
 
 <{if $show_articles == true}>
 
@@ -42,7 +47,6 @@
         <th style="text-align:center;"><{$smarty.const._MD_DATE}></th>
     </tr>
     </thead>
-
     <tbody>
     <{foreach item=story from=$stories}>
     <tr class="<{cycle values=" even, odd"}>">
@@ -50,7 +54,6 @@
         <a href="<{$mydirurl}>/index.php?storytopic=<{$story.topicid}>" title="<{$story.topic}>">
         <{$story.topic}></a> : <a href="<{$mydirurl}>/index.php?page=article&amp;storyid=<{$story.id}>" title="<{$story.title}>"><{$story.title}></a>
     </td>
-
     <{if $disp_print_icon or $disp_tell_icon}>
     <td style="text-align:center;">
         <{if $disp_print_icon}>
@@ -68,7 +71,6 @@
         <{/if}>
     </td>
     <{/if}>
-
     <td style="text-align:center;"><{$story.counter}></td>
     <td style="text-align:center;"><{$story.date}></td>
     </tr>
@@ -76,8 +78,6 @@
     </tbody>
 </table>
 
-
-
 <{/if}>
 
-<{/strip}>
+

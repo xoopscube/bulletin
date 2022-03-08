@@ -1,28 +1,18 @@
 <div class="ui-dev-mode"><{$smarty.template}></div>
 
+
 <{include file="db:`$mydirname`_head.html"}>
 
-<{if $displaynav == true}>
-<div style="text-align: center;">
-    <form name="form1" action="<{$mydirurl}>/index.php" method="get">
-        <{$topic_select}>&nbsp;
-        <{assign var=storynum_options value=","|explode:"5,10,15,20,30"}>
-        <select name="storynum">
-            <{html_options selected=$smarty.get.storynum values=$storynum_options output=$storynum_options}>
-        </select>&nbsp;
-        <input class="ui-button" type="submit" value="<{$smarty.const._GO}>">
-    </form>
-</div>
-<{/if}>
 
-<!-- start news item loop -->
+<{* ----- ARTICLE LOOP ----- *}>
 <{section name=i loop=$stories}>
+<article layout="column mb-7">
 <{include file="db:`$mydirname`_item.html" story=$stories[i]}>
+</article>
 <hr>
 <{/section}>
-<!-- end news item loop -->
+
 
 <div class="pagenavi"><{$pagenav}></div>
 
-<hr>
 <{include file='db:legacy_notification_select.html'}>

@@ -118,9 +118,9 @@
         <{/if}>
 
         <{if $use_relation}>
-        <tr align="left" valign="top">
+        <tr>
             <td class="head"><{$smarty.const._MD_RELATION}></td>
-            <td class="even">
+            <td>
                 <div id="relation">
                     <{foreach item=i from=$relations}>
                     <input type="checkbox" name="storyidR[]" value="<{$i.linkedid}>">
@@ -138,39 +138,39 @@
         </tr>
         <{/if}>
 
-        <tr align="left" valign="top">
+        <tr>
             <td class="head"><{$smarty.const._OPTIONS}></td>
-            <td class="even">
+            <td>
                 <{if $use_notify}>
-                <label><input type="checkbox" value="1" name="notifypub" <{if $notifypub}>checked="checked"<{/if}> />
-                    <{$smarty.const._MD_NOTIFYPUBLISH}></label><br/>
+                <label><input type="checkbox" value="1" name="notifypub" <{if $notifypub}>checked="checked"<{/if}>>
+                    <{$smarty.const._MD_NOTIFYPUBLISH}></label><br>
                 <{/if}>
                 <{if $use_html}>
-                <label><input type="checkbox" value="1" name="html" <{if $html}>checked="checked"<{/if}> />
-                    <{$smarty.const._MD_USE_HTML}></label><br/>
+                <label><input type="checkbox" value="1" name="html" <{if $html}>checked="checked"<{/if}>>
+                    <{$smarty.const._MD_USE_HTML}></label><br>
                 <{/if}>
-                <label><input type="checkbox" value="1" name="br" <{if $br}>checked="checked"<{/if}> />
-                    <{$smarty.const._MD_USE_BR}></label><br/>
-                <label><input type="checkbox" value="1" name="smiley" <{if $smiley}>checked="checked"<{/if}> />
-                    <{$smarty.const._MD_USE_SMILEY}></label><br/>
-                <label><input type="checkbox" value="1" name="xcode" <{if $xcode}>checked="checked"<{/if}> />
-                    <{$smarty.const._MD_USE_XCODE}></label><br/>
-                <label><input type="checkbox" value="1" name="block" <{if $block}>checked="checked"<{/if}> />
-                    <{$smarty.const._MD_DISP_BLOCK}></label><br/>
-                <label><input type="checkbox" value="1" name="ihome" <{if $ihome}>checked="checked"<{/if}> />
-                    <{$smarty.const._MD_PUBINHOME}></label><br/>
+                <label><input type="checkbox" value="1" name="br" <{if $br}>checked="checked"<{/if}>>
+                    <{$smarty.const._MD_USE_BR}></label><br>
+                <label><input type="checkbox" value="1" name="smiley" <{if $smiley}>checked="checked"<{/if}>>
+                    <{$smarty.const._MD_USE_SMILEY}></label><br>
+                <label><input type="checkbox" value="1" name="xcode" <{if $xcode}>checked="checked"<{/if}>>
+                    <{$smarty.const._MD_USE_XCODE}></label><br>
+                <label><input type="checkbox" value="1" name="block" <{if $block}>checked="checked"<{/if}>>
+                    <{$smarty.const._MD_DISP_BLOCK}></label><br>
+                <label><input type="checkbox" value="1" name="ihome" <{if $ihome}>checked="checked"<{/if}>>
+                    <{$smarty.const._MD_PUBINHOME}></label><br>
                 <{if $use_approve}>
-                <label><input type="checkbox" value="1" name="approve" <{if $approve}>checked="checked"<{/if}> />
-                    <{$smarty.const._MD_APPROVE}></label><br/>
+                <label><input type="checkbox" value="1" name="approve" <{if $approve}>checked="checked"<{/if}>>
+                    <{$smarty.const._MD_APPROVE}></label><br>
                 <{/if}>
             </td>
         </tr>
         </tbody>
 
         <tfoot>
-        <tr align="left" valign="top">
-            <td class="head">&nbsp;</td>
-            <td class="even">
+        <tr>
+            <td>&nbsp;</td>
+            <td>
                 <input class="ui-button" name="preview" id="preview" value="<{$smarty.const._PREVIEW}>" type="submit">&nbsp;
                 <input class="ui-button" name="post" id="post" value="<{$smarty.const._MD_POST}>" type="submit">
             </td>
