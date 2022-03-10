@@ -88,7 +88,7 @@ $modversion['blocks'][$i]['template']    = "{$mydirname}_block_comments.html";
 
 // Menu
 $modversion['hasMain'] = 1;
-$modversion['read_any'] = true ; // nonsense for other than XCL2.1
+$modversion['read_any'] = true ; // XCL2.1
 $modversion['sub'][1]['name'] = constant($constpref.'_SMNAME1');
 $modversion['sub'][1]['url']  = 'index.php?page=submit';
 $modversion['sub'][2]['name'] = constant($constpref.'_SMNAME2');

@@ -24,7 +24,8 @@ require_once dirname(__FILE__, 2) .'/class/bulletinTopic.php';
 // Template
 $tpl = new XoopsTpl();
 // Determine the operation
-$op = isset($_REQUEST['op']) ? $_REQUEST['op'] : 'default';
+//$op = isset($_REQUEST['op']) ? $_REQUEST['op'] : 'default';
+$op = $_REQUEST['op'] ?? 'default';
 // Ticket confirmation
 if ($op == 'preview' || $op == 'save') {
 	if (!XoopsMultiTokenHandler::quickValidate('news_admin_submit')) {

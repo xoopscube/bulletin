@@ -8,13 +8,12 @@
 
 
 <table class="outer">
-
     <{foreach item=year from=$years}>
     <tr>
         <td class="head"><{$year.string}></td>
         <{foreach item=month from=$year.months}>
         <{if $month.current}>
-        <td class="even" style="text-align:center;background-color:#fcc;color:#0000ff;"><b><{$month.string}></b></td>
+        <td class="even" style="text-align:center;background-color:var(--button-bg-on);color:var(--button-color-on);;"><b><{$month.string}></b></td>
         <{elseif $month.link}>
         <td class="even" style="text-align:center;">
             <a href="<{$mydirurl}>/index.php?page=archive&amp;year=<{$year.number}>&month=<{$month.number}>" title="<{$month.string}>" style="text-decoration:underline;"><{$month.string}></a>
@@ -25,7 +24,6 @@
         <{/foreach}>
     </tr>
     <{/foreach}>
-
 </table>
 
 

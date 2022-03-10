@@ -1,13 +1,32 @@
 <div class="ui-dev-mode"><{$smarty.template}></div>
 
+<{* ----- BREADCRUMBS ----- *}>
+<ul class="breadcrumb" aria-label="breadcrumb">
+    <li title="<{$smarty.const._MB_LEGACY_HOME}> : <{$smarty.const._YOURHOME}>">
+        <a href="<{$xoops_url}>/"><img class="svg home" src="<{$xoops_url}>/images/icons/home.svg" width="1em" height="1em" alt="home"></a>
+    </li>
+    <{if !empty($xoops_breadcrumbs)}>
+    <{foreach name=breadcrumbs item=item from=$xoops_breadcrumbs}>
+        <{if $item.url}>
+            <li><a href="<{$item.url}>"><{$item.name|xoops_escape}></a></li>
+        <{else}>
+            <li aria-current="page"><{$item.name|xoops_escape}>
+        <{/if}>
+    <{/foreach}>
+    <{/if}>
+</ul>
+
+
 <{if $error}>
-<div class="errorMsg"><{$error}></div>
+    <div class="errorMsg"><{$error}></div>
 <{/if}>
 
+
 <{if $preview.title}>
-<h2><{$preview.title}></h2>
-<div><{$preview.hometext}></div>
+    <h2><{$preview.title}></h2>
+    <div><{$preview.hometext}></div>
 <{/if}>
+
 
 <h2><{$smarty.const._MD_SUBMITNEWS}></h2>
 
@@ -18,25 +37,23 @@
     <{if $storyid}><input type="hidden" name="storyid" value="<{$storyid}>"><{/if}>
     <{if $return}><input type="hidden" name="return" value="<{$return}>"><{/if}>
 
-    <table class="outer" cellspacing="1" width="100%">
-        <thead>
-        <tr align="left" valign="top">
-            <td class="head"><{$smarty.const._MD_POSTEDBY}></td>
-            <td class="even"><{$poster}></td>
-        </tr>
-        </thead>
+    <table class="outer">
         <tbody>
-        <tr align="left" valign="top">
-            <td class="head"><{$smarty.const._MD_TITLE}></td>
-            <td class="even"><input type="text" name="title" value="<{$title}>" size="50" maxlength="80"/></td>
+        <tr>
+            <td><{$smarty.const._MD_POSTEDBY}></td>
+            <td><{$poster}></td>
         </tr>
-        <tr align="left" valign="top">
-            <td class="head"><{$smarty.const._MD_TOPIC}></td>
-            <td class="even"><{$topic_selbox}></td>
+        <tr>
+            <td><{$smarty.const._MD_TITLE}></td>
+            <td><input type="text" name="title" value="<{$title}>" size="50" maxlength="80"/></td>
         </tr>
-        <tr align="left" valign="top">
-            <td class="head"><{$smarty.const._MD_TOPIC_IMAGE}></td>
-            <td class="even">
+        <tr>
+            <td><{$smarty.const._MD_TOPIC}></td>
+            <td><{$topic_selbox}></td>
+        </tr>
+        <tr>
+            <td><{$smarty.const._MD_TOPIC_IMAGE}></td>
+            <td>
                 <select name="topicimg">
                     <option value="1" <{if $topicimg==1}> selected="selected"<{/if}>><{$smarty.const._MD_TOPIC_RIGHT}></option>
                     <option value="2" <{if $topicimg==2}> selected="selected"<{/if}>><{$smarty.const._MD_TOPIC_LEFT}></option>
@@ -44,9 +61,9 @@
                 </select>
             </td>
         </tr>
-        <tr align="left" valign="top">
-            <td class="head"><{$smarty.const._MD_THESCOOP}></td>
-            <td class="even">
+        <tr>
+            <td><{$smarty.const._MD_THESCOOP}></td>
+            <td>
                 <{if $use_fckeditor}>
                 <label><input type="checkbox" name="using_fck" checked="checked"
                               onclick="var td=xoopsGetElementById('area_dhtmltarea');var tf=xoopsGetElementById('area_fckxoops');if(this.checked){tf.style.display='block';td.style.display='none';}else{td.style.display='block';tf.style.display='none';};"/><{$smarty.const._MD_FCKXOOPS_ONOFF}></label>
@@ -97,22 +114,22 @@
         </tr>
 
         <{if $can_use_date}>
-        <tr align="left" valign="top">
+        <tr>
             <td class="head"><{$smarty.const._MD_PUBLISHED}></td>
             <td class="even">
-                <label><input type="checkbox" value="1" name="autodate" <{if $autodate}>checked="checked"<{/if}> /><{$smarty.const._MD_SETDATETIME}></label>&nbsp;
-                <span style="font-size:0.8em;"><{$smarty.const._MD_SETDATETIME_DESC}></span>
-                <br>
-                <{$post_date_selector}>
+                <p><label><input type="checkbox" value="1" name="autodate" <{if $autodate}>checked="checked"<{/if}>> <{$smarty.const._MD_SETDATETIME}></label>&nbsp;
+                <small><{$smarty.const._MD_SETDATETIME_DESC}></small>
+                </p>
+                <p><{$post_date_selector}></p>
             </td>
         </tr>
-        <tr align="left" valign="top">
-            <td class="head"><{$smarty.const._MD_EXPIRED}></td>
-            <td class="even">
-                <label><input type="checkbox" value="1" name="autoexpdate" <{if $autoexpdate}>checked="checked"<{/if}> /><{$smarty.const._MD_SETEXPDATETIME}></label>&nbsp;
-                <span style="font-size:0.8em;"><{$smarty.const._MD_SETEXPDATETIME_DESC}></span>
-                <br/>
-                <{$expire_date_selector}>
+        <tr>
+            <td><{$smarty.const._MD_EXPIRED}></td>
+            <td>
+                <p><label><input type="checkbox" value="1" name="autoexpdate" <{if $autoexpdate}>checked="checked"<{/if}>> <{$smarty.const._MD_SETEXPDATETIME}></label>&nbsp;
+                <small><{$smarty.const._MD_SETEXPDATETIME_DESC}></small>
+                </p>
+                <p><{$expire_date_selector}></p>
             </td>
         </tr>
         <{/if}>
@@ -130,9 +147,11 @@
                     <{$i.title}><br>
                     <{/foreach}>
                 </div>
+
                 <input type="button" value="<{$smarty.const._MD_ADD_RELATION}>" name="opensub"
                        onclick="window.open('index.php?page=search','sub','width=400,height=500');">
-                <input type="button" value="<{$smarty.const._DELETE}>" name="updatevar"
+
+                <input class="button-delete" type="button" value="<{$smarty.const._DELETE}>" name="updatevar"
                        onclick="updateRelations('storyform', false)">
             </td>
         </tr>
@@ -172,14 +191,14 @@
             <td>&nbsp;</td>
             <td>
                 <input class="ui-button" name="preview" id="preview" value="<{$smarty.const._PREVIEW}>" type="submit">&nbsp;
-                <input class="ui-button" name="post" id="post" value="<{$smarty.const._MD_POST}>" type="submit">
+                <input class="ui-button" name="post" id="post" value="<{$smarty.const._MD_GO}>" type="submit">
             </td>
         </tr>
         </tfoot>
     </table>
 </form>
 
-<!-- Start Form Vaidation JavaScript //-->
+
 <script type="text/javascript">
     function xoopsFormValidate_storyform() {
         myform = window.document.storyform;
@@ -196,4 +215,3 @@
         return true;
     }
 </script>
-<!-- End Form Vaidation JavaScript //-->

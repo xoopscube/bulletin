@@ -7,7 +7,9 @@ xoops_header(false);
 <script type="text/javascript" src="<?php echo $mydirurl; ?>/index.php?page=javascript"></script>
 </head>
 <body>
+
 <?php
+
 require_once(XOOPS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/search.php');
 
 $groups = is_object($xoopsUser) ? $xoopsUser -> getGroups() : XOOPS_GROUP_ANONYMOUS;
@@ -40,8 +42,10 @@ $mytrustdirname = $my_true_trustdirname;
 
 $query = isset($_GET['query']) ? $myts->stripslashesGPC($_GET['query']) : '';
 $andor = isset($_GET['andor']) ? $myts->stripslashesGPC($_GET['andor']) : '';
-$mids = isset($_GET['mids']) ? $_GET['mids'] : $modules_mid ;
-$action = isset($_GET['action']) ? $_GET['action'] : '';
+//$mids = isset($_GET['mids']) ? $_GET['mids'] : $modules_mid ;
+$mids = $_GET['mids'] ?? $modules_mid;
+//$action = isset($_GET['action']) ? $_GET['action'] : '';
+$action = $_GET['action'] ?? '';
 $showall = isset($_GET['showall']) ? intval($_GET['showall']) : 0;
 
 if ( $andor != "OR" && $andor != "exact" && $andor != "AND" ) {
@@ -49,7 +53,7 @@ if ( $andor != "OR" && $andor != "exact" && $andor != "AND" ) {
 }
 
 if ( $andor != "exact" ) {
-	$ignored_queries = array(); // holds kewords that are shorter than allowed minmum length
+	$ignored_queries = array(); // holds keywords that are shorter than allowed minimum length
 	$temp_queries = preg_split('/[\s,]+/', mb_convert_kana($query, 's'));
 	foreach ($temp_queries as $q) {
 		$queries[] = addSlashes(trim($q));
@@ -59,7 +63,7 @@ if ( $andor != "exact" ) {
 }
 
 include_once XOOPS_ROOT_PATH."/class/xoopsformloader.php";
-// create form
+// create form table
 $search_form = new XoopsThemeForm(_SR_SEARCH, "search", "index.php", 'get');
 $search_form->addElement(new XoopsFormText(_SR_KEYWORDS, "query", 30, 191, htmlspecialchars(stripslashes(implode(" ", $queries)), ENT_QUOTES)), true);
 $type_select = new XoopsFormSelect(_SR_TYPE, "andor", $andor);
@@ -74,7 +78,7 @@ $search_form->addElement(new XoopsFormButton("", "submit", _SR_SEARCH, "submit")
 $search_form->display();
 
 if($action == 'results' ){
-	echo '<div style="font-size:small">';
+	echo '<div layout="column">';
 	echo "<h3>"._SR_SEARCHRESULTS."</h3>";
 	echo _SR_KEYWORDS.':';
 	if ($andor != 'exact') {
@@ -94,7 +98,7 @@ if($action == 'results' ){
 		$mid = intval($mid);
 		if ( in_array($mid, $modules_mid) ) {
 			$sql = "SELECT storyid, title, published FROM ".$xoopsDB->prefix( $modules_dir[$mid].'_stories' )." WHERE type > 0 AND published > 0 AND published <= $time AND (expired = 0 OR expired > $time)";
-//ver3.0
+            //ver3.0
 			$gperm =& BulletinGP::getInstance($modules_dir[$mid]) ;
 			$can_read_topic_ids = $gperm->makeOnTopics('can_read');
 			$sql .= " AND topicid IN (".implode(',',$can_read_topic_ids).")";
@@ -112,21 +116,21 @@ if($action == 'results' ){
 			$result = $xoopsDB->query($sql, ($showall > 0 )?0:5, 0);
 
 			$count = 0;
-			echo '<div>';
+			echo '<div layout="column">';
 			echo "<h4>".$myts->makeTboxData4Show($modules_name[$mid])."</h4>";
 			while( $story = $xoopsDB->fetchArray($result)){
-				echo '<input type="checkbox" name="storyidR[]" value="'.$story['storyid'].'" /> ';
-				echo '<input type="hidden" name="titleR[]" value="'.htmlspecialchars($story['title']).'" /> ';
-				echo '<input type="hidden" name="dirnameR[]" value="'.htmlspecialchars($modules_dir[$mid]).'" /> ';
+				echo '<input type="checkbox" name="storyidR[]" value="'.$story['storyid'].'"> ';
+				echo '<input type="hidden" name="titleR[]" value="'.htmlspecialchars($story['title']).'"/> ';
+				echo '<input type="hidden" name="dirnameR[]" value="'.htmlspecialchars($modules_dir[$mid]).'"/> ';
 				echo '<a href="'.XOOPS_URL.'/modules/'.htmlspecialchars($modules_dir[$mid]).'/index.php?page=article&amp;storyid='.$story['storyid'].'" target="_blank">'.htmlspecialchars($story['title']).'</a>';
 				echo '('.formatTimestamp($story['published']). ')';
-				echo '<br />';
+				echo '<br>';
 				$count++;
 			}
 			if ( $count == 5 && $showall == 0) {
 				$search_url = 'index.php?query='.urlencode(stripslashes(implode(' ', $queries)));
 				$search_url .= "&page=search&action=results&mids[]=$mid&showall=1&andor=$andor";
-				echo '<br /><a href="'.htmlspecialchars($search_url).'">'._SR_SHOWALLR.'</a></p>';
+				echo '<br><a href="'.htmlspecialchars($search_url).'">'._SR_SHOWALLR.'</a>';
 			}elseif( $count == 0 ){
 				echo _SR_NOMATCH;
 			}
@@ -136,7 +140,7 @@ if($action == 'results' ){
 	}
 	echo '</form>';
 	echo '</div>';
-	echo '<input type="button" onClick="submitRelations(\'stories\', true)" value="'._MD_CHECKED_AS_RELATION.'" />';
+	echo '<input type="button" onClick="submitRelations(\'stories\', true)" value="'._MD_CHECKED_AS_RELATION.'">';
 
 }
 echo '</body>';

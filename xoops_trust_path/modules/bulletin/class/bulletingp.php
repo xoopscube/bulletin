@@ -27,10 +27,13 @@ class BulletinGP{
 	}
 
 	function getTopicPermission($topic_id){
-		if ( isset($this->topicPermissions[$topic_id]) )
-			return $this->topicPermissions[$topic_id];
-		else
-			return NULL;
+//        if ( isset($this->topicPermissions[$topic_id]) ) {
+//            return $this->topicPermissions[$topic_id];
+//        }
+//        else {
+//            return NULL;
+//        }
+        return $this->topicPermissions[$topic_id] ?? NULL;
 	}
 
 	function checkRight($gperm_name, $gperm_itemid, $gperm_groupid, $gperm_modid = 1)

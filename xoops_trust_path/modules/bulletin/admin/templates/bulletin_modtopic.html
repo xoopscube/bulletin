@@ -9,7 +9,7 @@
         &nbsp;
     </div>
     <div class="control-view">
-        <a href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;storyid=<{$i.storyid}>">
+        <a class="ui-button" href="<{$mydirurl}>/index.php?page=submit&amp;return=1&amp;storyid=<{$i.storyid}>"><{$smarty.const._MD_SUBMITNEWS}></a>
         <button class="help-admin ui-btn" type="button" data-id="4" data-module="<{$mydirname}>"
                 data-help-article="#help-bulletin-category" title="Get Started">
             <span class="ui-icon ui-icon-help"></span>
@@ -63,8 +63,7 @@
                 <input class="ui-button" type="submit" value="<{$smarty.const._CANCEL}>" onclick="javascript:history.go(-1)">
                 <input class="ui-button button-delete" type="submit" value="<{$smarty.const._DELETE}>"
                        onclick="location='index.php?mode=admin&amp;topic_pid=<{$topic_pid}>&amp;topic_id=<{$topic_id}>&amp;op=delTopic'">
-                &nbsp;<input class="ui-button" type="submit" value="<{$smarty.const._AM_SAVECHANGE}>">
-                &nbsp;
+                <input class="ui-button" type="submit" value="<{$smarty.const._AM_SAVECHANGE}>">
             </td>
         </tr>
         </tfoot>
