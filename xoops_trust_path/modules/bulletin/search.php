@@ -40,11 +40,12 @@ if( ! function_exists( 'bulletin_search_base' ) ) {
         $result = $xoopsDB->query($sql,$limit,$offset);
         $ret = array();
         $i = 0;
+        $icon = 'file-edit.svg'; // XOOPS_URL .'/images/icons/
 
         (method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance();
 
         while($myrow = $xoopsDB->fetchArray($result)){
-            $ret[$i]['image'] = 'images/forum.gif';
+            $ret[$i]['image'] = $icon;
             $ret[$i]['link']  = 'index.php?page=article&amp;storyid='.$myrow['storyid'];
             $ret[$i]['title'] = $myrow['title'];
             $ret[$i]['time']  = $myrow['published'];

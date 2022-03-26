@@ -220,7 +220,7 @@ function b_bulletin_category_new_show($options) {
 
 function b_bulletin_category_new_edit($options) {
 
-	$mydirname = empty( $options[0] ) ? basename( dirname( dirname( __FILE__ ) ) ) : $options[0] ;
+	$mydirname = empty( $options[0] ) ? basename(dirname(__FILE__, 2)) : $options[0] ;
 	if( preg_match( '/[^0-9a-zA-Z_-]/' , $mydirname ) ) die( 'Invalid mydirname' ) ;
 	$selected_order = empty( $options[1] ) || ! in_array( $options[1] , b_bulletin_category_new_allowed_order() ) ? 'published DESC' : $options[1] ;
 

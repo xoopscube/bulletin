@@ -38,11 +38,12 @@
             <a class="ui-button" href="<{$mydirurl}>/index.php?page=archive" title="<{$smarty.const._MD_ARCHIVES}>"><{$smarty.const._MD_ARCHIVES}></a>
         </div>
         <div self="mr-0 sm-full">
-            <{if $storytopic}>
-            <a class="ui-button" href="<{$mydirurl}>/index.php?page=submit&amp;topicid=<{$storytopic}>" title="<{$smarty.const._MD_SUBMITNEWS}>"><{$storytopic_title}></a>
-            <{/if}>
-            <{if $can_post}>
-            <a  class="ui-button" href="<{$mydirurl}>/index.php?page=submit" title="<{$smarty.const._MD_SUBMITNEWS}>"><{$smarty.const._MD_SUBMITNEWS}></a>
+            <{if $can_post && $storytopic}>
+            <a class="ui-button" href="<{$mydirurl}>/index.php?page=submit&amp;topicid=<{$storytopic}>" title="<{$smarty.const._MD_SUBMITNEWS}>">
+                <{$smarty.const._MD_SUBMITNEWS}> <span class="badge"><{$storytopic_title}></span>
+            </a>
+            <{elseif $can_post}>
+            <a class="ui-button" href="<{$mydirurl}>/index.php?page=submit" title="<{$smarty.const._MD_SUBMITNEWS}>"><{$smarty.const._MD_SUBMITNEWS}></a>
             <{/if}>
         </div>
     </div>

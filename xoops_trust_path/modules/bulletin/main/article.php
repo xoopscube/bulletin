@@ -43,12 +43,12 @@ if ( $bodytext != '' ) {
 		$xoopsTpl->assign('pagenav', $pagenav->renderNav());
 
 		if ($storypage == 0) {
-			$story['text'] = $story['text'].'<br /><br />'.$articletext[$storypage];
+			$story['text'] = $story['text'].'<br><br>'.$articletext[$storypage];
 		} else {
 			$story['text'] = $articletext[$storypage];
 		}
 	} else {
-		$story['text'] = $story['text'].'<br /><br />'.$bodytext;
+		$story['text'] = $story['text'].'<br><br>'.$bodytext;
 	}
 }
 
