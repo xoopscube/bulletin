@@ -1,11 +1,12 @@
 <?php
+
 class BulletinGP{
 	var $topicPermissions;
 	var $mydirname;
 	var $table_topic_access = '' ;
 	var $gpermission;
 
-	function BulletinGP($mydirname){
+	function __construct($mydirname){
 		$this->db =& Database::getInstance();
 		$this->table_topic_access = $this->db->prefix($mydirname."_topic_access") ;
 
@@ -21,20 +22,23 @@ class BulletinGP{
 		if (!isset($instance)) {
 			$instance = new BulletinGP($mydirname);
 		}
-		$instance->BulletinGP($mydirname);
+		$instance->__construct($mydirname);
 		return $instance;
 	}
 
 	function getTopicPermission($topic_id){
-		if ( isset($this->topicPermissions[$topic_id]) )
-			return $this->topicPermissions[$topic_id];
-		else
-			return NULL;
+//        if ( isset($this->topicPermissions[$topic_id]) ) {
+//            return $this->topicPermissions[$topic_id];
+//        }
+//        else {
+//            return NULL;
+//        }
+        return $this->topicPermissions[$topic_id] ?? NULL;
 	}
 
 	function checkRight($gperm_name, $gperm_itemid, $gperm_groupid, $gperm_modid = 1)
 	{
-//ver3.0 by domifara
+        //ver3.0 by domifara
 		if (isset($this->gpermission[$gperm_name])
 		 && isset($this->gpermission[$gperm_name][$gperm_itemid])
 		 && isset($this->gpermission[$gperm_name][$gperm_itemid][serialize($gperm_groupid)])
@@ -108,11 +112,6 @@ class BulletinGP{
 		$module = $module_handler->getByDirname($this->mydirname);
 		$mid = $module->mid();
 
-//		$groups = array();
-//		$rs = $db->query( "SELECT gperm_groupid FROM ".$db->prefix('group_permission')." WHERE  gperm_itemid='$mid' AND gperm_name='module_admin'" ) ;
-//		while( list( $id ) = $db->fetchRow( $rs ) ) {
-//			$groups[] = $id ;
-//		}
 		$gperm_name = 'module_admin';
 		$gperm_handler = & xoops_gethandler( 'groupperm' );
 		$groups = $gperm_handler->getGroupIds( $gperm_name, $mid) ;
@@ -244,7 +243,7 @@ class BulletinGP{
 				//your aritcle
 				if ($topic_uid === $xoopsUser->uid()){
 					//TODO if user,one day(86400) limit
-					if ($can_edit_day !=0 && $published < (time() - (86400 * float($can_edit_day))) ){
+					if ($can_edit_day !=0 && $published < (time() - (86400 * floatval($can_edit_day))) ){
 						$topic_perm['can_edit'] = 0;
 						$topic_perm['can_delete'] = 0;
 					}
@@ -418,4 +417,3 @@ class BulletinGP{
 	}
 
 }
-?>

@@ -10,14 +10,14 @@ class XoopsGTicket {
 	var $_latest_token = '' ;
 	var $messages = array() ;
 
-	function XoopsGTicket()
+	function __construct()
 	{
 		global $xoopsConfig ;
 
 		// language file
 		if( defined( 'XOOPS_ROOT_PATH' ) && ! empty( $xoopsConfig['language'] ) && ! strstr( $xoopsConfig['language'] , '/' ) ) {
-			if( file_exists( dirname( dirname( __FILE__ ) ) . '/language/' . $xoopsConfig['language'] . '/gticket_messages.phtml' ) ) {
-				include dirname( dirname( __FILE__ ) ) . '/language/' . $xoopsConfig['language'] . '/gticket_messages.phtml' ;
+			if( file_exists( dirname(__FILE__, 2) . '/language/' . $xoopsConfig['language'] . '/gticket_messages.phtml' ) ) {
+				include dirname(__FILE__, 2) . '/language/' . $xoopsConfig['language'] . '/gticket_messages.phtml' ;
 			}
 		}
 
@@ -29,7 +29,7 @@ class XoopsGTicket {
 			'err_nopair' => 'No valid ticket-stub pair found' ,
 			'err_timeout' => 'Time out' ,
 			'err_areaorref' => 'Invalid area or referer' ,
-			'fmt_prompt4repost' => 'error(s) found:<br /><span style="background-color:red;font-weight:bold;color:white;">%s</span><br />Confirm it.<br />And do you want to post again?' ,
+			'fmt_prompt4repost' => 'error(s) found:<br><span style="background-color:red;font-weight:bold;color:white;">%s</span><br>Confirm it.<br>And do you want to post again?' ,
 			'btn_repost' => 'repost' ,
 		) ;
 	}
@@ -68,7 +68,7 @@ class XoopsGTicket {
 	function issue( $salt = '' , $timeout = 1800 , $area = '' )
 	{
 		global $xoopsModule ;
-	
+
 		// create a token
 		list( $usec , $sec ) = explode( " " , microtime() ) ;
 		$appendix_salt = empty( $_SERVER['PATH'] ) ? XOOPS_DB_NAME : $_SERVER['PATH'] ;
@@ -103,7 +103,11 @@ class XoopsGTicket {
 	}
 
 	// check a ticket
-	function check( $post = true , $area = '' , $allow_repost = true )
+
+    /**
+     * @throws Exception
+     */
+    function check($post = true , $area = '' , $allow_repost = true )
 	{
 		global $xoopsModule ;
 
@@ -123,7 +127,7 @@ class XoopsGTicket {
 			$this->_errors[] = $this->messages['err_noticket'] ;
 		}
 
-		// gargage collection & find a right stub
+		// data collection & find a right stub
 		$stubs_tmp = $_SESSION['XOOPS_G_STUBS'] ;
 		$_SESSION['XOOPS_G_STUBS'] = array() ;
 		foreach( $stubs_tmp as $stub ) {
@@ -191,7 +195,7 @@ class XoopsGTicket {
 			restore_error_handler() ;
 			exit ;
 		}
-	
+
 		error_reporting( 0 ) ;
 		while( ob_get_level() ) ob_end_clean() ;
 
@@ -308,6 +312,3 @@ function admin_refcheck($chkref = "") {
 }
 
 }
-
-
-?>

@@ -1,5 +1,6 @@
 <?php
-// Not have perm
+
+// NO PERMISSIONS
 if (!$gperm->group_perm(1)) {
 	die(_NOPERM);
 	exit();
@@ -13,7 +14,7 @@ $op = isset($_GET['op']) && $_GET['op'] == 'delete' ? 'delete' : $op;
 $errors = array();
 
 // Ticket function loading
-require_once dirname(dirname(__FILE__))."/include/gtickets.php";
+require_once dirname(__FILE__, 2) ."/include/gtickets.php";
 if ( !empty($_POST['preview']) ) {
 	if ( ! $xoopsGTicket->check() ) {
 		$errors['ticket'] = 'Ticket Error';
@@ -63,7 +64,7 @@ if ($storyid) {
 // In case of No Topic
 $BTopic = new BulletinTopic( $mydirname, $topicid );
 
-// Check topic exists
+// Check if topic exists
 if( !$BTopic->BTtopicExists() ){
 	die(_MD_NO_TOPICS);
 	exit;
@@ -93,7 +94,8 @@ $xoopsTpl->assign('topic_title', $BTopic->topic_title());
 // topic id request
 if( isset( $_GET['topicid'] ) && $_SERVER['REQUEST_METHOD'] === 'GET') $story->setVar('topicid', $topicid);
 
-// Chanege the WSYWIG editor
+
+// Change the WYSIWYG editor
 if( ! empty( $_REQUEST['using_fck'] ) ) {
 	$_POST['text'] = $_POST['text_fck'] ;
 }
@@ -135,6 +137,7 @@ if( $gperm->group_perm(7) && $bulletin_use_relations ){
 		$relations = array();
 	}
 }
+
 //new story
 if( empty( $storyid ) ){
 	// If you do not have HTML permission to OFF
@@ -193,11 +196,11 @@ if( $op == 'post' ){
 		if( $gperm->group_perm(2) ){
 			$story->setVar('type', $story->getVar('approve') ); // GIJ
 			$approved = $story->getVar('approve');
-		}else{
+		} else {
 			if( $gperm->proceed4topic("post_auto_approved",$topicid)){
 				$story->setVar('type', 1);
 				$approved = 1;
-			}else{
+			} else {
 				$story->setVar('type', 0);
 				$approved = 0;
 			}
@@ -209,7 +212,7 @@ if( $op == 'post' ){
 			$offset  = $xoopsUser->timezone() - $xoopsConfig['server_TZ'];
 			$pubdate = $pubdate - ( $offset * 3600 );
 			$story->setVar('published', $pubdate);
-		}else{
+		} else {
 			$story->setVar('published', time());
 		}
 		// Routines set end date published
@@ -218,11 +221,11 @@ if( $op == 'post' ){
 			$offset = $xoopsUser -> timezone() - $xoopsConfig['server_TZ'];
 			$expdate = $expdate - ( $offset * 3600 );
 			$story->setVar('expired', $expdate);
-		}else{
+		} else {
 			$story->setVar('expired', 0);
 		}
 		$is_new = true;
-	}else{
+	} else {
 		// edited edit
 		//need can post of group premition
 		if (!$gperm->group_perm(1)){
@@ -240,7 +243,7 @@ if( $op == 'post' ){
 			if ( $story->getVar('approve') == 1 ){
 				$story->setVar('type', 1);
 				$approved = 1;
-			}else{
+			} else {
 				$story->setVar('type', 0);
 			}
 		}
@@ -267,7 +270,8 @@ if( $op == 'post' ){
 		}
 		$is_new = false;
 	}
-	//If an error occurs when inserting DB
+
+	// If an error occurs when inserting DB
 	if(!$story->store()) {
 		die(_MD_THANKS_BUT_ERROR);
 	}
@@ -292,7 +296,7 @@ if( $op == 'post' ){
 			$notification_handler->triggerEvent('global', 0, 'new_story', $tags, $gperm->getCanReadUsersByTopic($topicid) );
 			//for one time notifiction
 			$story->setVar('notifypub', 0);
-		}else{
+		} else {
 			//appoved event one time subscribe
 			if ($story->getVar('notifypub') == 1) {
 				require_once XOOPS_ROOT_PATH.'/include/notification_constants.php';
@@ -306,10 +310,12 @@ if( $op == 'post' ){
 			//for one time notifiction
 			$story->setVar('notifypub', 1);
 		}
-		//save notifypub for one time notifiction
+
+		//save notify pub for one time notification
 		if(!$story->store()) {
 			die(_MD_THANKS_BUT_ERROR);
 		}
+
 		//Adding process Posts
 		if (is_object($xoopsUser) && $bulletin_plus_posts == 1) {
 			$xoopsUser->incrementPost();
@@ -322,7 +328,7 @@ if( $op == 'post' ){
 		}
 		redirect_header($mydirurl.'/index.php', 3, _MD_THANKS);
 		exit;
-	}else{
+	} else {
 		// Event notification process
 		$notification_handler =& xoops_gethandler('notification');
 		$tags = array();
@@ -336,7 +342,7 @@ if( $op == 'post' ){
 			//for one time event post
 			if($story->getVar('notifypub')==1){
 				$story->setVar('notifypub', 0);
-				//If an error occurs when rewriting DB for notifypub reset
+				//If an error occurs when rewriting DB for notify pub reset
 				if(!$story->store()) {
 					die(_MD_THANKS_BUT_ERROR);
 				}
@@ -352,6 +358,7 @@ if( $op == 'post' ){
 		exit;
 	}
 }
+
 if( $op == 'preview' ){
 	require_once XOOPS_ROOT_PATH.'/header.php';
 
@@ -367,31 +374,13 @@ if( $op == 'preview' ){
 	$xoopsTpl->assign('preview', array('title' => $p_title, 'hometext' => $p_hometext));
 	$op = 'form';
 }
+
 if( $op === 'form' || $op === 'preview' ){
-	
-// 	//notice when no can_post access
-// 	$topics = $gperm->makeOnTopics("can_post");
-// 	if (empty($topics)){
-// 		die(_NOPERM);
-// 	}
-	
-// 	// for editing
-// 	if (! $topicid && $op === 'form' && $storyid ){
-// 		$topicid = $story->getVar('topicid');
-// 		if (! $BTopic->BTtopicExists($topicid)) {
-// 			// remove topic or etc.
-// 			$topicid = 0;
-// 		}
-// 	}
-	
-// 	if ($topicid==0){
-// 		$topicid = $topics[0];
-// 	}
 
 	if (! $gperm->proceed4topic("can_post",$topicid)){
 		die(_NOPERM . '(Post)');
 	}
-	
+
 	//TODO edit access
 	if ( !empty( $storyid ) ){// for edit
 		$proceed = $gperm->proceed4topic("can_edit",$topicid);
@@ -448,8 +437,8 @@ if( $op === 'form' || $op === 'preview' ){
 		$xoopsTpl->assign('error', ob_get_contents());
 		ob_end_clean();
 	}
-	// require dirname(dirname(__FILE__)).'/include/storyform.inc.php';
-	require dirname(dirname(__FILE__)).'/include/storyform_templatevars.inc.php';
+
+	require dirname(__FILE__, 2) .'/include/storyform_templatevars.inc.php';
 	$xoopsTpl->assign( 'xoops_breadcrumbs' , array(
 		array( 'name' => $xoopsModule->getVar('name') , 'url' => XOOPS_URL.'/modules/'.$mydirname.'/' ) ,
 		array( 'name' => _MD_SUBMITNEWS ) ,
@@ -471,7 +460,7 @@ if( $op == 'delete' ){
 	}
 
 	//TODO user only
-	//you can edit only your article
+	// you can edit only your article
 	$topic_perm = $gperm->get_viewtopic_perm_of_current_user($topicid , $story->getVar('uid'));
 	if (!empty($topic_perm)){
 		if (!$topic_perm['can_delete']){
@@ -512,8 +501,7 @@ if( $op == 'delete' ){
 		exit();
 	}else{
 		require_once XOOPS_ROOT_PATH.'/header.php';
-		xoops_confirm( array( 'op' => 'delete', 'storyid' => $storyid, 'ok' => 1, 'return' => $return, 'XOOPS_G_TICKET'=>$xoopsGTicket->issue( __LINE__ ) ), 'index.php?page=submit', $story->getVar('title').'<br/><br/>'._MD_RUSUREDEL );
+		xoops_confirm( array( 'op' => 'delete', 'storyid' => $storyid, 'ok' => 1, 'return' => $return, 'XOOPS_G_TICKET'=>$xoopsGTicket->issue( __LINE__ ) ), 'index.php?page=submit', $story->getVar('title').'<br><br>'._MD_RUSUREDEL );
 		require_once XOOPS_ROOT_PATH.'/footer.php';
 	}
 }
-?>

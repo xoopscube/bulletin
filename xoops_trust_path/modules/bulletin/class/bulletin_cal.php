@@ -110,7 +110,7 @@ class Bulletin_Cal
 				$ret[$l][$w]['link'] = '';
 			}
 
-			     if($w == 0){
+			if($w == 0){
 				$ret[$l][$w]['label'] = $i;
 			}elseif($w == 1){
 				$ret[$l][$w]['label'] = $i;
@@ -153,12 +153,12 @@ class Bulletin_Cal
 		$m = $this->month;
 		$y = $this->year;
 
-		$ret  = '<table class="outer" style="cellspacing=\'1\' ;border=\'0\';" >';
+		$ret  = '<table class="outer">';
 		$ret .= $this->getTitleBar();
 
 		foreach( $this->getCalendar() as $line => $weeks ){
 
-				$ret .= '<tr style="align:center;">';
+				$ret .= '<tr style="text-align:center;">';
 				foreach($weeks as $weekday){
 				$style = ( $line > 0 ) ? 'even' : 'head';
 				//$style = ( $style == 'even' && !empty($weekday['link']) ) ? 'odd' : $style;
@@ -186,7 +186,7 @@ class Bulletin_Cal
 			$n_month = date("Y-m", mktime(0,0,0,$m+1,1,$y));
 
 			$ret  = '<tr>';
-			$ret .= '<th colspan="7" style="align=\'center\'; nowrap=\'nowrap\'; text-align: center; ">';
+			$ret .= '<th colspan="7" style="align=\'center\'; nowrap=\'nowrap\'; text-align: center;">';
 			if( empty($this->startday) || $y*100+$m-1 >= intval(date('Ym',$this->startday))){
 				$ret .= '<a href="?'.$this->query.'='.$p_month.'">'.$this->lang_p_mon.'</a>';
 			}
@@ -202,4 +202,3 @@ class Bulletin_Cal
 		return $ret;
 	}
 }
-?>

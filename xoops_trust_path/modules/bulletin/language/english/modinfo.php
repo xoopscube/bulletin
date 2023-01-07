@@ -1,4 +1,6 @@
-<?php /* English Translation by Marcelo Yuji Himoro <http://yuji.ws> & Suin <http://xoops.suinyeze.com/>*/
+<?php
+
+/* English Translation by Marcelo Yuji Himoro & Suin <suiny.io> */
 // Module Info
 
 if( defined( 'FOR_XOOPS_LANG_CHECKER' ) ) $mydirname = 'bulletin' ;
@@ -10,10 +12,10 @@ if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( $constpref.'_LOADED' ) ) {
 define( $constpref.'_LOADED' , 1 ) ;
 
 // The name of this module
-define($constpref."_NAME","News");
+define($constpref."_NAME","Blog");
 
 // A brief description of this module
-define($constpref."_DESC","Creates a Slashdot-like news system, where users can post comments freely.");
+define($constpref."_DESC","Bulletin allows users to create, organize, and publish written and visual content online in a blog.");
 
 // Names of blocks for this module (Not all module has blocks)
 define($constpref."_BNAME1","News categories");
@@ -34,14 +36,14 @@ define($constpref."_SMNAME1","Submit news");
 define($constpref."_SMNAME2","Archive");
 
 // Admin
-define($constpref."_ADMENU2","Categories manager");
+define($constpref."_ADMENU2","Categories");
 define($constpref."_ADMENU3","Post a new story");
-define($constpref."_ADMENU4","Posting permission manager");
-define($constpref."_ADMENU5","News manager");
-define($constpref."_ADMENU7","Import from news");
-define($constpref.'_ADMENU_MYLANGADMIN','languages');
-define($constpref.'_ADMENU_MYTPLSADMIN','templates');
-define($constpref.'_ADMENU_MYBLOCKSADMIN','blocks/permissions');
+define($constpref."_ADMENU4","Posting permission");
+define($constpref."_ADMENU5","News");
+define($constpref."_ADMENU7","Import");
+define($constpref.'_ADMENU_MYLANGADMIN','Languages');
+define($constpref.'_ADMENU_MYTPLSADMIN','Templates');
+define($constpref.'_ADMENU_MYBLOCKSADMIN','Blocks');
 
 // Title of config items
 define($constpref."_CONFIG1","Number of news to display on the index page");
@@ -58,32 +60,32 @@ define($constpref."_CONFIG6","Reflect posts to user's post count");
 define($constpref."_CONFIG6_D","When a story posted from submit.php is approved, user's 'Posts' will be increased.");
 define($constpref."_CONFIG7","Path to category image directory");
 define($constpref."_CONFIG7_D","Set the absolute path.");
-define($constpref."_CONFIG8","Print friendly page image URL");
+define($constpref."_CONFIG8","Print to PDF image URL");
 define($constpref."_CONFIG8_D","Set the URL for the logo image shown on print friendly page.");
 define($constpref."_CONFIG9","Change site name to story name");
 define($constpref."_CONFIG9_D","Replaces the site name for the story subject. It's said to be effective for SEO.");
-define($constpref."_CONFIG10","assign RSS URL on xoops_module_header");
+define($constpref."_CONFIG10","Assign RSS URL to xoops_module_header");
 define($constpref."_CONFIG10_D","");
 // 1.01 added
 define($constpref."_CONFIG11","Display 'Print' icon?");
 define($constpref."_CONFIG11_D","");
-define($constpref."_CONFIG12","Display 'Tell a frind' icon?");
+define($constpref."_CONFIG12","Display 'Tell a friend' icon?");
 define($constpref."_CONFIG12_D","");
 define($constpref."_CONFIG13","Use Tell A Friend module?");
 define($constpref."_CONFIG13_D","");
 define($constpref."_CONFIG14","Display RSS link?");
 define($constpref."_CONFIG14_D","");
-define($constpref.'_CONFIG145','feed RSS into backend.php (only for XCL)');
+define($constpref.'_CONFIG145','RSS feed link into backend.php (only for XCL)');
 define($constpref.'_CONFIG145_D', '');
 // 2.00 added
 define($constpref."_CONFIG15","Enable related articles feature?");
 define($constpref."_CONFIG15_D","");
 define($constpref."_CONFIG16","Display recent stories in the same category?");
 define($constpref."_CONFIG16_D","Displays a list of articles in the same category at the bottom of each story.");
-define($constpref."_CONFIG17","Number of recent storeis in the same category.");
+define($constpref."_CONFIG17","Number of recent articles in the same category.");
 define($constpref."_CONFIG17_D","");
-define($constpref."_CONFIG18","Display category bread crumb?");
-define($constpref."_CONFIG18_D","A category tree is displayed in each articles.");
+define($constpref."_CONFIG18","Display category bread-crumb?");
+define($constpref."_CONFIG18_D","Article categories in a tree-like structure is displayed in each article.");
 define($constpref.'_CONFIG19','use common/fckeditor');
 define($constpref.'_CONFIG19_D', 'Posters can use FCKeditor on XOOPS if he/she is allowed to use HTML');
 
@@ -94,9 +96,9 @@ define($constpref.'_COM_ORDER','Order of comment-integration');
 define($constpref.'_COM_POSTSNUM','Max posts displayed in comment-integration');
 
 // by yoshis
-define($constpref.'_ADMENU_CATEGORYACCESS' , 'Permissions of Categories' ) ;
+define($constpref.'_ADMENU_CATEGORYACCESS' , 'Permissions' ) ;
 define($constpref.'_IMAGES_DIR','Directory for image files');
-define($constpref.'_IMAGES_DIRDSC','relative path should be set in the module directory. default: images');
+define($constpref.'_IMAGES_DIRDSC','Relative path should be set in the module directory. default: images');
 
 // Text for notifications
 define($constpref."_GLOBAL_NOTIFY","Global");
@@ -132,4 +134,3 @@ define($constpref."_NOTIFY5_DESC", "Notify me when a new comment is posted.");
 define($constpref."_NOTIFY5_SUBJECT", "[{X_SITENAME}] {X_MODULE}: New comment posted");
 
 }
-?>

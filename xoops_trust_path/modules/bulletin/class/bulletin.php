@@ -15,8 +15,10 @@ class Bulletin extends XoopsObject{
 	var $pagebreakRegex = '#(?:\[pagebreak\]|<div[^>]+?style[^>]+?\bpage-break-after\b.+?</div>|(?:<(?:p|br\b[^>]*)>)?<!-- *pagebreak *-->(?:<(?:/p|br\b[^>]*)>)?)#';
 
 	// Constructor
-	function Bulletin( $mydirname , $id=null )
+	function __construct($mydirname , $id=null )
 	{
+        parent::__construct();
+
 		$this->db =& Database::getInstance();
 		$this->mydirname = $mydirname ;
 		$this->topic_table = $this->db->prefix( "{$mydirname}_topics" ) ;
@@ -24,7 +26,7 @@ class Bulletin extends XoopsObject{
 
 		$this->initVar("storyid", XOBJ_DTYPE_INT, null, false);
 		$this->initVar("uid", XOBJ_DTYPE_INT, null, false);
-		$this->initVar("title", XOBJ_DTYPE_TXTBOX, null, false, 255);
+		$this->initVar("title", XOBJ_DTYPE_TXTBOX, null, false, 191);
 		$this->initVar("created", XOBJ_DTYPE_INT, null, false);
 		$this->initVar("published", XOBJ_DTYPE_INT, null, false);
 		$this->initVar("expired", XOBJ_DTYPE_INT, null, false);
@@ -144,7 +146,8 @@ class Bulletin extends XoopsObject{
 	// Basic Processing
 	public static function &getAll( $mydirname , $criteria=array() , $asobject=true, $orderby="published DESC", $limit=0, $start=0)
 	{
-		$db =& Database::getInstance();
+		//$db =& Database::getInstance();
+        $db = &XoopsDatabaseFactory::getDatabaseConnection();
 		$ret = array();
 		$where_query = "";
 		if ( is_array($criteria) && count($criteria) > 0 ) {
@@ -176,7 +179,8 @@ class Bulletin extends XoopsObject{
 	// Basic Processing
 	public static function &countAll( $mydirname , $criteria=array())
 	{
-		$db =& Database::getInstance();
+		//$db =& Database::getInstance();
+        $db = &XoopsDatabaseFactory::getDatabaseConnection();
 		$where_query = "";
 		if ( is_array($criteria) && count($criteria) > 0 ) {
 			$where_query = " WHERE";
@@ -479,7 +483,8 @@ class Bulletin extends XoopsObject{
 			return false;
 		}
 
-		$db =& Database::getInstance();
+		//$db =& Database::getInstance();
+        $db = &XoopsDatabaseFactory::getDatabaseConnection();
 		$gperm =& BulletinGP::getInstance($mydirname) ;
 //ver2.0$sql = "SELECT COUNT(*) FROM ".$db->prefix($mydirname.'_stories')." WHERE type > 0 AND published > 0 AND published <= ".time()." AND (expired = 0 OR expired > ".time().") AND storyid =".$storyid;
 //ver3.0
@@ -663,7 +668,8 @@ class Bulletin extends XoopsObject{
 	// Returns an array with the time stamp of posts
 	public static function getPublishedDays( $mydirname , $limit=0 , $start=0 , $gpermited=false )
 	{
-		$db =& Database::getInstance();
+		//$db =& Database::getInstance();
+        $db = &XoopsDatabaseFactory::getDatabaseConnection();
 		$gperm =& BulletinGP::getInstance($mydirname) ;
 
 		$sql = "SELECT published FROM ".$db->prefix($mydirname.'_stories');
@@ -801,4 +807,3 @@ class Bulletin extends XoopsObject{
 	}
 
 }
-?>

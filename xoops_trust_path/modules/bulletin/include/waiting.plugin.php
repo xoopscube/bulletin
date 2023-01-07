@@ -3,7 +3,8 @@
 // written by starck
 function b_waiting_bulletin( $mydirname )
 {
-	$db =& Database::getInstance();
+	//$db =& Database::getInstance();
+    $db = &XoopsDatabaseFactory::getDatabaseConnection();
 	$ret = array() ;
 
 	$sql = "SELECT COUNT(*) FROM ".$db->prefix($mydirname."_stories")." WHERE type=0" ;
@@ -15,8 +16,6 @@ function b_waiting_bulletin( $mydirname )
 			'lang_linkname' => _PI_WAITING_WAITINGS ,
 		) ;
 	}
-	
+
 	return $ret ;
 }
-
-?>

@@ -5,9 +5,11 @@ require_once dirname(__FILE__).'/bulletingp.php' ;
 
 class BulletinTopic extends XoopsTopic{
 
-	function BulletinTopic( $mydirname , $topicid=0 )
+	function __construct($mydirname , $topicid=0 )
 	{
-		$this->db =& Database::getInstance();
+        parent::__construct(null);
+		//$this->db =& Database::getInstance();
+        $this->db  = XoopsDatabaseFactory::getDatabaseConnection();
 		$this->mydirname = $mydirname ;
 		$this->table = $this->db->prefix( "{$mydirname}_topics" );
 		(method_exists('MyTextSanitizer', 'sGetInstance') and $this->ts =& MyTextSanitizer::sGetInstance()) || $this->ts =& MyTextSanitizer::getInstance();
@@ -36,6 +38,7 @@ class BulletinTopic extends XoopsTopic{
 		}
 	}
 
+    // Breadcrumbs
 	function makePankuzu($topic_id=0, $ret = array())
 	{
 		$result = ( "SELECT `topic_pid`, `topic_title` FROM ".$this->table." WHERE `topic_id` = ".intval($topic_id) );
@@ -52,6 +55,7 @@ class BulletinTopic extends XoopsTopic{
 
 	}
 
+    // Breadcrumbs HTML
 	function makePankuzuForHTML($topic_id=0)
 	{
 		$pankuzu = $this->makePankuzu($topic_id);
@@ -107,10 +111,10 @@ class BulletinTopic extends XoopsTopic{
 		//$ret = str_replace('topic_id','topicid', $ret); // non-sense code?
 		return $ret;
 	}
-	
+
 	/**
 	 * Make HTML select box of topic list
-	 * 
+	 *
 	 * @param int    $preset_id
 	 * @param string $row
 	 * @return string
@@ -131,10 +135,10 @@ class BulletinTopic extends XoopsTopic{
 		$ret .= '</select>'."\n";
 		return $ret;
 	}
-	
+
 	/**
 	 * Make HTML option elements by tree
-	 * 
+	 *
 	 * @param array  $row
 	 * @param int    $preset_id
 	 * @param string $order
@@ -163,13 +167,13 @@ class BulletinTopic extends XoopsTopic{
 		}
 		return $ret;
 	}
-	
+
 	/*
 	 * 2012-2-1 Add by Yoshis
 	*/
 	function getTopicIdByPermissionCheck($topic_id=0, $op = 'edit') {
 		global $xoopsUser ;
-	
+
 		$groups = $xoopsUser->getGroups();
 		$tbl = $this->db->prefix( $this->mydirname."_topic_access" );
 		$ret = NULL;
@@ -194,7 +198,7 @@ class BulletinTopic extends XoopsTopic{
 		}
 		return $ret;
 	}
-	
+
 	//H.Onuma
 	function makeMyTopicList2($preset_id=0, $row=NULL){
 		global $xoopsUser ;
@@ -255,6 +259,4 @@ class BulletinTopic extends XoopsTopic{
 		}
 	}
 
-
 }
-?>

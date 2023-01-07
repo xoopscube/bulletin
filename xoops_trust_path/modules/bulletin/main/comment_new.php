@@ -16,7 +16,7 @@ if( ! $gperm->proceed4topic('can_read',$article->getVar('topicid')) ){
 	exit();
 }
 
-$com_replytext = _POSTEDBY.'&nbsp;<b>'.$article->getUname().'</b>&nbsp;'._DATE.'&nbsp;<b>'.formatTimestamp($article->getvar('published')).'</b><br /><br />'.$article->getVar('hometext');
+$com_replytext = _POSTEDBY.'&nbsp;<b>'.$article->getUname().'</b>&nbsp;'._DATE.'&nbsp;<b>'.formatTimestamp($article->getvar('published')).'</b><br><br>'.$article->getVar('hometext');
 $bodytext = $article->getDividedBodytext();
 if ($bodytext != '') {
 	$com_replytext .= '<br /><br />'.$bodytext.'';
@@ -24,6 +24,10 @@ if ($bodytext != '') {
 $com_replytitle = $article->getVar('title');
 
 $_GET['page'] = 'article';
-require XOOPS_ROOT_PATH.'/include/comment_new.php';
 
-?>
+// Core System Comment Management
+if (!defined('XOOPS_CPFUNC_LOADED')) {
+    require_once XOOPS_ROOT_PATH . '/include/cp_functions.php';
+}
+
+require XOOPS_ROOT_PATH.'/include/comment_new.php';

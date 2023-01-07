@@ -10,5 +10,3 @@ $pico_category_permissions = array(
 	'is_moderator' ,
 	'can_makesubcategory' ,
 ) ;
-
-?>

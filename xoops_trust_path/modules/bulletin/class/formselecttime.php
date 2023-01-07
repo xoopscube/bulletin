@@ -16,9 +16,9 @@ class XoopsFormSelectTime extends XoopsFormElementTray
 
 	function XoopsFormSelectTime($caption, $name, $value=0, $format="%y-%m-%d %h:%i")
 	{
-		
+
 		$value = intval($value);
-		
+
 		if( empty( $value ) ){
 			$time = time();
 			$this->year  = formatTimestamp($time, 'Y');
@@ -36,7 +36,7 @@ class XoopsFormSelectTime extends XoopsFormElementTray
 			$this->sec   = date('s', $value);
 		}
 
-		
+
 		$this->XoopsFormElementTray($caption, '');
 
 		$thsy = date('Y');
@@ -51,12 +51,12 @@ class XoopsFormSelectTime extends XoopsFormElementTray
 		$hour_select  ->addOptionArray(array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23));
 		$sixty_option = array();
 		for ($i=0; $i<60; $i++) $sixty_option[] = $i;
-		
+
 		$min_select   = new XoopsFormSelect('', $name.'[min]', $this->min);
-		$min_select   ->addOptionArray($sixty_option);			
+		$min_select   ->addOptionArray($sixty_option);
 		$sec_select   = new XoopsFormSelect('', $name.'[sec]', $this->sec);
 		$sec_select   ->addOptionArray($sixty_option);
-		
+
 		$format = preg_replace('/%y/i', $year_select->render(), $format );
 		$format = preg_replace('/%m/i', $month_select->render(), $format );
 		$format = preg_replace('/%d/i', $day_select->render(), $format );
@@ -69,4 +69,3 @@ class XoopsFormSelectTime extends XoopsFormElementTray
 		$this->addElement($base_label);
 	}
 }
-?>

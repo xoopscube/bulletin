@@ -25,5 +25,3 @@ if($gperm->group_perm(1) && !empty($can_post_topics)){
 
 // RSS Feed in <header>
 $rss_feed = '<link rel="alternate" type="application/rss+xml" title="RSS2.0" href="'.$mydirurl.'/index.php?page=rss" />';
-
-?>

@@ -43,5 +43,3 @@ if( !function_exists('myStrlenText') ){
 	}
 
 }
-
-?>

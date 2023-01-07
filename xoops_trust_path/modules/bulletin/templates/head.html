@@ -1,17 +1,67 @@
-<{strip}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
 
-<div style="float:right">
- |&nbsp;<a href="<{$mydirurl}>/index.php?page=archive" title="<{$smarty.const._MD_ARCHIVES}>"><{$smarty.const._MD_ARCHIVES}></a>
-    &nbsp;
-<{if $can_post}>
-|&nbsp;<a href="<{$mydirurl}>/index.php?page=submit" title="<{$smarty.const._MD_SUBMITNEWS}>"><{$smarty.const._MD_SUBMITNEWS}></a>
-<{if $storytopic}>&nbsp;[ <a href="<{$mydirurl}>/index.php?page=submit&amp;topicid=<{$storytopic}>" title="<{$smarty.const._MD_SUBMITNEWS}>"><{$storytopic_title}></a> ]<{/if}>
-    &nbsp;
-<{/if}>
-  <{if $disp_rss_link}>
-    |&nbsp;<a href="<{$mydirurl}>/index.php?page=rss" title="<{$smarty.const._MD_RSS}>"><{$smarty.const._MD_RSS}></a>
-  <{/if}>
-  &nbsp;|
+
+<{* ----- BREADCRUMBS ----- *}>
+<ul class="breadcrumb" aria-label="breadcrumb">
+    <li title="<{$smarty.const._MB_LEGACY_HOME}> : <{$smarty.const._YOURHOME}>">
+        <a href="<{$xoops_url}>/"><img class="svg home" src="<{$xoops_url}>/images/icons/home.svg" width="1em" height="1em" alt="home"></a>
+    </li>
+    <li>
+        <a href="<{$mydirurl}>/index.php"><{$mydirname|ucfirst}></a>
+    </li>
+    <{if $pankuzu}>
+    <{foreach item=p from=$pankuzu name=pankuzu}>
+        <{if $smarty.foreach.pankuzu.last}>
+        <li aria-current="page"><{$p.topic_title}></li>
+        <{else}>
+        <li><a href="<{$mydirurl}>/index.php?storytopic=<{$p.topic_id}>"><{$p.topic_title}></a></li>
+        <{/if}>
+    <{/foreach}>
+    <{/if}>
+</ul>
+
+
+<section layout="column my-4 sm-first" id="docs_container" class="category-top">
+
+    <div layout="rows center-justify px-2">
+        <h3 self="size-x1"><{$mydirname|ucfirst}> <{$storytopic_title}></h3>
+        <{if $disp_rss_link}>
+            <a href="<{$mydirurl}>/index.php?page=rss" title="<{$smarty.const._MD_RSS}>">
+                <img class="svg" src="<{$xoops_url}>/images/icons/rss.svg" width="1em" height="1em" alt="<{$smarty.const._MD_RSS}>">
+            </a>
+        <{/if}>
+    </div>
+
+    <{* ----- ACTION CONTROL ----- *}>
+    <div layout="row center-justify my-4 sm-column">
+        <div self="size-x1 sm-full">
+            <a class="ui-button" href="<{$mydirurl}>/index.php?page=archive" title="<{$smarty.const._MD_ARCHIVES}>"><{$smarty.const._MD_ARCHIVES}></a>
+        </div>
+        <div self="mr-0 sm-full">
+            <{if $can_post && $storytopic}>
+            <a class="ui-button" href="<{$mydirurl}>/index.php?page=submit&amp;topicid=<{$storytopic}>" title="<{$smarty.const._MD_SUBMITNEWS}>">
+                <{$smarty.const._MD_SUBMITNEWS}> <span class="badge"><{$storytopic_title}></span>
+            </a>
+            <{elseif $can_post}>
+            <a class="ui-button" href="<{$mydirurl}>/index.php?page=submit" title="<{$smarty.const._MD_SUBMITNEWS}>"><{$smarty.const._MD_SUBMITNEWS}></a>
+            <{/if}>
+        </div>
+    </div>
+
+</section>
+
+
+<{if $displaynav == true}>
+<div layout="row center-justify p-2 my-7 sm-column" class="activity">
+    <form name="form1" action="<{$mydirurl}>/index.php" method="get">
+        <{$topic_select}>&nbsp;
+        <{assign var=storynum_options value=","|explode:"5,10,15,20,30"}>
+        <select name="storynum">
+            <{html_options selected=$smarty.get.storynum values=$storynum_options output=$storynum_options}>
+        </select>&nbsp;
+        <input class="ui-button" type="submit" value="<{$smarty.const._GO}>">
+    </form>
 </div>
-<div style="clear: both ; height:0px; visibility:hidden;"></div>
-<{/strip}>
+<{/if}>
+
+

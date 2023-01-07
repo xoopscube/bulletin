@@ -1,28 +1,31 @@
 <?php
+
 define('MODULE_ROOT_PATH', $mydirpath);
 define('MODULE_URL', $mydirurl);
 $constpref = '_MI_' . strtoupper( $mydirname ) ;
+
 // Reading language file
 if ( file_exists( $mytrustdirpath.'/language/'.$xoopsConfig['language'].'/modinfo.php') ) {
-	require_once dirname(dirname(__FILE__)).'/language/'.$xoopsConfig['language'].'/modinfo.php';
+	require_once dirname(__FILE__, 2) .'/language/'.$xoopsConfig['language'].'/modinfo.php';
 } else {
-	require_once dirname(dirname(__FILE__)).'/language/english/modinfo.php';
+	require_once dirname(__FILE__, 2) .'/language/english/modinfo.php';
 }
-require_once dirname(dirname(__FILE__)).'/include/gtickets.php' ;
+require_once dirname(__FILE__, 2) .'/include/gtickets.php' ;
 
 require_once XOOPS_ROOT_PATH.'/class/xoopslists.php';
 require_once XOOPS_ROOT_PATH.'/class/template.php';
 require_once XOOPS_ROOT_PATH.'/class/pagenav.php';
 require_once XOOPS_ROOT_PATH.'/class/xoopsform/grouppermform.php';
-require_once dirname(dirname(__FILE__)).'/class/bulletin.php';
-require_once dirname(dirname(__FILE__)).'/class/bulletinTopic.php';
+require_once dirname(__FILE__, 2) .'/class/bulletin.php';
+require_once dirname(__FILE__, 2) .'/class/bulletinTopic.php';
 
 // Sanitizer
 (method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance();
 // Template
 $tpl = new XoopsTpl();
 // Determine the operation
-$op = isset($_REQUEST['op']) ? $_REQUEST['op'] : 'default';
+//$op = isset($_REQUEST['op']) ? $_REQUEST['op'] : 'default';
+$op = $_REQUEST['op'] ?? 'default';
 // Ticket confirmation
 if ($op == 'preview' || $op == 'save') {
 	if (!XoopsMultiTokenHandler::quickValidate('news_admin_submit')) {
@@ -49,7 +52,7 @@ default:
 	include dirname(__FILE__).'/mymenu.php' ;
 	$template = 'bulletin_list.html';
 
-	$asssigns = array(
+	$assigns = array(
 		'submissions' => newSubmissions('newSubmissions'),
 		'autostories' => newSubmissions('autoStories'),
 		'published' => newSubmissions('Published', 10),
@@ -108,7 +111,7 @@ case 'listall':
 		$navi = $pagenav->renderNav();
 	}
 
-	$asssigns = array(
+	$assigns = array(
 		'table_title' => $table_title,
 		'stories' => $story_list,
 		'mode' => $mode,
@@ -117,7 +120,7 @@ case 'listall':
 
 	break;
 
-//Allow each group configuration screen post
+// Allow each group post options configuration
 case 'permition':
 	xoops_cp_header();
 	include dirname(__FILE__).'/mymenu.php' ;
@@ -130,11 +133,10 @@ case 'permition':
 	$form->addItem(2, _AM_RIGHT_TO_APPROVE);
 	$form->addItem(3, _AM_RIGHT_TO_CHOSE_DATE);
 	$form->addItem(4, _AM_RIGHT_HTML);
+	$form->addItem(7, _AM_RIGHT_RELATION);
 //	$form->addItem(5, _AM_RIGHT_XCODE);
 //	$form->addItem(6, _AM_RIGHT_SMILEY);
-	$form->addItem(7, _AM_RIGHT_RELATION);
-
-	$asssigns = array(
+	$assigns = array(
 		'form' => $form->render()
 	);
 	break;
@@ -151,26 +153,18 @@ case 'topicsmanager':
 		$images[]['image'] = htmlspecialchars($v);
 	}
 	$topics_exists = ( $BTopic->BTtopicExists() ) ? 1 : 0 ;
-	//ob_start();
-	//$BTopic->makeTopicSelBox( 1, 0, 'topic_pid' );
-	//$topicselbox = ob_get_contents();
-	//ob_end_clean();
-	//ob_start();
-	//$BTopic->makeTopicSelBox();
-	//$topicselbox2 = ob_get_contents();
-	//ob_end_clean();
+
 	$topicselbox = $BTopic->makeTopicSelBox( true , 0 ,  'topic_pid' ) ;
 	$topicselbox2 = $BTopic->makeTopicSelBox() ;
 
-	$asssigns = array(
+	$assigns = array(
 		'gticket_hidden' => $xoopsGTicket->getTicketHtml( __LINE__ , 1800 , 'bulletin_admin') ,
 		'images' => $images,
 		'topics_exists' => $topics_exists,
 		'topicselbox' => $topicselbox,
 		'topicselbox2' => $topicselbox2
 	);
-	$tpl->assign( $asssigns ) ;
-	//$tpl->display( 'db:'.$mydirname.'_admin_category.html' ) ;
+	$tpl->assign( $assigns ) ;
 
 	break;
 
@@ -187,12 +181,8 @@ case 'modTopic':
 		$images[] = array('image' => htmlspecialchars($v), 'option' => $BTopic->topic_imgurl() ? 'selected="selected"' : '');
 	}
 
-	//ob_start();
-	//$BTopic->makeTopicSelBox( 1, $BTopic->topic_pid(), 'topic_pid' );
-	//$topicselbox = ob_get_contents();
-	//ob_end_clean();
 	$topicselbox = $BTopic->makeTopicSelBox( true , $BTopic->topic_pid() ,  'topic_pid' ) ;
-	$asssigns = array(
+	$assigns = array(
 		'gticket_hidden' => $xoopsGTicket->getTicketHtml( __LINE__ , 1800 , 'bulletin_admin') ,
 		'images' => $images,
 		'topic_id' => $BTopic->topic_id(),
@@ -270,7 +260,7 @@ case 'delTopic':
 			unset($remain_topics[$eachtopic->topic_id()]);
 		}
 
-		$asssigns = array(
+		$assigns = array(
 			'gticket_hidden' => $xoopsGTicket->getTicketHtml( __LINE__ , 1800 , 'bulletin_admin') ,
 			'topics' => $topics,
 			'remain_topics' => $remain_topics,
@@ -278,7 +268,7 @@ case 'delTopic':
 		);
 
 	}else{
-//ver3.0
+
 		if ( ! $xoopsGTicket->check( true , 'bulletin_admin' ) ) {
 			redirect_header(XOOPS_URL.'/',3,$xoopsGTicket->getErrors());
 		}
@@ -295,7 +285,6 @@ case 'delTopic':
 		$topic_arr = $BTopic->getAllChildTopics();
 
 		// Leave an article topic
-//ver3.0
 		if (!is_array($_POST['topics'])){
 			redirect_header( 'index.php?op=topicsmanager', 1, _TAKINGBACK );
 		}else{
@@ -395,9 +384,9 @@ case 'convert':
 			$sql = sprintf("INSERT INTO %s (topic_id, topic_pid, topic_imgurl, topic_title, topic_created, topic_modified) VALUES (%u, %u, %s, %s, UNIX_TIMESTAMP(), UNIX_TIMESTAMP())", $xoopsDB->prefix("{$mydirname}_topics"), $topic['topic_id'], $topic['topic_pid'], $xoopsDB->quoteString($topic['topic_imgurl']), $xoopsDB->quoteString($topic['topic_title']));
 
 			if($xoopsDB->query($sql)){
-				echo '<br />Topic "'.htmlspecialchars($topic['topic_title']).'" was successfully converted.';
+				echo '<br>Topic "'.htmlspecialchars($topic['topic_title']).'" was successfully converted.';
 			}else{
-				echo '<br /><b>Topic "'.htmlspecialchars($topic['topic_title']).'" Erorr : '.$xoopsDB->error().'</b>';
+				echo '<br><b>Topic "'.htmlspecialchars($topic['topic_title']).'" Erorr : '.$xoopsDB->error().'</b>';
 			}
 
 		}
@@ -436,14 +425,14 @@ case 'convert':
 			$new_story->setVar('topicimg',  $topicimg);
 			$new_story->setVar('comments', $story['comments']);
 			if($new_story->store()) {
-				echo '<br />Story "'.htmlspecialchars($story['title']).'" was successfully converted : '.$new_story->getVar('storyid');
+				echo '<br>Story "'.htmlspecialchars($story['title']).'" was successfully converted : '.$new_story->getVar('storyid');
 			}else{
-				echo '<br /><b>Failed to convert : '.htmlspecialchars($story['title']).'</b>';
+				echo '<br><b>Failed to convert : '.htmlspecialchars($story['title']).'</b>';
 			}
 
 		}
 
-		echo '<br /><a href="index.php">'._BACK.'</a>';
+		echo '<br><a href="index.php">'._BACK.'</a>';
 	}
 
 	break;
@@ -469,7 +458,7 @@ $assing_global = array(
 );
 
 $tpl->assign($assing_global);
-if(!empty( $asssigns )) $tpl->assign($asssigns);
+if(!empty( $assigns )) $tpl->assign($assigns);
 if(!empty( $template )) $tpl->display("file:".$mytrustdirpath."/admin/templates/".$template);
 xoops_cp_footer();
 exit;
@@ -527,4 +516,3 @@ function RENDER_NEWS_TITLE(&$obj){
 	}
 	return $ret;
 }
-?>

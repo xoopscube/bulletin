@@ -9,7 +9,8 @@ function bulletin_oninstall_base( $module , $mydirname )
 
 	global $ret ;
 
-	$db =& Database::getInstance() ;
+	//$db =& Database::getInstance() ;
+    $db = &XoopsDatabaseFactory::getDatabaseConnection();
 	$mid = $module->getVar('mid') ;
 
 	// for Cube 2.1
@@ -23,7 +24,7 @@ function bulletin_oninstall_base( $module , $mydirname )
 		if( ! is_array( $ret ) ) $ret = array() ;
 	}
 
-	// transations on module installation
+	// transactions on module installation
 	$bulletin_posting_permissions = array( 1 , 2 , 3 , 7 ) ;
 	$gperm_handler = xoops_gethandler('groupperm') ;
 	foreach( $bulletin_posting_permissions as $itemid ) {
@@ -39,7 +40,7 @@ function bulletin_oninstall_base( $module , $mydirname )
 	$sql_file_path = dirname(__FILE__).'/sql/mysql.sql' ;
 	$prefix_mod = $db->prefix() . '_' . $mydirname ;
 	if( file_exists( $sql_file_path ) ) {
-		$ret[] = "SQL file found at <b>".htmlspecialchars($sql_file_path)."</b>.<br  /> Creating tables...<br />";
+		$ret[] = "SQL file found at <b>".htmlspecialchars($sql_file_path)."</b>.<br> Creating tables...<br>";
 
 		if( file_exists( XOOPS_ROOT_PATH.'/class/database/oldsqlutility.php' ) ) {
 			include_once XOOPS_ROOT_PATH.'/class/database/oldsqlutility.php' ;
@@ -55,19 +56,19 @@ function bulletin_oninstall_base( $module , $mydirname )
 		foreach( $pieces as $piece ) {
 			$prefixed_query = $sqlutil->prefixQuery( $piece , $prefix_mod ) ;
 			if( ! $prefixed_query ) {
-				$ret[] = "Invalid SQL <b>".htmlspecialchars($piece)."</b><br />";
+				$ret[] = "Invalid SQL <b>".htmlspecialchars($piece)."</b><br>";
 				return false ;
 			}
 			if( ! $db->query( $prefixed_query[0] ) ) {
-				$ret[] = '<b>'.htmlspecialchars( $db->error() ).'</b><br />' ;
+				$ret[] = '<b>'.htmlspecialchars( $db->error() ).'</b><br>' ;
 				var_dump( $db->error() ) ;
 				return false ;
 			} else {
 				if( ! in_array( $prefixed_query[4] , $created_tables ) ) {
-					$ret[] = '&nbsp;&nbsp;Table <b>'.htmlspecialchars($prefix_mod.'_'.$prefixed_query[4]).'</b> created.<br />';
+					$ret[] = '&nbsp;&nbsp;Table <b>'.htmlspecialchars($prefix_mod.'_'.$prefixed_query[4]).'</b> created.<br>';
 					$created_tables[] = $prefixed_query[4];
 				} else {
-					$ret[] = '&nbsp;&nbsp;Data inserted to table <b>'.htmlspecialchars($prefix_mod.'_'.$prefixed_query[4]).'</b>.</br />';
+					$ret[] = '&nbsp;&nbsp;Data inserted to table <b>'.htmlspecialchars($prefix_mod.'_'.$prefixed_query[4]).'</b>.</br>';
 				}
 			}
 		}
@@ -93,17 +94,17 @@ function bulletin_oninstall_base( $module , $mydirname )
 				$tplfile->setVar( 'tpl_lastimported' , 0 ) ;
 				$tplfile->setVar( 'tpl_type' , 'module' ) ;
 				if( ! $tplfile_handler->insert( $tplfile ) ) {
-					$ret[] = '<span style="color:#ff0000;">ERROR: Could not insert template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b> to the database.</span><br />';
+					$ret[] = '<span style="color:#ff0000;">ERROR: Could not insert template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b> to the database.</span><br>';
 				} else {
 					$tplid = $tplfile->getVar( 'tpl_id' ) ;
-					$ret[] = 'Template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b> added to the database. (ID: <b>'.$tplid.'</b>)<br />';
+					$ret[] = 'Template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b> added to the database. (ID: <b>'.$tplid.'</b>)<br>';
 					// generate compiled file
 					include_once XOOPS_ROOT_PATH.'/class/xoopsblock.php' ;
 					include_once XOOPS_ROOT_PATH.'/class/template.php';
 					if( ! xoops_template_touch( $tplid ) ) {
-						$ret[] = '<span style="color:#ff0000;">ERROR: Failed compiling template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b>.</span><br />';
+						$ret[] = '<span style="color:#ff0000;">ERROR: Failed compiling template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b>.</span><br>';
 					} else {
-						$ret[] = 'Template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b> compiled.</span><br />';
+						$ret[] = 'Template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b> compiled.</span><br>';
 					}
 				}
 			}
@@ -129,15 +130,15 @@ function bulletin_oninstall_base( $module , $mydirname )
 				if (!empty($tpl_id) && isset($tpl_source) && $tpl_source != '') {
 					$sql = sprintf("INSERT INTO %s (tpl_id, tpl_source) VALUES (%u, %s)", $db->prefix('tplsource'), $tpl_id, $db->quoteString($tpl_source));
 					if( !$result = $db->query($sql) ) {
-						$ret[] = '<span style="color:#ff0000;">ERROR: Could not insert template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b> to the database.</span><br />';
+						$ret[] = '<span style="color:#ff0000;">ERROR: Could not insert template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b> to the database.</span><br>';
 					} else {
-						$ret[] = 'Template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b> added to the database. (ID: <b>'.$tpl_id.'</b>)<br />';
+						$ret[] = 'Template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b> added to the database. (ID: <b>'.$tpl_id.'</b>)<br>';
 						// generate compiled file
 						include_once XOOPS_ROOT_PATH.'/class/template.php';
 						if( ! xoops_template_touch( $tpl_id ) ) {
-							$ret[] = '<span style="color:#ff0000;">ERROR: Failed compiling template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b>.</span><br />';
+							$ret[] = '<span style="color:#ff0000;">ERROR: Failed compiling template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b>.</span><br>';
 						} else {
-							$ret[] = 'Template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b> compiled.</span><br />';
+							$ret[] = 'Template <b>'.htmlspecialchars($mydirname.'_'.$file).'</b> compiled.</span><br>';
 						}
 					}
 				}
@@ -159,5 +160,3 @@ function bulletin_message_append_oninstall( &$module_obj , &$log )
 
 	// use mLog->addWarning() or mLog->addError() if necessary
 }
-
-?>

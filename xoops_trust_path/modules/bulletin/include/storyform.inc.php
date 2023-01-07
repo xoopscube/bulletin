@@ -17,7 +17,7 @@ if( $storyid > 0 ){
 	$form->addElement(new XoopsFormLabel(_MD_POSTEDBY, XoopsUser::getUnameFromId($my_uid) ));
 }
 
-$form->addElement(new XoopsFormText(_MD_TITLE, 'title', 50, 255, $story->getVar('title', 'f') ), true); // GIJ
+$form->addElement(new XoopsFormText(_MD_TITLE, 'title', 50, 191, $story->getVar('title', 'f') ), true); // GIJ
 //$topic_select = new XoopsFormSelect(_MD_TOPIC, 'topicid', $story->getVar('topicid') );
 //$topic_select->addOptionArray(Bulletin::makeCategoryArrayForSelect( $mydirname ));
 $bt = new BulletinTopic( $mydirname ) ; // GIJ
@@ -40,9 +40,9 @@ if( empty( $xoopsModuleConfig['use_fckeditor'] ) || ! $gperm->group_perm(4) ) {
 		<script type="text/javascript"><!--
 			function fckeditor_exec() {
 				var oFCKeditor = new FCKeditor( "bodytext" , "100%" , "500" , "Default" );
-				
+
 				oFCKeditor.BasePath = "'.XOOPS_URL.'/common/fckeditor/";
-				
+
 				oFCKeditor.ReplaceTextarea();
 			}
 		// --></script>
@@ -148,5 +148,6 @@ $form->addElement($xoopsGTicket->getTicketXoopsForm( __LINE__ ));
 $form->addElement($button_tray);
 $form->display();
 
-$xoopsTpl->assign('xoops_module_header', '<script type="text/javascript" src="'.$mydirurl.'/index.php?page=javascript"></script>' . $xoopsTpl->get_template_vars( "xoops_module_header" ));
-?>
+$xoopsTpl->assign('xoops_module_header', '<script type="text/javascript" src="'.$mydirurl.'/index.php?page=javascript"></script>'
+    . $xoopsTpl->get_template_vars( "xoops_module_header" )
+);

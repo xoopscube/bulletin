@@ -43,12 +43,12 @@ if ( $bodytext != '' ) {
 		$xoopsTpl->assign('pagenav', $pagenav->renderNav());
 
 		if ($storypage == 0) {
-			$story['text'] = $story['text'].'<br /><br />'.$articletext[$storypage];
+			$story['text'] = $story['text'].'<br><br>'.$articletext[$storypage];
 		} else {
 			$story['text'] = $articletext[$storypage];
 		}
 	} else {
-		$story['text'] = $story['text'].'<br /><br />'.$bodytext;
+		$story['text'] = $story['text'].'<br><br>'.$bodytext;
 	}
 }
 
@@ -167,16 +167,12 @@ $xoopsTpl->assign( 'xoops_breadcrumbs' , $breadcrumbs ) ;
 $xoopsTpl->assign( 'mod_config' , $xoopsModuleConfig ) ;
 
 //meta description
-$description = $myts->htmlSpecialChars(xoops_substr(strip_tags($story['text']),0,255),ENT_QUOTES);
+$description = $myts->htmlSpecialChars(xoops_substr(strip_tags($story['text']),0,191),ENT_QUOTES);
 if (defined('LEGACY_MODULE_VERSION') && version_compare(LEGACY_MODULE_VERSION, '2.2', '>=')) {
 	// For XCL 2.2
 	$xclRoot =& XCube_Root::getSingleton();
 	$headerScript = $xclRoot->mContext->getAttribute('headerScript');
 	$headerScript->addMeta('description', $description);
-} elseif (isset($xoTheme) && is_object($xoTheme)) {
-	// For XOOPS 2.3 or higher & Impress CMS.
-	$xoTheme->addMeta('meta', 'description', $description);
 }
 
 require_once XOOPS_ROOT_PATH.'/footer.php';
-?>
